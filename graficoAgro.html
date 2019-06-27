@@ -144,20 +144,16 @@
                 </div>
                 <div class="col-9 row">
                     <div class="col-4">
-                        <label class="titulo">selecionar</label>
-                    </div>
-                    <div class="col-4">
-                        <label class="titulo">selecionar</label>
-                    </div>
-                    <div class="col-4">
+                        <label class="titulo">genero</label>
                     </div>
                 </div>
                 <div class="col-9 row">
-                    <select id="teste" onchange="atualizaDados()">
-                        <option selected>Gênero</option>
-                        <option class="subTitulo">Masculino</option>
-                        <option class="subTitulo">Feminino</option>
-                    </select>
+
+                    <label>Gênero</label>
+                    <div class="topicos" id="teste" onchange="atualizaDados()">
+                        <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
+                        <a href="#">Masculino \n Feminino</a>
+                    </div>
                     <label><input type="checkbox" class="titulo">Índice 2018</label><br>
                     <select id="troca" onchange="atualizaDados2()">
                         <option selected>Renda média familiar mensal</option>
@@ -179,8 +175,8 @@
                 <div style="width: 100%">
                     <div id="barchart_values" style="width: 500px; height:400px; margin: auto"></div>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
 </body>
 

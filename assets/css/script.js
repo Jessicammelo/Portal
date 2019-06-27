@@ -23,21 +23,15 @@ function drawChart() {
 }
 function atualizaDados() {
     const teste = document.getElementById("teste");
-    if (teste.options[teste.selectedIndex].value == "Masculino") {
+    if (teste.options[teste.selectedIndex].value == "Masculino \n Feminino") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
             ['Masculino', 36],
             [0,0 ],
             [0,0 ]
+            ['Feminino', 50]
         ];
-    } else if (teste.options[teste.selectedIndex].value == "Feminino") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['Feminino', 36],
-            [0,0 ],
-            [0,0 ]
-        ];
-    }
+    } 
     drawChart();
 }
 function atualizaDados2() {
@@ -93,11 +87,12 @@ google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
     var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" }],
-        ["Copper", 8.94, "#D6D3B8"],
-        ["Silver", 10.49, "#D6D3B8"],
-        ["Gold", 19.30, "#D6D3B8"],
-        ["Platinum", 21.45, "#D6D3B8"]
+        ["Grupos Sociais", "Respostas", { role: "style" }],
+        ["Pessoas da sua família próxima", 50, "#D6D3B8"],
+        ["Seus amigos", 10, "#D6D3B8"],
+        ["Seus parentes", 30, "#D6D3B8"],
+        ["Seus visinhos", 15, "#D6D3B8"],
+        ["Brasileiros em geral", 21, "#D6D3B8"]
     ]);
 
     var view = new google.visualization.DataView(data);
@@ -111,7 +106,7 @@ function drawChart2() {
         2]);
 
     var options = {
-        title: "Density of Precious Metals, in g/cm^3",
+        title: "Índice de confiança nesses grupos sociais",
         width: 600,
         height: 400,
         bar: { groupWidth: "95%" },
