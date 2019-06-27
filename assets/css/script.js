@@ -4,7 +4,7 @@ let dados = [
     ['Discordo', 100],
     ['Não concordo, \nnem discordo', 40],
     ['Concordo', 50],
-    ['Concordo \ntotalmente', 40],
+    ['Concordo \ntotalmente', 40]
 ];
 google.charts.load('current', {
     'packages': ['bar']
@@ -23,12 +23,10 @@ function drawChart() {
 }
 function atualizaDados() {
     const teste = document.getElementById("teste");
-    if (teste.options[teste.selectedIndex].value == "Masculino \n Feminino") {
+    if (teste.options[teste.selectedIndex].value == "Masculino") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
             ['Masculino', 36],
-            [0,0 ],
-            [0,0 ]
             ['Feminino', 50]
         ];
     } 
@@ -59,17 +57,17 @@ function atualizaDados3() {
     if (teste3.options[teste3.selectedIndex].value == "Católica") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['total', 36],
+            ['total', 36]
         ];
     } else if (teste3.options[teste3.selectedIndex].value == "Evangélica") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['total', 36],
+            ['total', 36]
         ];
     } else if (teste3.options[teste3.selectedIndex].value == "Luterana") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['total', 36],
+            ['total', 36]
         ];
     }
     drawChart();
@@ -80,7 +78,7 @@ let dados2 = [
     ['Discordo', 100],
     ['Não concordo, \nnem discordo', 40],
     ['Concordo', 50],
-    ['Concordo \ntotalmente', 40],
+    ['Concordo \ntotalmente', 40]
 ];
 
 google.charts.load("current", { packages: ["corechart"] });
@@ -116,5 +114,5 @@ function drawChart2() {
     var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
     chart.draw(view, options);
 
-}
+};
 
