@@ -144,31 +144,37 @@
                     <div id="columnchart_material" style="width: 700px; height:400px;"></div>
                 </div>
                 <div class="col-9 row">
+                    <div class="col-3 ">
+                        <div class="topicos stiloGrafico1">
+                            <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
+                            <a href="#">Idade</a>
+                        </div>
+                        <div class="topicos">
+                            <img style="width: 30px" src="assets/image/Ícones_Focus/Congresso nacional@6x-8.png">
+                            <a href="#">Gênero</a>
+                        </div>
+                    </div>
+                    <div class="col-3 ">
+                        <div class="topicos">
+                            <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
+                            <a href="#">Renda Média Familiar</a>
+                        </div>
+                    </div>
                     <div class="col-3">
                         <div class="topicos">
                             <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
-                            <a href="#">Bancos</a>
+                            <a href="#">Religião</a>
                         </div>
                         <div class="topicos">
                             <img style="width: 30px" src="assets/image/Ícones_Focus/Congresso nacional@6x-8.png">
-                            <a href="#"> Congresso Nacional</a>
+                            <a href="#">Índice 2018</a>
                         </div>
                     </div>
-                    <div class="col-3 row">
-                        <div class="topicos">
-                            <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
-                            <a href="#">Bancos</a>
-                        </div>
-                    </div>
-                    <div class="col-3 row">
-                        <div class="topicos">
-                            <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
-                            <a href="#">Bancos</a>
-                        </div>
-                        <div class="topicos">
-                            <img style="width: 30px" src="assets/image/Ícones_Focus/Congresso nacional@6x-8.png">
-                            <a href="#"> Congresso Nacional</a>
-                        </div>
+                    <div class="col-3">
+                        <label>
+                            <!--Metodologia-->
+                            <!--Equipe tecnica-->
+                        </label>
                     </div>
                 </div>
             </div>
@@ -177,8 +183,17 @@
     <div class="col-10 offset-1 row">
         <div class="col-12">
             <div style="width: 100%">
-                <div id="barchart_values" style="width: 500px; height:400px; margin: auto"></div>
+                <div id="barchart_values" style = "width: 500px; height:400px; margin: auto"></div>
             </div>
+            <div class="col-12" style = "width: 50px; height: 10px; margin: auto">
+                    <select id="grafico2" onchange="atualizaDadosGraficos()">
+                        <option class="subTitulo">Pessoas da sua família</option>
+                        <option class="subTitulo">Seus amigos</option>
+                        <option class="subTitulo">Seus parentes</option>
+                        <option class="subTitulo">Seus vizinhos</option>
+                        <option class="subTitulo">Brasileiros em geral</option>
+                    </select>
+                </div>
         </div>
     </div>
 </body>

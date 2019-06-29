@@ -23,75 +23,33 @@ function drawChart() {
 }
 function atualizaDados() {
     const teste = document.getElementById("teste");
-    if (teste.options[teste.selectedIndex].value == "Masculino") {
+    if (teste.options[teste.selectedIndex].value == "Bancos") {
         dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['Masculino', 36],
-            ['Feminino', 50]
-        ];
-    } 
-    drawChart();
-}
-function atualizaDados2() {
-    teste2 = document.getElementById("troca");
-    if (teste2.options[teste2.selectedIndex].value == "até R$ 2000,00") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['TOTAL', 36],
-        ];
-    } else if (teste2.options[teste2.selectedIndex].value == "R$ 2001,00 a R$ 6000,00") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['TOTAL', 36],
-        ];
-    } else if (teste2.options[teste2.selectedIndex].value == "Acima de R$ 6000,00") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['TOTAL', 36],
-        ];
-    }
-    drawChart();
-}
-function atualizaDados3() {
-    const teste3 = document.getElementById("teste3");
-    if (teste3.options[teste3.selectedIndex].value == "Católica") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['total', 36]
-        ];
-    } else if (teste3.options[teste3.selectedIndex].value == "Evangélica") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['total', 36]
-        ];
-    } else if (teste3.options[teste3.selectedIndex].value == "Luterana") {
-        dados = [
-            ['Resposta', 'Quant de Respostas'],
-            ['total', 36]
+            ['Discordo \ntotalmente', 80],
+            ['Discordo', 100],
+            ['Não concordo, \nnem discordo', 40],
+            ['Concordo', 50],
+            ['Concordo \ntotalmente', 40]
         ];
     }
     drawChart();
 };
+
+// início segundo gráfico
 let dados2 = [
-    ['Resposta', 'Quant de Respostas'],
-    ['Discordo \ntotalmente', 80],
-    ['Discordo', 100],
-    ['Não concordo, \nnem discordo', 40],
-    ['Concordo', 50],
-    ['Concordo \ntotalmente', 40]
+    ["Resposta", "Quant de Respostas", { role: "style" }],
+    ["Nenhuma \nConfiança", 50, "#D6D3B8"],
+    ["Quase Nenhuma \nConfiança", 10, "#D6D3B8"],
+    ["Alguma \nConfiança", 30, "#D6D3B8"],
+    ["Muita \nConfiança", 15, "#D6D3B8"] //esta cinza
+
 ];
 
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
-    var data = google.visualization.arrayToDataTable([
-        ["Grupos Sociais", "Respostas", { role: "style" }],
-        ["Pessoas da sua família próxima", 50, "#D6D3B8"],
-        ["Seus amigos", 10, "#D6D3B8"],
-        ["Seus parentes", 30, "#D6D3B8"],
-        ["Seus visinhos", 15, "#D6D3B8"],
-        ["Brasileiros em geral", 21, "#D6D3B8"]
-    ]);
+    var data = google.visualization.arrayToDataTable(dados2);
 
     var view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
@@ -99,7 +57,7 @@ function drawChart2() {
             calc: "stringify",
             sourceColumn: 1,
             type: "string",
-            role: "annotation"
+            role: "annotation",
         },
         2]);
 
@@ -113,6 +71,53 @@ function drawChart2() {
     };
     var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
     chart.draw(view, options);
-
+}
+function atualizaDadosGraficos() {
+    debugger
+    const grafico2 = document.getElementById("grafico2");
+    if (grafico2.options[grafico2.selectedIndex].value == "Pessoas da sua família") {
+        dados2 = [
+            ["Resposta", "Quant de Respostas", { role: "style" }],
+            ["Nenhuma \nConfiança", 50, ":#FFCC00"],
+            ["Quase Nenhuma \nConfiança", 0, ":#FFCC00"],
+            ["Alguma \nConfiança", 3, ":#FFCC00"],
+            ["Muita \nConfiança", 15, ":#FFCC00"]
+        ];
+    } else if (grafico2.options[grafico2.selectedIndex].value == "Seus amigos") {
+        dados2 = [
+            ["Resposta", "Quant de Respostas", { role: "style" }],
+            ["Nenhuma \nConfiança", 5, "#FFCC00"],
+            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
+            ["Alguma \nConfiança", 30, "#FFCC00"],
+            ["Muita \nConfiança", 1, "#FFCC00"]
+        ];
+    } else if (grafico2.options[grafico2.selectedIndex].value == "Seus parentes") {
+        dados2 = [
+            ["Resposta", "Quant de Respostas", { role: "style" }],
+            ["Nenhuma \nConfiança", 20, "#FFCC00"],
+            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
+            ["Alguma \nConfiança", 3, "#FFCC00"],
+            ["Muita \nConfiança", 15, "#FFCC00"]
+        ];
+    } else if (grafico2.options[grafico2.selectedIndex].value == "Seus visinhos") {
+        dados2 = [
+            ["Resposta", "Quant de Respostas", { role: "style" }],
+            ["Nenhuma \nConfiança", 50, "#FFCC00"],
+            ["Quase Nenhuma \nConfiança", 23, "#FFCC00"],
+            ["Alguma \nConfiança", 25, "#FFCC00"],
+            ["Muita \nConfiança", 15, "#FFCC00"]
+        ];
+    } else if (grafico2.options[grafico2.selectedIndex].value == "Brasileiros em geral") {
+        dados2 = [
+            ["Resposta", "Quant de Respostas", { role: "style" }],
+            ["Nenhuma \nConfiança", 25, "#FFCC00"],
+            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
+            ["Alguma \nConfiança", 30, "#FFCC00"],
+            ["Muita \nConfiança", 15, "#FFCC00"]
+        ];
+    }
+    drawChart2();
 };
+
+
 
