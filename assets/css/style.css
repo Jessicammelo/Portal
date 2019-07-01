@@ -60,15 +60,15 @@
 
 }
 .topicos {
-    color:#e1e1e1;
-    background: #005FA4;
+    color:white;
+    background:#005fa4;
     border-bottom: solid 2px #FFCC00;
     cursor: pointer;
 }
 
 .topicos a {
     text-decoration: none;
-    color:#e1e1e1
+    color:white;
 }
 .breadcrumb {
     background: #f6f6f1;
@@ -78,13 +78,17 @@
 }
 .backgroudImagem{
     background: url("../image/fundo.jpg") no-repeat;
-    background-size: 100% 110%;
+    background-size: 100% 115%;
     height: 100%;
 }
 .botaoInicial{
-    background: #005FA4;
+    background: #005fa4;
     color: white;
-    padding: 40px;
+    padding: 35px;
     margin: 10px;
     font-size: 20px;
+}
+.topicos span{
+    text-decoration: none;
+    color:white;
 }
