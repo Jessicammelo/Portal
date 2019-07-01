@@ -221,8 +221,8 @@ function atualizaDados(param) {
     }else if (param == 23) {
         dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['Ensino Fundamental\n/até 4º ano', 8],
-            ['Ensino Fundamental\n/5º ao 9º ano', 10],
+            ['Ensino Fundamental\naté 4º ano', 8],
+            ['Ensino Fundamental\n5º ao 9º ano', 10],
             ['Ensino Médio', 4],
             ['Ensino Superior', 66],
         ];
