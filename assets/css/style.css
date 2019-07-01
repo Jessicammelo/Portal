@@ -63,6 +63,7 @@
     color:#e1e1e1;
     background: #005FA4;
     border-bottom: solid 2px #FFCC00;
+    cursor: pointer;
 }
 
 .topicos a {
@@ -74,4 +75,16 @@
 }
 .stiloGrafico1 div  {
     width: 400px;
+}
+.backgroudImagem{
+    background: url("../image/fundo.jpg") no-repeat;
+    background-size: 100% 110%;
+    height: 100%;
+}
+.botaoInicial{
+    background: #005FA4;
+    color: white;
+    padding: 40px;
+    margin: 10px;
+    font-size: 20px;
 }

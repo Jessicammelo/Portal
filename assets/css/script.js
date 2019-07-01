@@ -39,10 +39,10 @@ function atualizaDados() {
 // início segundo gráfico
 let dados2 = [
     ["Resposta", "Quant de Respostas", { role: "style" }],
-    ["Nenhuma \nConfiança", 50, "#D6D3B8"],
-    ["Quase Nenhuma \nConfiança", 10, "#D6D3B8"],
-    ["Alguma \nConfiança", 30, "#D6D3B8"],
-    ["Muita \nConfiança", 15, "#D6D3B8"] //esta cinza
+    ["Nenhuma \nConfiança", 50, "#005fa4"],
+    ["Quase Nenhuma \nConfiança", 10, "#005fa4"],
+    ["Alguma \nConfiança", 30, "#005fa4"],
+    ["Muita \nConfiança", 15, "#005fa4"] 
 
 ];
 
@@ -72,48 +72,48 @@ function drawChart2() {
     var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
     chart.draw(view, options);
 }
-function atualizaDadosGraficos() {
+function atualizaDadosGraficos(parametro) {
     debugger
     const grafico2 = document.getElementById("grafico2");
-    if (grafico2.options[grafico2.selectedIndex].value == "Pessoas da sua família") {
+    if (parametro == 1) {
         dados2 = [
             ["Resposta", "Quant de Respostas", { role: "style" }],
-            ["Nenhuma \nConfiança", 50, ":#FFCC00"],
-            ["Quase Nenhuma \nConfiança", 0, ":#FFCC00"],
-            ["Alguma \nConfiança", 3, ":#FFCC00"],
-            ["Muita \nConfiança", 15, ":#FFCC00"]
+            ["Nenhuma \nConfiança", 50, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", 0, "#005fa4"],
+            ["Alguma \nConfiança", 3, "#005fa4"],
+            ["Muita \nConfiança", 15, "#005fa4"]
         ];
     } else if (grafico2.options[grafico2.selectedIndex].value == "Seus amigos") {
         dados2 = [
             ["Resposta", "Quant de Respostas", { role: "style" }],
-            ["Nenhuma \nConfiança", 5, "#FFCC00"],
-            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
-            ["Alguma \nConfiança", 30, "#FFCC00"],
-            ["Muita \nConfiança", 1, "#FFCC00"]
+            ["Nenhuma \nConfiança", 5, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", 10, "#005fa4"],
+            ["Alguma \nConfiança", 30, "#005fa4"],
+            ["Muita \nConfiança", 1, "#005fa4"]
         ];
     } else if (grafico2.options[grafico2.selectedIndex].value == "Seus parentes") {
         dados2 = [
             ["Resposta", "Quant de Respostas", { role: "style" }],
-            ["Nenhuma \nConfiança", 20, "#FFCC00"],
-            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
-            ["Alguma \nConfiança", 3, "#FFCC00"],
-            ["Muita \nConfiança", 15, "#FFCC00"]
+            ["Nenhuma \nConfiança", 20, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", 10, "#005fa4"],
+            ["Alguma \nConfiança", 3, "#005fa4"],
+            ["Muita \nConfiança", 15, "#005fa4"]
         ];
     } else if (grafico2.options[grafico2.selectedIndex].value == "Seus visinhos") {
         dados2 = [
             ["Resposta", "Quant de Respostas", { role: "style" }],
-            ["Nenhuma \nConfiança", 50, "#FFCC00"],
-            ["Quase Nenhuma \nConfiança", 23, "#FFCC00"],
-            ["Alguma \nConfiança", 25, "#FFCC00"],
-            ["Muita \nConfiança", 15, "#FFCC00"]
+            ["Nenhuma \nConfiança", 50, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", 23, "#005fa4"],
+            ["Alguma \nConfiança", 25, "#005fa4"],
+            ["Muita \nConfiança", 15, "#005fa4"]
         ];
     } else if (grafico2.options[grafico2.selectedIndex].value == "Brasileiros em geral") {
         dados2 = [
             ["Resposta", "Quant de Respostas", { role: "style" }],
-            ["Nenhuma \nConfiança", 25, "#FFCC00"],
-            ["Quase Nenhuma \nConfiança", 10, "#FFCC00"],
-            ["Alguma \nConfiança", 30, "#FFCC00"],
-            ["Muita \nConfiança", 15, "#FFCC00"]
+            ["Nenhuma \nConfiança", 25, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", 10, "#005fa4"],
+            ["Alguma \nConfiança", 30, "#005fa4"],
+            ["Muita \nConfiança", 15, "#005fa4"]
         ];
     }
     drawChart2();
