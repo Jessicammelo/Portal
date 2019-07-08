@@ -57,8 +57,8 @@
         </div>
         <div class="col-10 offset-1 row">
             <div class="col-3">
+                <!--inicio menu-->
                 <div class="topicos" onclick="atualizaDados(01)">
-                    <!--inicio menu-->
                     <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
                     <span>Bancos</span>
                 </div>
@@ -146,46 +146,38 @@
                     <div id="columnchart_material" style="width: 700px; height:400px;"></div>
                 </div>
                 <div class="col-10 offset-2 row">
-                    <div class="col-3">
-                        <div class="topicos stiloGrafico1" onclick="atualizaDados(21)">
-                            <i class="far fa-calendar-alt">
-                            </i><span> Idade</span>
-                        </div>
-                        <div class="topicos" onclick="atualizaDados(22)">
-                            <i class="fas fa-venus-mars"></i>
-                            <span> Gênero</span>
-                        </div>
-                    </div>
-                    <div class="col-5 ">
-                        <div class="topicos" onclick="atualizaDados(23)">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Escolaridade</span>
-                        </div>
-                        <div class="topicos" onclick="atualizaDados(24)">
-                            <i class="fas fa-money-check-alt"></i>
-                            <span>Renda Média Familiar</span>
+                    <!-- inicio filtro-->
+                    <div class="col-5">
+                        <div class=" col-12">
+                            <label>Selecione</label>
+                            <select class="topicos stiloGrafico1" onclick="atualizaDados()">
+                                <option selected>Idade</option>
+                                <option selected>Gênero</option>
+                                <option selected>Escolaridade</option>
+                                <option selected>Renda Média Familiar</option>
+                                <option selected>Religião</option>
+                                <option selected>Índice 2018</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="topicos" onclick="atualizaDados(25)">
-                            <i class="fas fa-star-of-david"></i>
-                            <span>Religião</span>
+                    <div class="col-7">
+                        <div class="col-12 ">
+                            <select class="topicos stiloGrafico1">
+                                <option selected>Métodologia</option>
+                                <!--Metodologia-->
+                            </select>
                         </div>
-                        <div class="topicos" onclick="atualizaDados(26)">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Índice 2018</span>
+                        <div class="col-12">
+                            <select class="topicos stiloGrafico1">
+                                <option selected>Equipe Técnica</option>
+                                <!--Equipe tecnica-->
+                            </select>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <label>
-
-                            <!--Metodologia-->
-                            <!--Equipe tecnica-->
-                        </label>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="col-10 offset-1 row">
         <!--segundo grafico-->

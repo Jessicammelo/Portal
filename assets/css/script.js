@@ -25,7 +25,7 @@ function atualizaDados(param) {
     teste = document.getElementById("teste");
     if (param == 01) {
         dados = [
-            ['Resposta', 'Quant de Respostas'],
+            ['Bancos', 'Quant de Respostas'],
             ['Discordo \ntotalmente', 8],
             ['Discordo', 10],
             ['Não concordo, \nnem discordo', 40],
@@ -203,7 +203,7 @@ function atualizaDados(param) {
             ['Concordo', 3],
             ['Concordo \ntotalmente', 4]
         ];
-    }else if (param == 21) {
+    }else if (param == 21) { // inicio filtro//
         dados = [
             ['Resposta', 'Quant de Respostas'],
             ['16 a 24 anos', 8],
