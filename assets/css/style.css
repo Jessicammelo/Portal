@@ -1,12 +1,10 @@
-
 .submenu {
     background: #005FA4;
-   
 }
 
 .tipoazul {
     color: white;
-    background:#005FA4;
+    background: #005FA4;
 }
 
 .btn-primary {
@@ -14,8 +12,7 @@
 }
 
 .colorlinha {
-    background:#FFCC00;
-    
+    background: #FFCC00;
 }
 
 .tipocinza {
@@ -23,21 +20,19 @@
 }
 
 .bordasuperior {
-    border-top: solid 2px #FFCC00 ;
-
+    border-top: solid 2px #FFCC00;
 }
+
 .font-sizeIcone {
     font-size: 25px;
 }
 
 .font-sizeBotao {
     font-size: 25px;
-   
 }
 
 .font-sizeBotao:hover {
     color: #0b71b0;
-
 }
 
 .botaoSegundaPagina {
@@ -48,47 +43,57 @@
     background: #e1e1e1;
 }
 
-.titulo{
+.titulo {
     color: #e1e1e1;
-    color:#494444;
+    color: #494444;
     background: #f9f9f1;
 }
+
 .div.subTitulo {
-    background:#494444;
+    background: #494444;
     color: #e1e1e1;
     width: 40px;
-
 }
+
 .topicos {
-    color:white;
-    background:#005fa4;
+    color: white;
+    background: #005fa4;
     border-bottom: solid 2px #FFCC00;
     cursor: pointer;
 }
 
 .topicos a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
+
 .breadcrumb {
     background: #f6f6f1;
 }
-.stiloGrafico1 div  {
-    width: 400px;
-}
-.backgroudImagem{
+
+.backgroudImagem {
     background: url("../image/fundo.jpg") no-repeat;
     background-size: 100% 115%;
     height: 100%;
 }
-.botaoInicial{
+
+.botaoInicial {
     background: #005fa4;
     color: white;
     padding: 35px;
     margin: 10px;
     font-size: 20px;
 }
-.topicos span{
+
+.topicos span {
     text-decoration: none;
-    color:white;
+    color: white;
+}
+
+.metodologia div {
+    margin: 45px;
+   
+}
+.selecao {
+    margin-left: none; 
 }

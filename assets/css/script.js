@@ -15,7 +15,8 @@ function drawChart() {
     var options = {
         title: 'Índice de confiança nas Instituíções Brasileiras',
         subtitle: 'Universidade Regional de Blumenau, Blumenau, 2018-2019',
-        colors: ['#005fa4']
+        colors: ['#005fa4'],
+        bar: [groupWidth = '40px']
     };
 
     var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
