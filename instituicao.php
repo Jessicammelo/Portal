@@ -1,3 +1,11 @@
+<?php
+require "backend/classes/bancoDados.php";
+$db = new BancoDados();
+$conexao = $db->instancia();
+$stmt = $conexao->query('SELECT * FROM instituicao ORDER BY nome ASC ');
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <html>
 
 <head>
@@ -57,7 +65,7 @@
         </div>
         <div class="col-10 offset-1 row">
             <div class="col-3">
-                <!--inicio menu-->
+                <!--inicio menu
                 <div class="topicos" onclick="atualizaDados(01)">
                     <img style="width: 30px" src="assets/image/Ícones_Focus/Bancos@6x-8.png">
                     <span>Bancos</span>
@@ -137,7 +145,19 @@
                 <div class="topicos" onclick="atualizaDados(20)">
                     <img style="width: 30px" src="assets/image/Ícones_Focus/SUS@6x-8.png">
                     <span>Sistema público de Saúde</span>
+                </div>-->
+                <?php
+                for($i=0;$i<count($data);$i++){
+                ?>
+                <a href="grafico.php?id=<?php echo $data[$i]['id']?>">
+                <div class="topicos">
+                    <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone']?>">
+                    <span><?php echo $data[$i]['nome']?></span>
                 </div>
+                </a>
+                <?php
+                }
+                ?>
             </div>
             <!--terminou menu esquerdo-->
             <div class="col-9 row titulo">
