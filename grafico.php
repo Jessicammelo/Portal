@@ -1,7 +1,7 @@
 <?php
 require "backend/classes/bancoDados.php";
 $id = $_GET['id'];
-if(empty($id)){
+if (empty($id)) {
     header("location: instituicao.php");
     exit;
 }
@@ -9,9 +9,14 @@ $db = new BancoDados();
 $conexao = $db->instancia();
 $stmt = $conexao->query('SELECT * FROM instituicao ORDER BY nome ASC ');
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM instituicao WHERE id = '.$id.' ORDER BY nome ASC ');
+$stmt = $conexao->query('SELECT * FROM instituicao WHERE id = ' . $id . ' ORDER BY nome ASC ');
 $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
-
+$stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $id);
+$sexo =  $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao = '.$id);
+$faixa_etaria = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = '.$id);
+$renda_familiar = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <html>
@@ -23,17 +28,17 @@ $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v3">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- <script src="./assets/css/script.js"></script> -->
     <script>
         let dados = [
             ['Resposta', 'Quant de Respostas'],
-            ['Nenhuma \nconfiança',<?php echo $instituicaoSelecionada["nenhuma_confianca"]?>],
-            ['Quase nenhuma \nconfiança', <?php echo $instituicaoSelecionada["quase_nenhuma_confianca"]?>],
-            ['Alguma \nconfiança', <?php echo $instituicaoSelecionada["alguma_confianca"]?>],
-            ['Muita confiança', <?php echo $instituicaoSelecionada["muita_confianca"]?>],
-            ['Não conheço', <?php echo $instituicaoSelecionada["nao_conheco"]?>]
+            ['Nenhuma \nconfiança', <?php echo $instituicaoSelecionada["nenhuma_confianca"] ?>],
+            ['Quase nenhuma \nconfiança', <?php echo $instituicaoSelecionada["quase_nenhuma_confianca"] ?>],
+            ['Alguma \nconfiança', <?php echo $instituicaoSelecionada["alguma_confianca"] ?>],
+            ['Muita confiança', <?php echo $instituicaoSelecionada["muita_confianca"] ?>],
+            ['Não conheço, \nnão sei', <?php echo $instituicaoSelecionada["nao_conheco"] ?>]
         ];
         google.charts.load('current', {
             'packages': ['bar']
@@ -76,7 +81,7 @@ $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="file:///C:/Users/jessi/git/Portal/index.html"><i class="fas fa-chart-bar"> Índice de confiança
+                <a href="index.html#"><i class="fas fa-chart-bar"> Índice de confiança
                         nas Intituíções Brasileiras </i></a>
             </button>
         </div>
@@ -91,16 +96,26 @@ $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="col-10 offset-1 row">
             <div class="col-3">
-
-            <?php
-                for($i=0;$i<count($data);$i++){
-                ?>
-                <a href="grafico.php?id=<?php echo $data[$i]['id']?>">
-                <div class="topicos">
-                    <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone']?>">
-                    <span><?php echo $data[$i]['nome']?></span>
-                </div>
-                </a>
+                <?php
+                for ($i = 0; $i < count($data); $i++) {
+                    if ($data[$i]['id'] == $id) {
+                        ?>
+                        <div class="topicos selecionado">
+                            <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
+                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                        </div>
+                    <?php
+                    } else {
+                        ?>
+                        <a class="removerLinha" href="grafico.php?id=<?php echo $data[$i]['id'] ?>">
+                            <div class="topicos">
+                                <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
+                                <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                            </div>
+                        </a>
+                    <?php
+                    }
+                    ?>
                 <?php
                 }
                 ?>
@@ -109,6 +124,93 @@ $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-9 row titulo">
                 <div class="col-12">
                     <div id="columnchart_material" style="width: 700px; height:400px;"></div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th colspan="2">
+                                Sexo
+                            </th>
+                            <th colspan="5">
+                                Faixa etária
+                            </th>
+                            <th colspan="4">
+                                Renda famíliar
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Masculino
+                                </td>
+                                <td>
+                                    Feminino
+                                </td>
+                                <td>
+                                    16-24
+                                </td>
+                                <td>
+                                    25-29
+                                </td>
+                                <td>
+                                    30-39
+                                </td>
+                                <td>
+                                    40-49
+                                </td>
+                                <td>
+                                    50+
+                                </td>
+                                <td>
+                                    Até 2000
+                                </td>
+                                <td>
+                                    2000-6000
+                                </td>
+                                <td>
+                                    +6000
+                                </td>
+                                <td>
+                                    Recusou
+                                </td>
+                                
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <?php echo $sexo['masculino'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $sexo['feminino'] ?>
+                                </td>
+                                <td>
+                                <?php echo $faixa_etaria['16_24'] ?>
+                                </td>
+                                <td>
+                                <?php echo $faixa_etaria['25_29'] ?>
+                                </td>
+                                <td>
+                                <?php echo $faixa_etaria['30_39'] ?>
+                                </td>
+                                <td>
+                                <?php echo $faixa_etaria['40_49'] ?>
+                                </td>
+                                <td>
+                                <?php echo $faixa_etaria['50'] ?>
+                                </td>
+                                <td>
+                                <?php echo $renda_familiar['ate_2000'] ?>
+                                </td>
+                                <td>
+                                <?php echo $renda_familiar['2000_6000'] ?>
+                                </td>
+                                <td>
+                                <?php echo $renda_familiar['mais_6000'] ?>
+                                </td>
+                                <td>
+                                <?php echo $renda_familiar['recusou'] ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -97,3 +97,9 @@
 .selecao {
     margin-left: none; 
 }
+.selecionado{
+    background:#00008B!important;
+}
+.removerLinha{
+    text-decoration: none;
+}

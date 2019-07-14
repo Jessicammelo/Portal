@@ -50,7 +50,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="file:///C:/Users/jessi/git/Portal/index.html"><i class="fas fa-chart-bar"> Índice de confiança
+                <a href="index.html"><i class="fas fa-chart-bar"> Índice de confiança
                         nas Intituíções Brasileiras </i></a>
             </button>
         </div>
@@ -111,7 +111,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>Meios de Comunicação</span>
                 </div>
                 <div class="topicos" onclick="atualizaDados(12)">
-                    <img style="width: 30px" src="assets/image/Ícones_Focus/Prancheta 31@6x-8.png">
+                    <img style="width: 30px" src="assets/image/Ícones_Focus">
                     <span>Ministério público</span>
                 </div>
                 <div class="topicos" onclick="atualizaDados(13)">
@@ -224,7 +224,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-3">
                             <div class="topicos" onclick="atualizaDadosGraficos(4)">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/2 seus vizinhos@6x-8.png">
-                                <span"> Seus vizinhos</span>
+                                <span> Seus vizinhos</span>
                             </div>
                             <div class="topicos" onclick="atualizaDadosGraficos(5)">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/2 brasileiros@6x-8.png">
