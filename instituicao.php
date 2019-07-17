@@ -39,7 +39,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; float:right; color:  white"
+                        <img style="width: 150px; float:right; color: white"
                             src="assets/image/Ícones_Focus/Focus@6x-8.png">
                     </div>
                 </div>
@@ -50,7 +50,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="index.html"><i class="fas fa-chart-bar"> Índice de confiança
+                <a href="index.php#"><i class="fas fa-chart-bar"> Índice de confiança
                         nas Intituíções Brasileiras </i></a>
             </button>
         </div>

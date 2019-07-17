@@ -39,17 +39,16 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="col-6">
             <?php
-            for ($i = 0; $i < count($data); $i++) {
+            for ($i = 0; $i<count($data); $i++) {
                 ?>
                 <div class="col-8 offset-2">
-                    <a href="instituicao.php#" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
+                    <a href="http://localhost/Portal/grafico.php?id=1#" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
                         Semestre <?php echo $data[$i]['ano']?></a>
                 </div>
             <?php
             }
             ?>
         </div>
-
     </div>
     <div class="col-12">
         <div class="col-6">

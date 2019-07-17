@@ -2,7 +2,7 @@
 require "backend/classes/bancoDados.php";
 $id = $_GET['id'];
 if (empty($id)) {
-    header("location: instituicao.php");
+    header("location:instituicao.php");
     exit;
 }
 $db = new BancoDados();
@@ -38,7 +38,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css?v8">
+    <link rel="stylesheet" href="assets/css/style.css?v9">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- <script src="./assets/css/script.js"></script> -->
     <script>
@@ -59,9 +59,15 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
             var data = google.visualization.arrayToDataTable(dados);
             var options = {
                 title: 'Índice de confiança nas Instituíções Brasileiras',
-                subtitle: 'Universidade Regional de Blumenau, Blumenau, 2018-2019',
-                colors: ['#005fa4']
-                
+                subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
+                colors: ['#005fa4'],
+                legend: {
+                    position:"none"
+                },
+                bar: {
+                    groupWidth: "70%"
+                },
+
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -94,15 +100,14 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     type: "string",
                     role: "annotation",
                 },
-                
-                2]);
+
+                2
+            ]);
 
             var options = {
                 title: "Índice de confiança nesses grupos sociais",
-                width: 600,
-                height: 400,
                 bar: {
-                    groupWidth: "95%"
+                    groupWidth: "75%"
                 },
                 legend: {
                     position: "none"
@@ -177,9 +182,39 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
             <!--terminou menu esquerdo-->
             <div class="col-9 row titulo">
+                <div class="col-12 row">
+                    <div class="col-8">
+                        <div id="columnchart_material" style="width: 475px; height:400px"></div>
+                    </div>
+                    <div class="col-4 row ">
+                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                            <thead>
+                                <th class="topicos" colspan="2">
+                                    Nota
+                                </th>
+                            </thead>
+                            <tbody style="background-color: white">
+                                <tr>
+                                    <td>
+                                        FOCUS 2019
+                                    </td>
+                                    <td>
+                                        IBOPE 2018
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php echo $instituicaoSelecionada['indice_confianca'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $instituicaoSelecionada['indice_confianca_ibope'] ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div class="col-12">
-                    <div id="columnchart_material" style="width: 700px; height:400px; margin: auto"></div>
-                    <br>
                     <table class="table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
                             <th class="topicos" colspan="2">
@@ -269,9 +304,9 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <!-- inicio segundo grafico-->
-    <br>
-    <br>
     <div class="container-fluid row">
         <div class="col-10 offset-1 row">
             <div class="col-3" style="text-align:center">
@@ -287,7 +322,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     if ($data2[$i]['id'] == $id) {
                         ?>
                         <div class="topicos selecionado">
-                            <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                            <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
                             <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                         </div>
                     <?php
@@ -295,7 +330,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                         ?>
                         <a class="removerLinha" href="grafico.php?id=<?php echo $data2[$i]['id'] ?>">
                             <div class="topicos">
-                                <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                                <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                             </div>
                         </a>
@@ -307,9 +342,42 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
             </div>
             <div class="col-9 row titulo">
+                <div class="col-12 row">
+                    <div class="col-8">
+                        <div id="barchart_values" style="width: 475px; height:350px"></div>
+                    </div>
+                    <div class="col-4 row ">
+                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                            <thead>
+                                <th class="topicos" colspan="2">
+                                    Nota
+                                </th>
+                            </thead>
+                            <tbody style="background-color: white">
+                                 <tr>
+                                    <td>
+                                        FOCUS 2019
+                                    </td>
+                                    <td>
+                                        IBOPE 2018
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php echo $grupoSelecionado['indice_confianca'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $grupoSelecionado['indice_confianca_ibope'] ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <br>
                 <div class="col-12">
-                    <div id="barchart_values" style="width: 500px; height:400px; margin: auto"></div>
-                    <table class="table table-bordered" style="text-align:center; font-size:12px">
+                    <table class=" table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
                             <th class="topicos" colspan="2">
                                 Sexo
