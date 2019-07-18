@@ -209,7 +209,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     </div>
                     <br>
                 </div>
-                <div class="col-10" style="margin:auto"> 
+                <div class="col-10" style="margin:auto">
                     <table class="table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
                             <th class="topicos" colspan="2" style= "border-bottom: 2px solid #FFCC00">
