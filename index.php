@@ -42,7 +42,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             for ($i = 0; $i<count($data); $i++) {
                 ?>
                 <div class="col-8 offset-2">
-                    <a href="http://localhost/Portal/grafico.php?id=1#" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
+                    <a href="http://localhost/Portal/grafico.php?id=1&grupo=1" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
                         Semestre <?php echo $data[$i]['ano']?></a>
                 </div>
             <?php

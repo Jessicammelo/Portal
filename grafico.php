@@ -1,8 +1,9 @@
 <?php
 require "backend/classes/bancoDados.php";
 $id = $_GET['id'];
-if (empty($id)) {
-    header("location:instituicao.php");
+$grupo = $_GET['grupo'];
+if (empty($id) || empty($grupo)) {
+    header("location:index.php");
     exit;
 }
 $db = new BancoDados();
@@ -19,13 +20,13 @@ $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = ' . $i
 $renda_familiar = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = $conexao->query('SELECT * FROM grupo_social ORDER BY nome ASC');
 $data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $id . ' ORDER BY nome ASC ');
+$stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' ORDER BY nome ASC ');
 $grupoSelecionado =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM sexo WHERE grupo_social = ' . $id);
+$stmt = $conexao->query('SELECT * FROM sexo WHERE grupo_social = ' . $grupo);
 $sexo2 =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $id);
+$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $grupo);
 $faixa_etaria2 = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $id);
+$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $grupo);
 $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -43,7 +44,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
     <!-- <script src="./assets/css/script.js"></script> -->
     <script>
         let dados = [
-            ['Resposta', 'Quant de Respostas'],
+            ['Respostas %', 'Quant de Respostas'],
             ['Nenhuma \nconfiança', <?php echo $instituicaoSelecionada["nenhuma_confianca"] ?>],
             ['Quase nenhuma \nconfiança', <?php echo $instituicaoSelecionada["quase_nenhuma_confianca"] ?>],
             ['Alguma \nconfiança', <?php echo $instituicaoSelecionada["alguma_confianca"] ?>],
@@ -61,20 +62,13 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                 title: 'Índice de confiança nas Instituíções Brasileiras',
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
-                legend: {
-                    position:"none"
-                },
-                bar: {
-                    groupWidth: "70%"
-                },
-
             };
 
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
         let dados2 = [
-            ["Resposta", "Quant de Respostas", {
+            ["Resposta", "Quant de Respostas %", {
                 role: "style"
             }],
             ["Nenhuma \nConfiança", <?php echo $grupoSelecionado["nenhuma_confianca"] ?>, "#005fa4"],
@@ -167,7 +161,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <a class="removerLinha" href="grafico.php?id=<?php echo $data[$i]['id'] ?>">
+                        <a class="removerLinha" href="grafico.php?id=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
                             <div class="topicos">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
@@ -182,18 +176,15 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
             <!--terminou menu esquerdo-->
             <div class="col-9 row titulo">
-                <div class="col-12 row">
-                    <div class="col-8">
-                        <div id="columnchart_material" style="width: 475px; height:400px"></div>
-                    </div>
-                    <div class="col-4 row ">
-                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                <div class="col-12 ">
+                <div class="col-4 " style="margin:auto">
+                        <table class="table table-bordered" style="text-align:center; font-size:12px; margin:center">
                             <thead>
-                                <th class="topicos" colspan="2">
+                                <th class="topicos" colspan="2" style= "border-bottom: 2px solid #FFCC00">
                                     Nota
                                 </th>
                             </thead>
-                            <tbody style="background-color: white">
+                            <tbody style="background-color: white;">
                                 <tr>
                                     <td>
                                         FOCUS 2019
@@ -213,17 +204,21 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-8" >
+                        <div id="columnchart_material" style="width: 700px; height:450px; margin:auto"></div>
+                    </div>
+                    <br>
                 </div>
-                <div class="col-12">
+                <div class="col-10" style="margin:auto"> 
                     <table class="table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
-                            <th class="topicos" colspan="2">
+                            <th class="topicos" colspan="2" style= "border-bottom: 2px solid #FFCC00">
                                 Sexo
                             </th>
-                            <th class="topicos" colspan="5">
+                            <th class="topicos" colspan="5" style= "border-bottom: 2px solid #FFCC00">
                                 Faixa etária
                             </th>
-                            <th class="topicos" colspan="4">
+                            <th class="topicos" colspan="4" style= "border-bottom: 2px solid #FFCC00">
                                 Renda famíliar (R$)
                             </th>
                         </thead>
@@ -319,7 +314,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-3 ">
                 <?php
                 for ($i = 0; $i < count($data2); $i++) {
-                    if ($data2[$i]['id'] == $id) {
+                    if ($data2[$i]['id'] == $grupo) {
                         ?>
                         <div class="topicos selecionado">
                             <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
@@ -328,7 +323,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <a class="removerLinha" href="grafico.php?id=<?php echo $data2[$i]['id'] ?>">
+                        <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&id=<?php echo $id ?>">
                             <div class="topicos">
                                 <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
@@ -349,7 +344,7 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                     <div class="col-4 row ">
                         <table class="table table-bordered" style="text-align:center; font-size:12px">
                             <thead>
-                                <th class="topicos" colspan="2">
+                                <th class="topicos" colspan="2" style= "border-bottom: 2px solid #FFCC00">
                                     Nota
                                 </th>
                             </thead>
@@ -379,13 +374,13 @@ $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="col-12">
                     <table class=" table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
-                            <th class="topicos" colspan="2">
+                            <th class="topicos" colspan="2" style= "border-bottom: 2px solid #FFCC00">
                                 Sexo
                             </th>
-                            <th class="topicos" colspan="5">
+                            <th class="topicos" colspan="5" style= "border-bottom: 2px solid #FFCC00">
                                 Faixa etária
                             </th>
-                            <th class="topicos" colspan="4">
+                            <th class="topicos" colspan="4" style= "border-bottom: 2px solid #FFCC00">
                                 Renda famíliar (R$)
                             </th>
                         </thead>

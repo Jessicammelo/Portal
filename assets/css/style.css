@@ -15,10 +15,6 @@
     background: #FFCC00;
 }
 
-.tipocinza {
-    background: #e1e1e1;
-}
-
 .bordasuperior {
     border-top: solid 2px #FFCC00;
 }
@@ -43,17 +39,9 @@
     background: #e1e1e1;
 }
 
-.titulo {
-    color: #e1e1e1;
-    color: #494444;
-    background: #f9f9f1;
-}
 
-.div.subTitulo {
-    background: #494444;
-    color: #e1e1e1;
-    width: 40px;
-}
+
+
 
 .topicos {
     color: white;
@@ -67,9 +55,7 @@
     color: white;
 }
 
-.breadcrumb {
-    background: #f6f6f1;
-}
+
 
 .backgroudImagem {
     background: url("../image/fundo.jpg") no-repeat;
@@ -90,10 +76,7 @@
     color: white;
 }
 
-.metodologia div {
-    margin: 45px;
-   
-}
+
 .selecao {
     margin-left: none; 
 }
