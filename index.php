@@ -23,40 +23,58 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
+                        <img style="width: 150px;  color:  white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; float:right; color:  white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
+                        <img style="width: 150px; float:right; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="row">
-
+    <div class="row" style="margin-left: 45px">        
         <div class="col-6">
+            <label style="font-size: 20px; ">
+            <br>
+            <h3>SOBRE O PROJETO</h3>
+            Tem o objetivo de aprofundar a relação dialógica, 
+            incorporando a extensão as práticas de ensino e pesquisa dos
+             cursos da FURB diretamente envolvidas na sua realização.
+            <br>
+            Após obter as informações, socializa-las de modo a permitir 
+            que a comunidade regional se conheça e reconheça na interpretação
+             de seus resultados.
+            <br>
+             <h3>OBJETIVOS</h3>
+             Identificar os níveis de confiança dos blumenauenses nas 
+             instituições brasileiras.
+            <br>
+            Comparar esses índices aos identificados na pesquisa nacional 
+            realizada pelo Instituto Ibope em 2018.
+            <br>
+            Questionar a população de Blumenau sobre qualidade institucional,
+             a partir das dimensões analíticas do
+              WGI - Worldwide Governance Indicators - do Banco Mundial. 
+            <br>
+            </label>
+        </div>
+        <div class="col-6 row">
             <?php
-            for ($i = 0; $i<count($data); $i++) {
+            for ($i = 0; $i < count($data); $i++) {
                 ?>
                 <div class="col-8 offset-2">
                     <a href="http://localhost/Portal/grafico.php?id=1&grupo=1" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
-                        Semestre <?php echo $data[$i]['ano']?></a>
+                        Semestre <?php echo $data[$i]['ano'] ?></a>
                 </div>
             <?php
             }
             ?>
         </div>
     </div>
-    <div class="col-12">
-        <div class="col-6">
-            <div class="col-3">
-                <img style="width: 350px; float:left; margin:50px" src="assets/image/Ass Rep final-02.png">
-            </div>
-        </div>
-    </div>
+
 </body>
 
 </html>

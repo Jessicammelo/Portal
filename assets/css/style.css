@@ -28,15 +28,18 @@
 }
 
 .font-sizeBotao:hover {
-    color: #0b71b0;
+    color: #005FA4;
+    
 }
 
 .botaoSegundaPagina {
     margin: 10px;
+    color: #e1e1e1;
 }
 
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
+   
 }
 
 
