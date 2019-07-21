@@ -36,8 +36,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div class="row" style="margin-left: 45px">        
-        <div class="col-6">
-            <label style="font-size: 20px; ">
+        <div class="col-6 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
             Tem o objetivo de aprofundar a relação dialógica, 
@@ -59,14 +58,13 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
              a partir das dimensões analíticas do
               WGI - Worldwide Governance Indicators - do Banco Mundial. 
             <br>
-            </label>
         </div>
         <div class="col-6 row">
             <?php
             for ($i = 0; $i < count($data); $i++) {
                 ?>
                 <div class="col-8 offset-2">
-                    <a href="http://localhost/Portal/grafico.php?id=1&grupo=1" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
+                    <a href="http://localhost/Portal/metodologia.php?" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
                         Semestre <?php echo $data[$i]['ano'] ?></a>
                 </div>
             <?php

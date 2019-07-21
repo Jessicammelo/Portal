@@ -26,46 +26,32 @@
 .font-sizeBotao {
     font-size: 25px;
 }
-
 .font-sizeBotao:hover {
     color: #005FA4;
-    
+    padding-right:10px;
 }
-
 .botaoSegundaPagina {
     margin: 10px;
     color: #e1e1e1;
 }
-
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
-   
 }
-
-
-
-
-
 .topicos {
     color: white;
     background: #005fa4;
     border-bottom: solid 2px #FFCC00;
     cursor: pointer;
 }
-
 .topicos a {
     text-decoration: none;
     color: white;
 }
-
-
-
 .backgroudImagem {
     background: url("../image/fundo.jpg") no-repeat;
     background-size: 100% 115%;
     height: 100%;
 }
-
 .botaoInicial {
     background: #005fa4;
     color: white;
@@ -73,13 +59,10 @@
     margin: 10px;
     font-size: 20px;
 }
-
 .topicos span {
     text-decoration: none;
     color: white;
 }
-
-
 .selecao {
     margin-left: none; 
 }
@@ -88,4 +71,14 @@
 }
 .removerLinha{
     text-decoration: none;
+}
+.textoIndex{
+    background:rgba(0, 0, 0, 0.5); 
+    color:white;
+    padding: 20px;
+    font-size: 20px;
+}
+.texto p{
+    font-size: 20px;
+
 }

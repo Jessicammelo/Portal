@@ -28,7 +28,7 @@ $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $gr
 $faixa_etaria2 = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $grupo);
 $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE id = ' . $id);
+$stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE instituicao = ' . $id);
 $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -138,8 +138,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="index.php#"><i class="fas fa-chart-bar"> Índice de confiança
-                        nas Intituíções Brasileiras </i></a>
+                <a href="metodologia.php#"><i class="fas fa-chalkboard"> Metodologia </i></a>
             </button>
         </div>
     </div>
@@ -164,7 +163,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <a class="removerLinha" href="grafico.php?id=<?php echo $id[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
+                        <a class="removerLinha" href="grafico.php?id=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
                             <div class="topicos">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
@@ -215,23 +214,23 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="col-10" style="margin:auto">
                     <!-- tabela-->
                     <?php
-                    if (!empty($id) && empty($religiao)) {
+                    if (!empty($religiao)) {
                         ?>
                         <table class="table table-bordered" style="text-align:center; font-size:12px">
                             <thead>
-                                <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
                                     Católica
                                 </th>
-                                <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
                                     Evangélica
                                 </th>
-                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
                                     Luterana
                                 </th>
-                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
                                     Outra
                                 </th>
-                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
                                     Não tenho religião
                                 </th>
                                 <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
@@ -259,97 +258,99 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                         <?php echo $religiao['muitas_religioes_nenhuma_especifica'] ?>
                                     </td>
                                 </tr>
-                            <?php
-                            } else {
-                                ?>
-                                <table class="table table-bordered" style="text-align:center; font-size:12px">
-                                    <thead>
-                                        <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                            Sexo
-                                        </th>
-                                        <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                            Faixa etária
-                                        </th>
-                                        <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                            Renda famíliar (R$)
-                                        </th>
-                                    </thead>
-                                    <tbody style="background-color: white">
-                                        <tr>
-                                            <td>
-                                                Masc.
-                                            </td>
-                                            <td>
-                                                Fem.
-                                            </td>
-                                            <td>
-                                                16-24
-                                            </td>
-                                            <td>
-                                                25-29
-                                            </td>
-                                            <td>
-                                                30-39
-                                            </td>
-                                            <td>
-                                                40-49
-                                            </td>
-                                            <td>
-                                                50+
-                                            </td>
-                                            <td>
-                                                Até 2000
-                                            </td>
-                                            <td>
-                                                2000-6000
-                                            </td>
-                                            <td>
-                                                +6000
-                                            </td>
-                                            <td>
-                                                Recusou
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <?php echo $sexo['masculino'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $sexo['feminino'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria['16_24'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria['25_29'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria['30_39'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria['40_49'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria['50'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar['ate_2000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar['2000_6000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar['mais_6000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar['recusou'] ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            <?php
-                            }
-                            ?>
+                            </tbody>
+                        </table>
+                    <?php
+                    } else {
+                        ?>
+                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                            <thead>
+                                <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                    Sexo
+                                </th>
+                                <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
+                                    Faixa etária
+                                </th>
+                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                    Renda famíliar (R$)
+                                </th>
+                            </thead>
+                            <tbody style="background-color: white">
+                                <tr>
+                                    <td>
+                                        Masc.
+                                    </td>
+                                    <td>
+                                        Fem.
+                                    </td>
+                                    <td>
+                                        16-24
+                                    </td>
+                                    <td>
+                                        25-29
+                                    </td>
+                                    <td>
+                                        30-39
+                                    </td>
+                                    <td>
+                                        40-49
+                                    </td>
+                                    <td>
+                                        50+
+                                    </td>
+                                    <td>
+                                        Até 2000
+                                    </td>
+                                    <td>
+                                        2000-6000
+                                    </td>
+                                    <td>
+                                        +6000
+                                    </td>
+                                    <td>
+                                        Recusou
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php echo $sexo['masculino'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $sexo['feminino'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $faixa_etaria['16_24'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $faixa_etaria['25_29'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $faixa_etaria['30_39'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $faixa_etaria['40_49'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $faixa_etaria['50'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $renda_familiar['ate_2000'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $renda_familiar['2000_6000'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $renda_familiar['mais_6000'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $renda_familiar['recusou'] ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
