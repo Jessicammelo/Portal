@@ -17,9 +17,17 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
 
     $db = new BancoDados();
     $conexao = $db->instancia();
-    $stmt = $conexao->prepare('INSERT INTO metodologia (titulo,mensagem) VALUES (?, ?)');
-    $stmt->bindValue(1, $titulo);
-    $stmt->bindValue(2, nl2br($mensagem));
+    $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt->bindValue(1, ($nome));
+    $stmt->bindValue(2,($nenhuma_confianca));
+    $stmt->bindValue(3,($quase_nenhuma_confianca));
+    $stmt->bindValue(4,($alguma_confianca));
+    $stmt->bindValue(5,($muita_confianca));
+    $stmt->bindValue(6,($nao_conheco));
+    $stmt->bindValue(7,($ano));
+    $stmt->bindValue(8,($indice_confianca));
+    $stmt->bindValue(9,($indice_confianca_ibope));
+
     $stmt->execute();
     header("location:index.php");
 }
@@ -40,7 +48,7 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
 </head>
 
 <body>
-    <form class="container" method="POST">
+    <form class=" col-6 container" method="POST">
         <div class="form-group">
             <label>Digite nome da instituicão</label>
             <input name="nome" class="form-control" placeholder="Digite nome">
@@ -79,6 +87,8 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
+        <br>
+        <br>
     </form>
 </body>
 

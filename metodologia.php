@@ -48,7 +48,6 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
         for ($i = 0; $i < count($metodologia); $i++) {
             ?>
             <h3> <?php echo $metodologia[$i]['titulo'] ?><h3>
-                    <br>
                     <p>
                         <?php echo $metodologia[$i]['mensagem'] ?>
                     </p>
