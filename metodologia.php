@@ -38,7 +38,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="http://localhost/Portal/grafico.php?id=17&grupo=1"><i class="fas fa-chart-bar"> Índice de confiança
+                <a href="http://localhost/Portal/grafico.php?instituicao=1&grupo=2"><i class="fas fa-chart-bar"> Índice de confiança
                         nas Intituíções Brasileiras </i></a>
             </button>
         </div>

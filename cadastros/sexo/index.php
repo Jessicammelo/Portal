@@ -1,6 +1,8 @@
 <?php
 require "../../backend/classes/bancoDados.php";
+//objeto com o bancos de dados
 $db = new BancoDados;
+//pegar e conecta com ao banco de dados
 $conexao = $db->instancia();
 if (!empty($_GET["delete"])) {
     $id = $_GET["delete"];
@@ -31,7 +33,7 @@ $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container">
         <br>
-        <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $instituicao;?> ">Cadastrar
+        <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"];?> ">Cadastrar
         </a>
         <br>
         <br>
@@ -61,7 +63,7 @@ $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                     <tr>
                         <td>
-                            <a href="index.php?delete=1&instituicao=1<?php echo $instituicao;?><?php echo $sexo[$i]['id'] ?>" class="btn btn-danger">Apagar
+                            <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&instituicao=<?php echo $instituicao;?>" class="btn btn-danger">Apagar
                             </a>
                         </td>
                         <td>

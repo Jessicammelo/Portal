@@ -1,8 +1,8 @@
 <?php
 require "backend/classes/bancoDados.php";
-$id = $_GET['id'];
+$instituicao = $_GET['instituicao'];
 $grupo = $_GET['grupo'];
-if (empty($id) || empty($grupo)) {
+if (empty($instituicao) || empty($grupo)) {
     header("location:index.php");
     exit;
 }
@@ -10,13 +10,13 @@ $db = new BancoDados();
 $conexao = $db->instancia();
 $stmt = $conexao->query('SELECT * FROM instituicao ORDER BY nome ASC ');
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM instituicao WHERE id = ' . $id . ' ORDER BY nome ASC ');
+$stmt = $conexao->query('SELECT * FROM instituicao WHERE id = ' . $instituicao . ' ORDER BY nome ASC ');
 $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $id);
+$stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $instituicao);
 $sexo =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao = ' . $id);
+$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao = ' . $instituicao);
 $faixa_etaria = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = ' . $id);
+$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = ' . $instituicao);
 $renda_familiar = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = $conexao->query('SELECT * FROM grupo_social ORDER BY nome ASC');
 $data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +28,7 @@ $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $gr
 $faixa_etaria2 = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $grupo);
 $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE instituicao = ' . $id);
+$stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE instituicao = ' . $instituicao);
 $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -154,7 +154,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-3">
                 <?php
                 for ($i = 0; $i < count($data); $i++) {
-                    if ($data[$i]['id'] == $id) {
+                    if ($data[$i]['id'] == $instituicao) {
                         ?>
                         <div class="topicos selecionado">
                             <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
@@ -163,7 +163,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <a class="removerLinha" href="grafico.php?id=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
+                        <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
                             <div class="topicos">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
@@ -371,7 +371,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-3 ">
                 <?php
                 for ($i = 0; $i < count($data2); $i++) {
-                    if ($data2[$i]['id'] == $id) {
+                    if ($data2[$i]['id'] == $grupo) {
                         ?>
                         <div class="topicos selecionado">
                             <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
@@ -380,7 +380,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&id=<?php echo $id ?>">
+                        <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>">
                             <div class="topicos">
                                 <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
