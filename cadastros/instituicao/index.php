@@ -42,6 +42,15 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th width="50px">
                     #
                 </th>
+                <th width="50px">
+                    #
+                </th>
+                <th width="50px">
+                    #
+                </th>
+                <th width="50px">
+                    #
+                </th>
                 <th>
                     Instituíção
                 </th>
@@ -64,10 +73,10 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Ano
                 </th>
                 <th>
-                    Nota do Indice de confiança
+                    Nota do Índice de confiança 2019
                 </th>
                 <th>
-                    Nota do Indice de confiança do Ibope
+                    Nota do Índice de confiança do Ibope 2018
                 </th>
             </thead>
             <tbody>
@@ -83,6 +92,25 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="http://localhost/Portal/cadastros/sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">sexo
                             </a>
                         </td>
+                        <td>
+                            <a href="http://localhost/Portal/cadastros/faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Faixa Etária
+                            </a>
+                        </td>
+                        <td>
+                            <a href="http://localhost/Portal/cadastros/renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Renda Familiar
+                            </a>
+                        </td>
+                        <?php
+                        if (!empty($instituicao[$i]['religiao'])) {
+                            ?>
+                            <td>
+                                <a href="http://localhost/Portal/cadastros/igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião
+                                </a>
+
+                            </td>
+                        <?php
+                        }
+                        ?>
                         <td>
                             <?php echo $instituicao[$i]['nome'];
                             ?>
@@ -120,6 +148,7 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </td>
                     </tr>
+
                 <?php
                 }
                 ?>

@@ -3,5 +3,5 @@
     <button type="submit"> enviar
     </button>
 </form>
-<a href="teste2.php?id=oi"> teste
+<a href="teste2.php?id=<?php echo sha1('oi');?>"> teste
 </a>
