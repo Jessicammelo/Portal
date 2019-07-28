@@ -42,27 +42,27 @@ if (!empty($_POST['catolica']) && !empty($_POST['evangelica']) && !empty($_POST[
 <form class=" col-6 container" method="POST">
         <div class="form-group">
             <label>Católica</label>
-            <input name="ate_2000" class="form-control" placeholder="Digite valor">
+            <input required name="ate_2000" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Evangélica</label>
-            <input name="2000_6000" class="form-control" placeholder="Digite valor">
+            <input required name="2000_6000" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Luterana</label>
-            <input name="mais_6000" class="form-control" placeholder="Digite valor">
+            <input required name="mais_6000" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Outra</label>
-            <input name="recusou" class="form-control" placeholder="Digite valor">
+            <input required name="recusou" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Não tem religião</label>
-            <input name="recusou" class="form-control" placeholder="Digite valor">
+            <input required name="recusou" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Muitas religiões, nunhuma específica</label>
-            <input name="recusou" class="form-control" placeholder="Digite valor">
+            <input required name="recusou" class="form-control" placeholder="Digite valor">
         </div>
         
         <button type="submit" class="btn btn-primary">Salvar</button>

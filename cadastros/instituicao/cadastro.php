@@ -51,39 +51,39 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
     <form class=" col-6 container" method="POST">
         <div class="form-group">
             <label>Digite nome da instituicão</label>
-            <input name="nome" class="form-control" placeholder="Digite nome">
+            <input required name="nome" class="form-control" placeholder="Digite nome">
         </div>
         <div class="form-group">
             <label>Nenhuma confiança</label>
-            <input name="nenhuma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="nenhuma_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Quase nenhuma confiança</label>
-            <input name="quase_nenhuma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="quase_nenhuma_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Alguma confiança</label>
-            <input name="alguma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="alguma_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Muita confiança</label>
-            <input name="muita_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="muita_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Nâo conheço</label>
-            <input name="nao_conheco" class="form-control" placeholder="Digite valor">
+            <input required name="nao_conheco" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Ano</label>
-            <input name="ano" class="form-control" placeholder="Digite valor">
+            <input required name="ano" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Nota do Indice de confiança</label>
-            <input name="indice_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="indice_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Nota do Indice de confiança do Ibope</label>
-            <input name="indice_confianca_ibope" class="form-control" placeholder="Digite valor">
+            <input required name="indice_confianca_ibope" class="form-control" placeholder="Digite valor">
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

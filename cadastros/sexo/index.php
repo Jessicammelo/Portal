@@ -10,9 +10,15 @@ if (!empty($_GET["delete"])) {
     $stmt->bindValue(1, $id);
     $stmt->execute();
 }
-$instituicao = $_GET["instituicao"];
-$stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao ='. $instituicao );
-$sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!empty($_GET["instituicao"])) {
+    $instituicao = $_GET["instituicao"];
+    $stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao =' . $instituicao);
+    $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $grupoSocial = $_GET["grupo_social"];
+    $stmt = $conexao->query('SELECT * FROM sexo WHERE grupo_social =' . $grupoSocial);
+    $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,8 +39,19 @@ $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container">
         <br>
-        <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"];?> ">Cadastrar
-        </a>
+        <?php
+        if (!empty($_GET["instituicao"])) {
+            ?>
+            <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
+            </a>
+        <?php
+        } else {
+            ?>
+            <a class="btn btn-primary" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
+            </a>
+        <?php
+        }
+        ?>
         <br>
         <br>
         <table class="table" style="text-align:center">
@@ -63,8 +80,20 @@ $sexo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                     <tr>
                         <td>
-                            <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&instituicao=<?php echo $instituicao;?>" class="btn btn-danger">Apagar
-                            </a>
+                            <?php
+                            if (!empty($_GET["instituicao"])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            }
+                            ?>
+
                         </td>
                         <td>
                             <?php echo $sexo[$i]['masculino'];

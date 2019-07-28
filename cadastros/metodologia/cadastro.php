@@ -31,11 +31,11 @@ if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
     <form class="container" method="POST">
         <div class="form-group">
             <label>Título</label>
-            <input name="titulo" class="form-control" placeholder="Digite título">
+            <input required name="titulo" class="form-control" placeholder="Digite título">
         </div>
         <div class="form-group">
             <label>Mensagem</label>
-            <textarea name="mensagem" class="form-control"></textarea>
+            <textarea required name="mensagem" class="form-control"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

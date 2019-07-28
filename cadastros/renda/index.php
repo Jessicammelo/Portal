@@ -10,15 +10,21 @@ if (!empty($_GET["delete"])) {
     $stmt->bindValue(1, $id);
     $stmt->execute();
 }
-$instituicao = $_GET["instituicao"];
-$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao ='. $instituicao );
-$renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+if (!empty($_GET["instituicao"])) {
+    $instituicao = $_GET["instituicao"];
+    $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao =' . $instituicao);
+    $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $grupoSocial = $_GET["grupo_social"];
+    $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social =' . $grupoSocial);
+    $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -28,11 +34,23 @@ $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- <script src="./assets/css/script.js"></script> -->
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <br>
-        <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"];?> ">Cadastrar
-        </a>
+        <?php
+        if (!empty($_GET["instituicao"])) {
+            ?>
+            <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
+            </a>
+        <?php
+        } else {
+            ?>
+            <a class="btn btn-primary" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
+            </a>
+        <?php
+        }
+        ?>
         <br>
         <br>
         <table class="table" style="text-align:center">
@@ -50,7 +68,7 @@ $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         #
                     </td>
                     <td>
-                       Até 2000 reais
+                        Até 2000 reais
                     </td>
                     <td>
                         De 2000 á 6000 reais
@@ -61,15 +79,26 @@ $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td>
                         Recusaram
                     </td>
-                    
+
                 </tr>
                 <?php
                 for ($i = 0; $i < count($renda); $i++) {
                     ?>
                     <tr>
                         <td>
-                            <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao;?>" class="btn btn-danger">Apagar
-                            </a>
+                            <?php
+                            if (!empty($_GET["instituicao"])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            }
+                            ?>
                         </td>
                         <td>
                             <?php echo $renda[$i]['ate_2000'];
@@ -87,7 +116,7 @@ $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo $renda[$i]['recusou'];
                             ?>
                         </td>
-                        
+
                     </tr>
                 <?php
                 }
@@ -96,4 +125,5 @@ $renda = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 </body>
+
 </html>

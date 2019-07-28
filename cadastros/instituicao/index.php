@@ -55,21 +55,6 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Instituíção
                 </th>
                 <th>
-                    Nenhuma confiança
-                </th>
-                <th>
-                    Quase nenhuma confiança
-                </th>
-                <th>
-                    Alguma confiança
-                </th>
-                <th>
-                    Muita confiança
-                </th>
-                <th>
-                    Nâo conheço
-                </th>
-                <th>
                     Ano
                 </th>
                 <th>
@@ -100,39 +85,14 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="http://localhost/Portal/cadastros/renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Renda Familiar
                             </a>
                         </td>
-                        <?php
-                        if (!empty($instituicao[$i]['religiao'])) {
-                            ?>
-                            <td>
-                                <a href="http://localhost/Portal/cadastros/igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião
-                                </a>
 
-                            </td>
-                        <?php
-                        }
-                        ?>
+                        <td>
+                            <a href="http://localhost/Portal/cadastros/igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião
+                            </a>
+
+                        </td>
                         <td>
                             <?php echo $instituicao[$i]['nome'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['nenhuma_confianca'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['quase_nenhuma_confianca'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['alguma_confianca'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['muita_confianca'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['nao_conheco'];
                             ?>
                         </td>
                         <td>
