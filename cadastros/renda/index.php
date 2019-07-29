@@ -36,7 +36,7 @@ if (!empty($_GET["instituicao"])) {
 </head>
 
 <body>
-<div class="submenu">
+    <div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -54,6 +54,18 @@ if (!empty($_GET["instituicao"])) {
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
+        <div class="col-md-10 offset-1 row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/instituicao/index.php?"> Instituíções Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/grupoSocial/index.php?"> Grupo Social</a>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="container">
         <br>

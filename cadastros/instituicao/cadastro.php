@@ -1,17 +1,19 @@
 <?php
 require "../../backend/classes/bancoDados.php";
 
-if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
- !empty($_POST['quase_nenhuma_confianca']) && !empty($_POST['alguma_confianca']) &&!empty($_POST['muita_confianca'])
- &&!empty($_POST['nao_conheco'])&&!empty($_POST['ano'])&&!empty($_POST['indice_confianca'])
- &&!empty($_POST['indice_confianca_ibope'])) {
+if (
+    !empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
+    !empty($_POST['quase_nenhuma_confianca']) && !empty($_POST['alguma_confianca']) && !empty($_POST['muita_confianca'])
+    && !empty($_POST['nao_conheco']) && !empty($_POST['ano']) && !empty($_POST['indice_confianca'])
+    && !empty($_POST['indice_confianca_ibope'])
+) {
     $nome = $_POST['nome'];
     $nenhuma_confianca = $_POST['nenhuma_confianca'];
     $quase_nenhuma_confianca = $_POST['quase_nenhuma_confianca'];
     $alguma_confianca = $_POST['alguma_confianca'];
     $muita_confianca = $_POST['muita_confianca'];
     $nao_conheco = $_POST['nao_conheco'];
-    $ano = $_POST['ano']; 
+    $ano = $_POST['ano'];
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
 
@@ -19,14 +21,14 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
     $conexao = $db->instancia();
     $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
     $stmt->bindValue(1, ($nome));
-    $stmt->bindValue(2,($nenhuma_confianca));
-    $stmt->bindValue(3,($quase_nenhuma_confianca));
-    $stmt->bindValue(4,($alguma_confianca));
-    $stmt->bindValue(5,($muita_confianca));
-    $stmt->bindValue(6,($nao_conheco));
-    $stmt->bindValue(7,($ano));
-    $stmt->bindValue(8,($indice_confianca));
-    $stmt->bindValue(9,($indice_confianca_ibope));
+    $stmt->bindValue(2, ($nenhuma_confianca));
+    $stmt->bindValue(3, ($quase_nenhuma_confianca));
+    $stmt->bindValue(4, ($alguma_confianca));
+    $stmt->bindValue(5, ($muita_confianca));
+    $stmt->bindValue(6, ($nao_conheco));
+    $stmt->bindValue(7, ($ano));
+    $stmt->bindValue(8, ($indice_confianca));
+    $stmt->bindValue(9, ($indice_confianca_ibope));
 
     $stmt->execute();
     header("location:index.php");
@@ -48,6 +50,37 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
 </head>
 
 <body>
+    <div class="submenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%" class="breadcrumb">
+        <div class="col-md-10 offset-1 row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/instituicao/index.php?"> Instituíções Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/grupoSocial/index.php?">Grupo Social</a>
+                </button>
+            </div>
+        </div>
+    </div>
     <form class=" col-6 container" method="POST">
         <div class="form-group">
             <label>Digite nome da instituicão</label>

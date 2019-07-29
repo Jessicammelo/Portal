@@ -74,7 +74,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 role: "style"
             }],
             ["Nenhuma \nConfiança", <?php echo $grupoSelecionado["nenhuma_confianca"] ?>, "#005fa4"],
-            ["Quase Nenhuma \nConfiança", <?php echo $grupoSelecionado["quase_nunhuma_confianca"] ?>, "#005fa4"],
+            ["Quase Nenhuma \nConfiança", <?php echo $grupoSelecionado["quase_nenhuma_confianca"] ?>, "#005fa4"],
             ["Alguma \nConfiança", <?php echo $grupoSelecionado["alguma_confianca"] ?>, "#005fa4"],
             ["Muita \nConfiança", <?php echo $grupoSelecionado["muita_confianca"] ?>, "#005fa4"]
 
@@ -331,7 +331,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                         <?php echo $faixa_etaria['40_49'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['50'] ?>
+                                        <?php echo $faixa_etaria['_50'] ?>
                                     </td>
                                     <td>
                                         <?php echo $renda_familiar['ate_2000'] ?>
@@ -498,7 +498,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                     <?php echo $faixa_etaria2['40_49'] ?>
                                 </td>
                                 <td>
-                                    <?php echo $faixa_etaria2['50'] ?>
+                                    <?php echo $faixa_etaria2['_50'] ?>
                                 </td>
                                 <td>
                                     <?php echo $renda_familiar2['ate_2000'] ?>

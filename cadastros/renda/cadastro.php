@@ -77,6 +77,18 @@ if (
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
+    <div class="col-md-10 offset-1 row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/instituicao/index.php?"> Instituíções Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="http://localhost/Portal/cadastros/grupoSocial/index.php?"> Grupo Social</a>
+                </button>
+            </div>
+        </div>
     </div>
     <form class=" col-6 container" method="POST">
         <div class="form-group">
