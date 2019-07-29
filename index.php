@@ -35,28 +35,28 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="row" style="margin-left: 45px">        
+    <div class="row" style="margin-left: 45px">
         <div class="col-6 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
-            Tem o objetivo de aprofundar a relação dialógica, 
+            Tem o objetivo de aprofundar a relação dialógica,
             incorporando a extensão as práticas de ensino e pesquisa dos
-             cursos da FURB diretamente envolvidas na sua realização.
+            cursos da FURB diretamente envolvidas na sua realização.
             <br>
-            Após obter as informações, socializa-las de modo a permitir 
+            Após obter as informações, socializa-las de modo a permitir
             que a comunidade regional se conheça e reconheça na interpretação
-             de seus resultados.
+            de seus resultados.
             <br>
-             <h3>OBJETIVOS</h3>
-             Identificar os níveis de confiança dos blumenauenses nas 
-             instituições brasileiras.
+            <h3>OBJETIVOS</h3>
+            Identificar os níveis de confiança dos blumenauenses nas
+            instituições brasileiras.
             <br>
-            Comparar esses índices aos identificados na pesquisa nacional 
+            Comparar esses índices aos identificados na pesquisa nacional
             realizada pelo Instituto Ibope em 2018.
             <br>
             Questionar a população de Blumenau sobre qualidade institucional,
-             a partir das dimensões analíticas do
-              WGI - Worldwide Governance Indicators - do Banco Mundial. 
+            a partir das dimensões analíticas do
+            WGI - Worldwide Governance Indicators - do Banco Mundial.
             <br>
         </div>
         <div class="col-6 row">
@@ -65,7 +65,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <div class="col-8 offset-2">
                     <a href="http://localhost/Portal/metodologia.php?" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
-                        Semestre <?php echo $data[$i]['ano'] ?></a>
+                       ano <?php echo $data[$i]['ano'] ?></a>
                 </div>
             <?php
             }

@@ -28,6 +28,25 @@ if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
 </head>
 
 <body>
+<div class="submenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%" class="breadcrumb">
+    </div>
     <form class="container" method="POST">
         <div class="form-group">
             <label>Título</label>

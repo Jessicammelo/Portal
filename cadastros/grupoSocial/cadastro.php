@@ -44,8 +44,31 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
     <!-- <script src="./assets/css/script.js"></script> -->
 </head>
 <body>
-    <br>
-    <br>
+<div class="submenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%" class="breadcrumb">
+        <div class="col-md-10 offset-1">
+            <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                <a href="http://localhost/Portal/grafico.php?instituicao=1&grupo=2"><i class="fas fa-chart-bar"> Índice de confiança
+                        nas Intituíções Brasileiras </i></a>
+            </button>
+        </div>
+    </div>
 <form class=" col-6 container" method="POST">
         <div class="form-group">
             <label>Digite nome do grupo Social</label>
