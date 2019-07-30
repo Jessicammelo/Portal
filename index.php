@@ -46,17 +46,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             Após obter as informações, socializa-las de modo a permitir
             que a comunidade regional se conheça e reconheça na interpretação
             de seus resultados.
-            <br>
-            <h3>OBJETIVOS</h3>
-            Identificar os níveis de confiança dos blumenauenses nas
-            instituições brasileiras.
-            <br>
-            Comparar esses índices aos identificados na pesquisa nacional
-            realizada pelo Instituto Ibope em 2018.
-            <br>
-            Questionar a população de Blumenau sobre qualidade institucional,
-            a partir das dimensões analíticas do
-            WGI - Worldwide Governance Indicators - do Banco Mundial.
+            (PROJETO DE EXTENSÃO APROVADO NO EDITAL FURB PROPEX – 2018) 
+
             <br>
         </div>
         <div class="col-6 row">
@@ -64,8 +55,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             for ($i = 0; $i < count($data); $i++) {
                 ?>
                 <div class="col-8 offset-2">
-                    <a href="http://localhost/Portal/metodologia.php?" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
-                       ano <?php echo $data[$i]['ano'] ?></a>
+                    <a href="../Portal/metodologia.php?" class="btn btn-primary botaoInicial">Índice de confiança nas Instituícões Brasileiras
+                        ano <?php echo $data[$i]['ano'] ?></a>
                 </div>
             <?php
             }

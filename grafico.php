@@ -42,41 +42,92 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css?v5">
+    <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- <script src="./assets/css/script.js"></script> -->
     <script>
         let dados = [
-            ['Respostas %', 'Quant de Respostas'],
-            ['Nenhuma \nconfiança', <?php echo $instituicaoSelecionada["nenhuma_confianca"] ?>],
-            ['Quase nenhuma \nconfiança', <?php echo $instituicaoSelecionada["quase_nenhuma_confianca"] ?>],
-            ['Alguma \nconfiança', <?php echo $instituicaoSelecionada["alguma_confianca"] ?>],
-            ['Muita confiança', <?php echo $instituicaoSelecionada["muita_confianca"] ?>],
-            ['Não conheço, \nnão sei', <?php echo $instituicaoSelecionada["nao_conheco"] ?>]
+            ['Respostas', 'Percentual de Respostas', {
+                role: 'annotation'
+            }],
+            [
+                'Nenhuma \nconfiança',
+                <?php echo $instituicaoSelecionada["nenhuma_confianca"] ?>,
+                '<?php echo number_format($instituicaoSelecionada["nenhuma_confianca"], 1, ",", ".") ?>%'
+            ],
+            [
+                'Quase nenhuma \nconfiança',
+                <?php echo $instituicaoSelecionada["quase_nenhuma_confianca"] ?>,
+                '<?php echo number_format($instituicaoSelecionada["quase_nenhuma_confianca"], 1, ",", ".") ?>%'
+            ],
+            [
+                'Alguma \nconfiança',
+                <?php echo $instituicaoSelecionada["alguma_confianca"] ?>,
+                '<?php echo number_format($instituicaoSelecionada["alguma_confianca"], 1, ",", ".") ?>%'
+            ],
+            [
+                'Muita \nconfiança',
+                <?php echo $instituicaoSelecionada["muita_confianca"] ?>,
+                '<?php echo number_format($instituicaoSelecionada["muita_confianca"], 1, ",", ".") ?>%'
+            ],
+            [
+                'Não conheço, \nnão sei',
+                <?php echo $instituicaoSelecionada["nao_conheco"] ?>,
+                '<?php echo number_format($instituicaoSelecionada["nao_conheco"], 1, ",", ".") ?>%'
+            ]
         ];
         google.charts.load('current', {
-            'packages': ['bar']
-        });
+            'packages': ['corechart']
+        })
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable(dados);
+            var view = new google.visualization.DataView(data);
             var options = {
-                title: 'Índice de confiança nas Instituíções Brasileiras',
+                title: 'Índice de Confiança nas Instituíções Brasileiras',
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
             };
 
-            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+            chart.draw(view, options);
         }
         let dados2 = [
-            ["Resposta", "Quant de Respostas %", {
-                role: "style"
-            }],
-            ["Nenhuma \nConfiança", <?php echo $grupoSelecionado["nenhuma_confianca"] ?>, "#005fa4"],
-            ["Quase Nenhuma \nConfiança", <?php echo $grupoSelecionado["quase_nenhuma_confianca"] ?>, "#005fa4"],
-            ["Alguma \nConfiança", <?php echo $grupoSelecionado["alguma_confianca"] ?>, "#005fa4"],
-            ["Muita \nConfiança", <?php echo $grupoSelecionado["muita_confianca"] ?>, "#005fa4"]
+            [
+                "Resposta",
+                "Percentual de Respostas",
+                {
+                    role: "style"
+                },
+                {
+                    role: "annotation"
+                }
+            ],
+            [
+                "Nenhuma \nConfiança",
+                <?php echo $grupoSelecionado["nenhuma_confianca"] ?>,
+                "#005fa4",
+                '<?php echo number_format($grupoSelecionado["nenhuma_confianca"],1,',','.') ?>%',
+            ],
+            [
+                "Quase Nenhuma \nConfiança",
+                <?php echo $grupoSelecionado["quase_nenhuma_confianca"] ?>,
+                "#005fa4",
+                '<?php echo number_format($grupoSelecionado["quase_nenhuma_confianca"],1,',','.') ?>%',
+            ],
+            [
+                "Alguma \nConfiança",
+                <?php echo $grupoSelecionado["alguma_confianca"] ?>,
+                "#005fa4",
+                '<?php echo number_format($grupoSelecionado["alguma_confianca"],1,',','.') ?>%',
+            ],
+            [
+                "Muita \nConfiança",
+                <?php echo $grupoSelecionado["muita_confianca"] ?>,
+                "#005fa4",
+                '<?php echo number_format($grupoSelecionado["muita_confianca"],1,',','.') ?>%',
+            ]
 
         ];
 
@@ -89,19 +140,9 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             var data = google.visualization.arrayToDataTable(dados2);
 
             var view = new google.visualization.DataView(data);
-            view.setColumns([0, 1,
-                {
-                    calc: "stringify",
-                    sourceColumn: 1,
-                    type: "string",
-                    role: "annotation",
-                },
-
-                2
-            ]);
 
             var options = {
-                title: "Índice de confiança nesses grupos sociais",
+                title: "Índice de Confiança nesses grupos sociais",
                 bar: {
                     groupWidth: "95%"
                 },
@@ -145,9 +186,9 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="container-fluid row">
         <div class="col-10 offset-1 row">
             <div class="col-3" style="text-align:center">
-                <label>
-                    Instituíções
-                </label>
+                <h4>
+                    Instituições
+                </h4>
             </div>
         </div>
         <div class="col-10 offset-1 row">
@@ -179,11 +220,22 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             <!--terminou menu esquerdo-->
             <div class="col-9 row titulo">
                 <div class="col-12">
-                    <div class="col-4" style="margin:auto">
+                    <div class="col-5" style="margin:auto">
                         <table class="table table-bordered" style="text-align:center; font-size:12px; margin:center">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                    Nota
+                                    Índice -
+                                    <?php
+                                    for ($i = 0; $i < count($data); $i++) {
+                                        if ($data[$i]['id'] == $instituicao) {
+                                            ?> <?php echo $data[$i]['nome'] ?>
+                                            (0 à 100)
+                                        <?php
+                                        }
+                                        ?>
+                                    <?php
+                                    }
+                                    ?>
                                 </th>
                             </thead>
                             <tbody style="background-color: white;">
@@ -206,8 +258,8 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-8" style="margin:auto">
-                        <div id="columnchart_material" style="width: 700px; height:450px"></div>
+                    <div class="col-7">
+                        <div id="columnchart_material" style="width: 100vh; height:450px"></div>
                     </div>
                     <br>
                 </div>
@@ -266,13 +318,13 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                         <table class="table table-bordered" style="text-align:center; font-size:12px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                    Sexo
+                                    Sexo (%)
                                 </th>
                                 <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                    Faixa etária
+                                    Faixa etária (%)
                                 </th>
                                 <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                    Renda famíliar (R$)
+                                    Renda famíliar (R$) (%)
                                 </th>
                             </thead>
                             <tbody style="background-color: white">
@@ -362,9 +414,9 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="container-fluid row">
         <div class="col-10 offset-1 row">
             <div class="col-3" style="text-align:center">
-                <label>
+                <h4>
                     Grupos sociais
-                </label>
+                </h4>
             </div>
         </div>
         <div class="col-10 offset-1 row ">
@@ -395,11 +447,22 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
             <div class="col-9 row titulo">
                 <div class="col-12">
-                    <div class="col-4" style="margin: auto">
+                    <div class="col-5" style="margin: auto">
                         <table class="table table-bordered" style="text-align:center; font-size:12px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                    Nota
+                                    Índice -
+                                    <?php
+                                    for ($i = 0; $i < count($data2); $i++) {
+                                        if ($data2[$i]['id'] == $grupo) {
+                                            ?> <?php echo $data2[$i]['nome'] ?>
+                                            (0 à 100)
+                                        <?php
+                                        }
+                                        ?>
+                                    <?php
+                                    }
+                                    ?>
                                 </th>
                             </thead>
                             <tbody style="background-color: white">
@@ -422,7 +485,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-8" style="margin: auto">
+                    <div class="col-7" style="margin: auto">
                         <div id="barchart_values" style="width: 600px; height:400px"></div>
                     </div>
 
@@ -433,13 +496,13 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     <table class=" table table-bordered" style="text-align:center; font-size:12px">
                         <thead>
                             <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                Sexo
+                                Sexo (%)
                             </th>
                             <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                Faixa etária
+                                Faixa etária (%)
                             </th>
                             <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                Renda famíliar (R$)
+                                Renda famíliar (R$) (%)
                             </th>
                         </thead>
                         <tbody style="background-color: white">

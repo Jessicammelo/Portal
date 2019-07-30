@@ -58,7 +58,7 @@ if (!empty($_GET["instituicao"])) {
         <div class="col-md-10 offset-1 row">
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                    <a href="../instituicao/index.php?"> Instituíções Brasileiras</a>
+                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
             </div>
             <div class="col-3">

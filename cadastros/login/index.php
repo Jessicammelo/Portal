@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../../backend/classes/bancoDados.php";
 //objeto com o bancos de dados
 $db = new BancoDados;
@@ -12,11 +13,20 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
     $stmt->bindValue(2, $senha);
     $stmt->execute();
     $login = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (!empty($login)) {
+        $_SESSION['loginEfetuado'] = true;
+        header('location: ../instituicao');
+        exit;
+    } else {
+        $_SESSION['loginEfetuado'] = false;
+        header('location: index.php?erro=1');
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
 <html>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <head>
 
 </head>
@@ -31,8 +41,16 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
             <label for="exampleInputPassword1">Senha</label>
             <input name="senha" type="password" class="form-control" placeholder="Digite sua senha">
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
+    <?php
+    if (!empty($_GET['erro'])) {
+        ?>
+        <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
+        <?php
+    }
+
+    ?>
 </body>
 
 </html>
