@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['loginEfetuado'])) {
+    header('location: ../login');
+    exit;
+}
 require "../../backend/classes/bancoDados.php";
 //objeto com o bancos de dados
 $db = new BancoDados;
@@ -30,7 +35,7 @@ $igreja_religiao = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<div class="submenu">
+    <div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -48,7 +53,7 @@ $igreja_religiao = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
-    <div class="col-md-10 offset-1 row">
+        <div class="col-md-10 offset-1 row">
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
@@ -72,12 +77,18 @@ $igreja_religiao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th width="50px">
                     #
                 </th>
-                <th colspan="7">
+                <th width="50px">
+                    #
+                </th>
+                <th colspan="8">
                     Religião
                 </th>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        #
+                    </td>
                     <td>
                         #
                     </td>
@@ -97,7 +108,7 @@ $igreja_religiao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         Não tem religião
                     </td>
                     <td>
-                       Muitas religiões, nunhuma específica
+                        Muitas religiões, nunhuma específica
                     </td>
 
                 </tr>
@@ -107,6 +118,10 @@ $igreja_religiao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <td>
                             <a href="index.php?delete=<?php echo $igreja_religiao[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
+                            </a>
+                        </td>
+                        <td>
+                            <a href="index.php?delete=<?php echo $igreja_religiao[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
                             </a>
                         </td>
                         <td>

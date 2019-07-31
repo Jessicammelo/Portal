@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['loginEfetuado'])) {
+    header('location: ../login');
+    exit;
+}
 require "../../backend/classes/bancoDados.php";
 //objeto com o bancos de dados
 $db = new BancoDados;
@@ -16,7 +21,7 @@ if (!empty($_GET['instituicao'])) {
     $instituicao = $_GET["instituicao"];
     $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao =' . $instituicao);
     $faixaEtaria = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} else{
+} else {
     $grupoSocial = $_GET["grupo_social"];
     $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social =' . $grupoSocial);
     $faixaEtaria = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +44,7 @@ if (!empty($_GET['instituicao'])) {
 </head>
 
 <body>
-<div class="submenu">
+    <div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -57,7 +62,7 @@ if (!empty($_GET['instituicao'])) {
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
-    <div class="col-md-10 offset-1 row">
+        <div class="col-md-10 offset-1 row">
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
@@ -93,12 +98,18 @@ if (!empty($_GET['instituicao'])) {
                 <th width="50px">
                     #
                 </th>
-                <th colspan="6">
+                <th width="50px">
+                    #
+                </th>
+                <th colspan="7">
                     Faixa Etária
                 </th>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        #
+                    </td>
                     <td>
                         #
                     </td>
@@ -127,17 +138,34 @@ if (!empty($_GET['instituicao'])) {
                             if (!empty($_GET['instituicao'])) {
                                 ?>
                                 <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
-                            </a>
+                                </a>
 
                             <?php
                             } else {
                                 ?>
                                 <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
-                            </a>
+                                </a>
                             <?php
                             }
                             ?>
-                            
+
+                        </td>
+                        <td>
+                            <?php
+                            if (!empty($_GET['instituicao'])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
+                                </a>
+
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-primary">Editar
+                                </a>
+                            <?php
+                            }
+                            ?>
+
                         </td>
                         <td>
                             <?php echo $faixaEtaria[$i]['16_24'];

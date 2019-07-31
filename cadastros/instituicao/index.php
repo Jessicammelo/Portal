@@ -45,50 +45,37 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="col-12">
                         <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
                     </div>
-                </div>                                                         
+                </div>
             </div>
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1 row">
+            <div class="col-2">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../metodologia/index.php?">Metodologia</a>
+                </button>
+            </div>
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../grupoSocial/index.php?">Grupo Social</a>
                 </button>
             </div>
         </div>
     </div>
-    <div class="container">
-        <br>
-        <a class="btn btn-primary" href="cadastro.php">Cadastrar
+    <div class=" col-7 container">
+        <a class="btn btn-primary" style="margin: 40px; " href="cadastro.php">Cadastrar
         </a>
-        <br>
-        <br>
         <table class="table" style="text-align:center">
             <thead>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
                 <th>
-                    Instituíção
+                    Instituição
                 </th>
                 <th>
                     Ano
@@ -99,34 +86,15 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>
                     Nota do Índice de confiança do Ibope 2018
                 </th>
+                <th width="50px">
+                    #
+                </th>
             </thead>
             <tbody>
                 <?php
                 for ($i = 0; $i < count($instituicao); $i++) {
                     ?>
                     <tr>
-                        <td>
-                            <a href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-danger">Apagar
-                            </a>
-                        </td>
-                        <td>
-                            <a href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">sexo
-                            </a>
-                        </td>
-                        <td>
-                            <a href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Faixa Etária
-                            </a>
-                        </td>
-                        <td>
-                            <a href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Renda Familiar
-                            </a>
-                        </td>
-
-                        <td>
-                            <a href="../igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião
-                            </a>
-
-                        </td>
                         <td>
                             <?php echo $instituicao[$i]['nome'];
                             ?>
@@ -143,11 +111,24 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo $instituicao[$i]['indice_confianca_ibope'];
                             ?>
                         </td>
-                    </tr>
-
-                <?php
-                }
-                ?>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Selecione
+                                </a>
+                                <div class="dropdown-menu " style="font-size: 17px" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
+                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
+                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
+                                    <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+                                    <a class="dropdown-item topicos" href="../igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião</a>
+                                </div>
+                            </div>
+                        </td>
+                    <?php
+                    }
+                    ?>
             </tbody>
         </table>
     </div>

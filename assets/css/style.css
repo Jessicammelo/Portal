@@ -32,13 +32,13 @@
 }
 .botaoSegundaPagina {
     margin: 10px;
-    color: #e1e1e1;
+    color: #e9ecef;
 }
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
 }
 .topicos {
-    color: white;
+    color:#e9ecef;
     background: #005fa4;
     border-bottom: solid 2px #FFCC00;
     cursor: pointer;

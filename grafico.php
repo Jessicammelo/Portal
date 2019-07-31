@@ -88,11 +88,18 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 title: 'Índice de Confiança nas Instituíções Brasileiras',
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
+                animation: {
+                    duration: 1000,
+                    easing: 'out',
+                },
+
+
             };
 
             var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
             chart.draw(view, options);
         }
+        //inicio segundo grafico //
         let dados2 = [
             [
                 "Resposta",
@@ -108,25 +115,25 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 "Nenhuma \nConfiança",
                 <?php echo $grupoSelecionado["nenhuma_confianca"] ?>,
                 "#005fa4",
-                '<?php echo number_format($grupoSelecionado["nenhuma_confianca"],1,',','.') ?>%',
+                '<?php echo number_format($grupoSelecionado["nenhuma_confianca"], 1, ',', '.') ?>%',
             ],
             [
                 "Quase Nenhuma \nConfiança",
                 <?php echo $grupoSelecionado["quase_nenhuma_confianca"] ?>,
                 "#005fa4",
-                '<?php echo number_format($grupoSelecionado["quase_nenhuma_confianca"],1,',','.') ?>%',
+                '<?php echo number_format($grupoSelecionado["quase_nenhuma_confianca"], 1, ',', '.') ?>%',
             ],
             [
                 "Alguma \nConfiança",
                 <?php echo $grupoSelecionado["alguma_confianca"] ?>,
                 "#005fa4",
-                '<?php echo number_format($grupoSelecionado["alguma_confianca"],1,',','.') ?>%',
+                '<?php echo number_format($grupoSelecionado["alguma_confianca"], 1, ',', '.') ?>%',
             ],
             [
                 "Muita \nConfiança",
                 <?php echo $grupoSelecionado["muita_confianca"] ?>,
                 "#005fa4",
-                '<?php echo number_format($grupoSelecionado["muita_confianca"],1,',','.') ?>%',
+                '<?php echo number_format($grupoSelecionado["muita_confianca"], 1, ',', '.') ?>%',
             ]
 
         ];

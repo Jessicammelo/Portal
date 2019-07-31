@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['loginEfetuado'])){
+    header('location: ../login');
+    exit;
+}
 require "../../backend/classes/bancoDados.php";
 $db = new BancoDados;
 $conexao = $db->instancia();
@@ -70,6 +75,9 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th width="50px">
                     #
                 </th>
+                <th width="50px">
+                    #
+                </th>
                 <th>
                     Título
                 </th>
@@ -81,6 +89,10 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <td>
                             <a href="index.php?delete=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-danger">Apagar
+                            </a>
+                        </td>
+                        <td>
+                            <a href="index.php?delete=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-primary">Editar
                             </a>
                         </td>
                         <td>

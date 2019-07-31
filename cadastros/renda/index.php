@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['loginEfetuado'])) {
+    header('location: ../login');
+    exit;
+}
 require "../../backend/classes/bancoDados.php";
 //objeto com o bancos de dados
 $db = new BancoDados;
@@ -89,12 +94,18 @@ if (!empty($_GET["instituicao"])) {
                 <th width="50px">
                     #
                 </th>
-                <th colspan="5">
+                <th width="50px">
+                    #
+                </th>
+                <th colspan="6">
                     Renda Familiar
                 </th>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        #
+                    </td>
                     <td>
                         #
                     </td>
@@ -126,6 +137,21 @@ if (!empty($_GET["instituicao"])) {
                             } else {
                                 ?>
                                 <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            if (!empty($_GET["instituicao"])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
+                                </a>
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-primary">Editar
                                 </a>
                             <?php
                             }
