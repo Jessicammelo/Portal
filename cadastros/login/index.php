@@ -54,13 +54,7 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <?php
-    if (!empty($_GET['erro'])) {
-        ?>
-        <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
-    <?php
-    }
-    ?>
+    
     <div class="col-7 container" style="position: relative; min-height: 100vh">
         <form class=" col-6 textoIndex" style="position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%)" method="POST">
             <h4 class="" style=" text-align:center">Construa o Índice de Confiança Social</h4>
@@ -72,7 +66,16 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
                 <label for="exampleInputPassword1">Senha</label>
                 <input name="senha" type="password" class="form-control" placeholder="Digite sua senha">
             </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary mx-auto">Entrar</button>
+            </div>
+            <?php
+            if (!empty($_GET['erro'])) {
+                ?>
+                <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
+            <?php
+            }
+            ?>
         </form>
     </div>
 
