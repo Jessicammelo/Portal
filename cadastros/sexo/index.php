@@ -73,7 +73,7 @@ if (!empty($_GET["instituicao"])) {
             </div>
         </div>
     </div>
-    <div class=" col-7 container">
+    <div class="col-7 container">
         <?php
         if (!empty($_GET["instituicao"])) {
             ?>
@@ -109,7 +109,7 @@ if (!empty($_GET["instituicao"])) {
                 <?php
                 for ($i = 0; $i < count($sexo); $i++) {
                     ?>
-                    <tr style="border-top: 2.5px solid #005FA4; ">
+                    <tr>
                         <td>
                             <?php echo $sexo[$i]['masculino'];
                             ?>

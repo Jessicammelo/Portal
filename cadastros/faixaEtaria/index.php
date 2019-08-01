@@ -75,25 +75,22 @@ if (!empty($_GET['instituicao'])) {
             </div>
         </div>
     </div>
-    <div class="container">
-        <br>
+    <div class="col-7 container">
         <?php
         if (!empty($_GET['instituicao'])) {
             ?>
-            <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
+            <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
             </a>
 
         <?php
         } else {
             ?>
-            <a class="btn btn-primary" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
+            <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
             </a>
         <?php
         }
         ?>
-        <br>
-        <br>
-        <table class="table" style="text-align:center">
+        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
             <thead>
                 <th colspan="6">
                     Faixa Etária

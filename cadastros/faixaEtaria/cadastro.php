@@ -94,7 +94,7 @@ if (
             </div>
         </div>
     </div>
-    <form class=" col-6 container" method="POST">
+    <form class=" col-6 container" style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
         <div class="form-group">
             <label>16 á 24 anos</label>
             <input required name="16_24" class="form-control" placeholder="Digite valor">

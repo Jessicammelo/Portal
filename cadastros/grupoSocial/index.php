@@ -81,10 +81,10 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Ano
                 </th>
                 <th>
-                    Nota do Índice de confiança 2019
+                    Índice de confiança 2019
                 </th>
                 <th>
-                    Nota do Índice de confiança do Ibope 2018
+                    Índice de confiança do Ibope 2018
                 </th>
                 <th width="50px">
                     #
