@@ -95,24 +95,12 @@ if (!empty($_GET['instituicao'])) {
         <br>
         <table class="table" style="text-align:center">
             <thead>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th colspan="7">
+                <th colspan="6">
                     Faixa Etária
                 </th>
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        #
-                    </td>
-                    <td>
-                        #
-                    </td>
                     <td>
                         16 á 24 anos
                     </td>
@@ -128,45 +116,15 @@ if (!empty($_GET['instituicao'])) {
                     <td>
                         50 anos
                     </td>
+                    <td>
+                        #
+                    </td>
                 </tr>
                 <?php
                 for ($i = 0; $i < count($faixaEtaria); $i++) {
                     ?>
                     <tr>
-                        <td>
-                            <?php
-                            if (!empty($_GET['instituicao'])) {
-                                ?>
-                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
-                                </a>
 
-                            <?php
-                            } else {
-                                ?>
-                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
-                                </a>
-                            <?php
-                            }
-                            ?>
-
-                        </td>
-                        <td>
-                            <?php
-                            if (!empty($_GET['instituicao'])) {
-                                ?>
-                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
-                                </a>
-
-                            <?php
-                            } else {
-                                ?>
-                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-primary">Editar
-                                </a>
-                            <?php
-                            }
-                            ?>
-
-                        </td>
                         <td>
                             <?php echo $faixaEtaria[$i]['16_24'];
                             ?>
@@ -186,6 +144,23 @@ if (!empty($_GET['instituicao'])) {
                         <td>
                             <?php echo $faixaEtaria[$i]['_50'];
                             ?>
+                        </td>
+                        <td>
+                            <?php
+                            if (!empty($_GET['instituicao'])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
+                                </a>
+
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $faixaEtaria[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            }
+                            ?>
+
                         </td>
                     </tr>
                 <?php

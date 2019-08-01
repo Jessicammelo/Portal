@@ -70,9 +70,9 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class=" col-7 container">
-        <a class="btn btn-primary" style="margin: 40px; " href="cadastro.php">Cadastrar
+        <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php">Cadastrar
         </a>
-        <table class="table" style="text-align:center">
+        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
             <thead>
                 <th>
                     Instituição
@@ -81,10 +81,10 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Ano
                 </th>
                 <th>
-                    Nota do Índice de confiança 2019
+                    Índice de Confiança 2019
                 </th>
                 <th>
-                    Nota do Índice de confiança do Ibope 2018
+                   Índice de Confiança do Ibope 2018
                 </th>
                 <th width="50px">
                     #
@@ -113,10 +113,10 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td>
                             <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
                                 </a>
-                                <div class="dropdown-menu " style="font-size: 17px" aria-labelledby="dropdownMenuLink">
+                                <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
                                     <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
@@ -131,6 +131,8 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ?>
             </tbody>
         </table>
+        <br>
+        <br>
     </div>
 </body>
 

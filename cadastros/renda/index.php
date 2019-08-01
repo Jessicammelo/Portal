@@ -91,24 +91,13 @@ if (!empty($_GET["instituicao"])) {
         <br>
         <table class="table" style="text-align:center">
             <thead>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th colspan="6">
+                <th colspan="5">
                     Renda Familiar
                 </th>
             </thead>
             <tbody>
                 <tr>
-                    <td>
-                        #
-                    </td>
-                    <td>
-                        #
-                    </td>
+
                     <td>
                         Até 2000 reais
                     </td>
@@ -121,42 +110,15 @@ if (!empty($_GET["instituicao"])) {
                     <td>
                         Recusaram
                     </td>
-
+                    <td>
+                        #
+                    </td>
                 </tr>
                 <?php
                 for ($i = 0; $i < count($renda); $i++) {
                     ?>
                     <tr>
-                        <td>
-                            <?php
-                            if (!empty($_GET["instituicao"])) {
-                                ?>
-                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
-                                </a>
-                            <?php
-                            } else {
-                                ?>
-                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
-                                </a>
-                            <?php
-                            }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if (!empty($_GET["instituicao"])) {
-                                ?>
-                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
-                                </a>
-                            <?php
-                            } else {
-                                ?>
-                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-primary">Editar
-                                </a>
-                            <?php
-                            }
-                            ?>
-                        </td>
+
                         <td>
                             <?php echo $renda[$i]['ate_2000'];
                             ?>
@@ -173,7 +135,21 @@ if (!empty($_GET["instituicao"])) {
                             <?php echo $renda[$i]['recusou'];
                             ?>
                         </td>
-
+                        <td>
+                            <?php
+                            if (!empty($_GET["instituicao"])) {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            } else {
+                                ?>
+                                <a href="index.php?delete=<?php echo $renda[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-danger">Apagar
+                                </a>
+                            <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
                 <?php
                 }

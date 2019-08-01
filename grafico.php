@@ -186,7 +186,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="index.php#"><i class="fas fa-chalkboard"> Página Inicial </i></a>
+                <a href="index.php#"><i class="fas fa-chalkboard">  Página inicial </i></a>
             </button>
         </div>
     </div>

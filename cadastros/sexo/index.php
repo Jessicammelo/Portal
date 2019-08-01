@@ -73,54 +73,51 @@ if (!empty($_GET["instituicao"])) {
             </div>
         </div>
     </div>
-    <div class="container">
-        <br>
+    <div class=" col-7 container">
         <?php
         if (!empty($_GET["instituicao"])) {
             ?>
-            <a class="btn btn-primary" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
+            <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php?instituicao=<?php echo $_GET["instituicao"]; ?> ">Cadastrar
             </a>
         <?php
         } else {
             ?>
-            <a class="btn btn-primary" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
+            <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php?grupo_social=<?php echo $_GET["grupo_social"]; ?> ">Cadastrar
             </a>
         <?php
         }
         ?>
-        <br>
-        <br>
-        <table class="table" style="text-align:center">
+        <table class="table" style="text-align:center;font-family: verdana;background: #e9ecef; color: #005FA4;">
             <thead>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
-                <th colspan="4">
+                <th colspan="3">
                     Sexo
                 </th>
+
             </thead>
-            <tbody>
+            <tbody >
                 <tr>
-                    <td>
-                        #
-                    </td>
-                    <td>
-                        #
-                    </td>
                     <td>
                         Masculino
                     </td>
                     <td>
                         Feminino
                     </td>
+                    <td>
+                        #
+                    </td>
                 </tr>
                 <?php
                 for ($i = 0; $i < count($sexo); $i++) {
                     ?>
-                    <tr>
+                    <tr style="border-top: 2.5px solid #005FA4; ">
+                        <td>
+                            <?php echo $sexo[$i]['masculino'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php echo $sexo[$i]['feminino'];
+                            ?>
+                        </td>
                         <td>
                             <?php
                             if (!empty($_GET["instituicao"])) {
@@ -134,30 +131,6 @@ if (!empty($_GET["instituicao"])) {
                                 </a>
                             <?php
                             }
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            if (!empty($_GET["instituicao"])) {
-                                ?>
-                                <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&instituicao=<?php echo $instituicao; ?>" class="btn btn-primary">Editar
-                                </a>
-                            <?php
-                            } else {
-                                ?>
-                                <a href="index.php?delete=<?php echo $sexo[$i]['id'] ?>&grupo_social=<?php echo $grupoSocial; ?>" class="btn btn-primary">Editar
-                                </a>
-                            <?php
-                            }
-                            ?>
-
-                        </td>
-                        <td>
-                            <?php echo $sexo[$i]['masculino'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php echo $sexo[$i]['feminino'];
                             ?>
                         </td>
                     </tr>

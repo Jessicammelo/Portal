@@ -70,9 +70,9 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class=" col-7 container">
-        <a class="btn btn-primary" style="margin: 40px;" href=" cadastro.php">Cadastrar
+        <a class="btn btn-primary" style="margin: 40px; font-family: verdana;" href=" cadastro.php">Cadastrar
         </a>
-        <table class="table" style="text-align:center">
+        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
             <thead>
                 <th>
                     Grupo Social
@@ -113,10 +113,10 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </td>
                         <td>
                             <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
                                 </a>
-                                <div class="dropdown-menu " style="font-size: 17px" aria-labelledby="dropdownMenuLink">
+                                <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $grupoSocial[$i]['id'] ?>">Apagar</a>
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $grupoSocial[$i]['id'] ?>">Editar</a>
                                     <a class="dropdown-item topicos" href="../sexo/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Sexo</a>
@@ -133,6 +133,8 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
             </tbody>
         </table>
+        <br>
+        <br>
     </div>
 </body>
 

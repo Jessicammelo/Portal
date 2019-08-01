@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (empty($_SESSION['loginEfetuado'])){
+if (empty($_SESSION['loginEfetuado'])) {
     header('location: ../login');
     exit;
 }
@@ -64,22 +64,19 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <div class="container">
-        <br>
-        <a class="btn btn-primary" href="cadastro.php">Cadastrar
+    <div class="col-7 container">
+        <a class="btn btn-primary" style="margin: 40px; font-family: verdana " href="cadastro.php">Cadastrar
         </a>
-        <br>
-        <br>
-        <table class="table">
+        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
             <thead>
-                <th width="50px">
-                    #
-                </th>
-                <th width="50px">
-                    #
-                </th>
                 <th>
                     Título
+                </th>
+                <th width="50px">
+                    #
+                </th>
+                <th width="50px">
+                    #
                 </th>
             </thead>
             <tbody>
@@ -88,6 +85,10 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                     <tr>
                         <td>
+                            <?php echo $metodologia[$i]['titulo'];
+                            ?>
+                        </td>
+                        <td>
                             <a href="index.php?delete=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-danger">Apagar
                             </a>
                         </td>
@@ -95,18 +96,14 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="index.php?delete=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-primary">Editar
                             </a>
                         </td>
-                        <td>
-                            <?php echo $metodologia[$i]['titulo'];
-                            ?>
-                        </td>
                     </tr>
                 <?php
                 }
                 ?>
             </tbody>
-
         </table>
-
+        <br>
+        <br>
     </div>
 </body>
 

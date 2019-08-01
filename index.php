@@ -35,7 +35,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="row" style="margin-left: 45px">
+    <div class="row" style="margin-left: 45px; margin-right: 25px">
         <div class="col-6 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
@@ -46,8 +46,9 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             Após obter as informações, socializa-las de modo a permitir
             que a comunidade regional se conheça e reconheça na interpretação
             de seus resultados.
+            <br>
             (PROJETO DE EXTENSÃO APROVADO NO EDITAL FURB PROPEX – 2018) 
-
+            <br>
             <br>
         </div>
         <div class="col-6 row">
