@@ -228,7 +228,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-9 row titulo">
                 <div class="col-12">
                     <div class="col-5" style="margin:auto">
-                        <table class="table table-bordered" style="text-align:center; font-size:12px; margin:center">
+                        <table class="table table-bordered" style="text-align:center; font-size:14px; margin:center">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
                                     Índice -
@@ -236,7 +236,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                     for ($i = 0; $i < count($data); $i++) {
                                         if ($data[$i]['id'] == $instituicao) {
                                             ?> <?php echo $data[$i]['nome'] ?>
-                                            (0 à 100)
+                                            (Nota de 0 à 100)
                                         <?php
                                         }
                                         ?>
@@ -270,7 +270,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     </div>
                     <br>
                 </div>
-                <div class="col-10" style="margin:auto">
+                <div class="col-12" style="margin:auto">
                     <!-- tabela-->
                     <?php
                     if (!empty($religiao)) {
@@ -322,7 +322,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php
                     } else {
                         ?>
-                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                        <table class="table table-bordered" style="text-align:center; font-size:14px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
                                     Sexo (%)
@@ -455,7 +455,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="col-9 row titulo">
                 <div class="col-12">
                     <div class="col-5" style="margin: auto">
-                        <table class="table table-bordered" style="text-align:center; font-size:12px">
+                        <table class="table table-bordered" style="text-align:center; font-size:14px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
                                     Índice -
@@ -463,7 +463,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                     for ($i = 0; $i < count($data2); $i++) {
                                         if ($data2[$i]['id'] == $grupo) {
                                             ?> <?php echo $data2[$i]['nome'] ?>
-                                            (0 à 100)
+                                            (Nota de 0 à 100)
                                         <?php
                                         }
                                         ?>
@@ -499,8 +499,8 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <br>
                 <br>
-                <div class="col-10" style="margin: auto">
-                    <table class=" table table-bordered" style="text-align:center; font-size:12px">
+                <div class="col-12" style="margin: auto">
+                    <table class=" table table-bordered" style="text-align:center; font-size:14px">
                         <thead>
                             <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
                                 Sexo (%)

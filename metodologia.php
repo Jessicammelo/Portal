@@ -36,19 +36,20 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
-        <div class="col-md-10 offset-1" >
-            <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone" >
-                <a href="../Portal/grafico.php?instituicao=1&grupo=2" ><i class="fas fa-chart-bar">  Índice de confiança
+        <div class="col-md-10 offset-1">
+            <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                <a href="../Portal/grafico.php?instituicao=1&grupo=2"><i class="fas fa-chart-bar"> Índice de Confiança
                         nas Intituíções Brasileiras </i></a>
             </button>
         </div>
     </div>
-    <div class="col-8 offset-1 texto" style="font-family: arial;">
+    <div class="col-8 offset-1 ">
         <?php
-        for ($i = 0; $i < count($metodologia); $i++) {
+                for ($i = 0; $i < count($metodologia); $i++) {
             ?>
-            <h3> <?php echo $metodologia[$i]['titulo'] ?><h3>
-                    <p>
+
+                <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
+                    <p class="textoMetodologia">
                         <?php echo $metodologia[$i]['mensagem'] ?>
                     </p>
                 <?php
