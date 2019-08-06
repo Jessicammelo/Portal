@@ -75,7 +75,7 @@ if (!empty($_POST['nome']) && !empty($_POST['nenhuma_confianca']) &&
             </div>
         </div>
     </div>
-<form class=" col-6 container" method="POST">
+<form class=" col-6 container" style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
         <div class="form-group">
             <label>Digite nome do grupo social</label>
             <input required name="nome" class="form-control" placeholder="Digite nome">

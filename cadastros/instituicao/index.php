@@ -81,10 +81,10 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Ano
                 </th>
                 <th>
-                    Índice de Confiança 2019
+                    Índice de Confiança
                 </th>
                 <th>
-                   Índice de Confiança do Ibope 2018
+                    Índice de Confiança Ibope do último ano
                 </th>
                 <th width="50px">
                     #
