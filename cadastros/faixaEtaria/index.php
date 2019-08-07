@@ -44,7 +44,7 @@ if (!empty($_GET['instituicao'])) {
 </head>
 
 <body>
-    <div class="submenu">
+    <div class="submenu ">
         <div class="container">
             <div class="row">
                 <div class="col-6">

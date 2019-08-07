@@ -1,10 +1,15 @@
 .submenu {
     background: #005FA4;
+    position: fixed;
+    width: 100%;
+    top: 0%;
+
 }
 
 .tipoazul {
     color: white;
     background: #005FA4;
+    position: fixed;
 }
 
 .btn-primary {
@@ -13,10 +18,12 @@
 
 .colorlinha {
     background: #FFCC00;
+    position: fixed;
 }
 
 .bordasuperior {
     border-top: solid 2px #FFCC00;
+    position: fixed;
 }
 
 .font-sizeIcone {
@@ -35,12 +42,15 @@
 .botaoSegundaPagina {
     margin: 10px;
     color: #e9ecef;
+    position: fixed;
+    width: 100%;
 }
 
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
+    position: fixed;
+    width: 100%;
 }
-
 .topicos {
     color: #e9ecef;
     background: #005fa4;
@@ -98,9 +108,9 @@
     white-space: pre-wrap;
     white-space: pre-line;
 }
+
 .tituloMetodologia {
     font-size: 22px;
     font-family: arial;
-    text-align: left; 
-    
+    text-align: left;
 }

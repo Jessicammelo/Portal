@@ -50,8 +50,8 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
-        <div class="col-md-10 offset-1 row">
+    <div style="width: 100%;" class="breadcrumb">
+        <div class="col-md-10 offset-1 row" style="position: fixed;">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../metodologia/index.php?">Metodologia</a>
@@ -69,7 +69,7 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <div class=" col-7 container">
+    <div class=" col-8 container" style="padding: 100px;">
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php">Cadastrar
         </a>
         <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
