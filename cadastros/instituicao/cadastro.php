@@ -29,7 +29,6 @@ if (
     $stmt->bindValue(7, ($ano));
     $stmt->bindValue(8, ($indice_confianca));
     $stmt->bindValue(9, ($indice_confianca_ibope));
-
     $stmt->execute();
     header("location:index.php");
 }

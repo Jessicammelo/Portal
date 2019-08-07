@@ -1,15 +1,15 @@
 .submenu {
     background: #005FA4;
+    
+}
+.menu_fixo {
     position: fixed;
     width: 100%;
-    top: 0%;
-
+    z-index: 999;
 }
-
 .tipoazul {
     color: white;
     background: #005FA4;
-    position: fixed;
 }
 
 .btn-primary {
@@ -18,12 +18,12 @@
 
 .colorlinha {
     background: #FFCC00;
-    position: fixed;
+    
 }
 
 .bordasuperior {
     border-top: solid 2px #FFCC00;
-    position: fixed;
+  
 }
 
 .font-sizeIcone {
@@ -42,14 +42,12 @@
 .botaoSegundaPagina {
     margin: 10px;
     color: #e9ecef;
-    position: fixed;
-    width: 100%;
+   
 }
 
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
-    position: fixed;
-    width: 100%;
+    
 }
 .topicos {
     color: #e9ecef;

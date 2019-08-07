@@ -76,6 +76,10 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 '<?php echo number_format($instituicaoSelecionada["nao_conheco"], 1, ",", ".") ?>%'
             ]
         ];
+        setTimeout(() => {
+            drawChart();
+            drawChart2();
+        }, 2000);
         google.charts.load('current', {
             'packages': ['corechart']
         })
@@ -89,7 +93,8 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
                 animation: {
-                    duration: 1000,
+                    startup:true,
+                    duration: 3000,
                     easing: 'out',
                 },
 
@@ -156,7 +161,11 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 legend: {
                     position: "none"
                 },
-
+                animation: {
+                    startup:true,
+                    duration: 3000,
+                    easing: 'out',
+                },
             };
             var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
             chart.draw(view, options);
@@ -186,7 +195,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="index.php#"><i class="fas fa-chalkboard">  Página inicial </i></a>
+                <a href="index.php#"><i class="fas fa-chalkboard"> Página inicial </i></a>
             </button>
         </div>
     </div>

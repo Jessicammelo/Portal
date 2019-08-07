@@ -9,9 +9,14 @@ $db = new BancoDados;
 $conexao = $db->instancia();
 if (!empty($_GET["delete"])) {
     $id = $_GET["delete"];
-    $stmt = $conexao->prepare('DELETE FROM instituicao WHERE id = ?');
-    $stmt->bindValue(1, $id);
-    $stmt->execute();
+    try {
+        $stmt = $conexao->prepare('DELETE FROM instituicao WHERE id = ?');
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+    } catch (Exception $e) {
+        echo 'deve ser apagado primiro as insfkshsdjf hdjfh';
+        header('location: index.php?erro=1');
+    }
 }
 $stmt = $conexao->query('SELECT * FROM instituicao');
 $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -33,46 +38,48 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <div class="submenu">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <div class="col-12">
-                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+    <div class="menu_fixo">
+        <div class="submenu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="col-12">
-                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%;" class="breadcrumb">
-        <div class="col-md-10 offset-1 row" style="position: fixed;">
-            <div class="col-2">
-                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                    <a href="../metodologia/index.php?">Metodologia</a>
-                </button>
-            </div>
-            <div class="col-3">
-                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
-                </button>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                    <a href="../grupoSocial/index.php?">Grupo Social</a>
-                </button>
+        <div class="tipoazul bordasuperior"></div>
+        <div style="width: 100%;" class="breadcrumb">
+            <div class="col-md-10 offset-1 row">
+                <div class="col-2">
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="../metodologia/index.php?">Metodologia</a>
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
+                    </button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="../grupoSocial/index.php?">Grupo Social</a>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class=" col-8 container" style="padding: 100px;">
+    <div class=" col-7 container" style="padding-top: 200px;">
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php">Cadastrar
         </a>
-        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
+        <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th>
                     Instituição

@@ -1,16 +1,34 @@
 <?php
 require "../../backend/classes/bancoDados.php";
+$db = new BancoDados();
+$conexao = $db->instancia();
 
 if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
     $titulo = $_POST['titulo'];
     $mensagem = $_POST['mensagem'];
-    $db = new BancoDados();
-    $conexao = $db->instancia();
-    $stmt = $conexao->prepare('INSERT INTO metodologia (titulo,mensagem) VALUES (?, ?)');
-    $stmt->bindValue(1, $titulo);
-    $stmt->bindValue(2, nl2br($mensagem));
+    if(empty($_POST['id'])){
+        $stmt = $conexao->prepare('INSERT INTO metodologia (titulo,mensagem) VALUES (?, ?)');
+        $stmt->bindValue(1, $titulo);
+        $stmt->bindValue(2, nl2br($mensagem));
+    }else{
+        $id = $_POST['id'];
+        $stmt = $conexao->prepare('UPDATE metodologia SET titulo = ?, mensagem = ? WHERE id = ?');
+        $stmt->bindValue(1,$titulo);
+        $stmt->bindValue(2,nl2br($mensagem));
+        $stmt->bindValue(3,$id);
+    }
+    
     $stmt->execute();
     header("location:index.php");
+}
+$metodologia = [
+    'titulo' => '',
+    'mensagem' => ''
+];
+if (!empty($_GET['editar'])) {
+    $editar = $_GET['editar'];
+    $stmt = $conexao->query('SELECT * From metodologia WHERE id =' . $editar);
+    $metodologia = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ?>
 <html>
@@ -28,7 +46,7 @@ if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
 </head>
 
 <body>
-<div class="submenu">
+    <div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -46,7 +64,7 @@ if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
-    <div class="col-md-10 offset-1 row">
+        <div class="col-md-10 offset-1 row">
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
@@ -60,13 +78,14 @@ if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
         </div>
     </div>
     <form class=" col-6 container" style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
+        <input name="id" value="<?php echo $metodologia['id']?>" type="hidden">
         <div class="form-group">
             <label>Título</label>
-            <input required name="titulo" class="form-control" placeholder="Digite título">
+            <input required name="titulo" value="<?php echo $metodologia['titulo']?>" class="form-control" placeholder="Digite título">
         </div>
         <div class="form-group">
             <label>Mensagem</label>
-            <textarea required name="mensagem" class="form-control"></textarea>
+            <textarea required name="mensagem" class="form-control"><?php echo $metodologia['mensagem']?></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

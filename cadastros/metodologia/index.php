@@ -93,7 +93,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </a>
                         </td>
                         <td>
-                            <a href="index.php?delete=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-primary">Editar
+                            <a href="cadastro.php?editar=<?php echo $metodologia[$i]['id'] ?>" class="btn btn-primary">Editar
                             </a>
                         </td>
                     </tr>
