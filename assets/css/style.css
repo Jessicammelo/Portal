@@ -46,12 +46,12 @@
 .botaoSegundaPagina {
     margin: 10px;
     color: #e9ecef;
-   
+    text-decoration: none;
 }
 
 .botaoSegundaPagina:hover {
     background: #e1e1e1;
-    
+    text-decoration: none;
 }
 .topicos {
     color:white;
@@ -95,7 +95,9 @@
 .removerLinha {
     text-decoration: none;
 }
-
+.removerLinha a {
+    text-decoration: none;
+}
 .textoIndex {
     background: rgba(0, 0, 0, 0.5);
     color: white;

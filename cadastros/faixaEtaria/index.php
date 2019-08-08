@@ -65,12 +65,12 @@ if (!empty($_GET['instituicao'])) {
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1 row">
             <div class="col-3">
-                <button type="button" class="btn btn-light font-sizeBotao">
+                <button type="button" class="btn btn-light font-sizeBotao removerLinha">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-light font-sizeBotao ">
+                <button type="button" class="btn btn-light font-sizeBotao removerLinha">
                     <a href="../grupoSocial/index.php?"> Grupo Social</a>
                 </button>
             </div>
