@@ -17,29 +17,29 @@ if (
     $ano = $_POST['ano'];
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
-    if (empty($_POST['id'])) {
+    if (!isset($_POST['id'])) {
         $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->bindValue(1, ($nome));
-        $stmt->bindValue(2, ($nenhuma_confianca));
-        $stmt->bindValue(3, ($quase_nenhuma_confianca));
-        $stmt->bindValue(4, ($alguma_confianca));
-        $stmt->bindValue(5, ($muita_confianca));
-        $stmt->bindValue(6, ($nao_conheco));
+        $stmt->bindValue(2, str_replace(',', '.', $nenhuma_confianca));
+        $stmt->bindValue(3, str_replace(',', '.', $quase_nenhuma_confianca));
+        $stmt->bindValue(4, str_replace(',', '.', $alguma_confianca));
+        $stmt->bindValue(5, str_replace(',', '.', $muita_confianca));
+        $stmt->bindValue(6, str_replace(',', '.', $nao_conheco));
         $stmt->bindValue(7, ($ano));
-        $stmt->bindValue(8, ($indice_confianca));
-        $stmt->bindValue(9, ($indice_confianca_ibope));
+        $stmt->bindValue(8, str_replace(',', '.', $indice_confianca));
+        $stmt->bindValue(9, str_replace(',', '.', $indice_confianca_ibope));
     } else {
         $id = $_POST['id'];
         $stmt = $conexao->prepare('UPDATE instituicao SET nome = ?, nenhuma_confianca = ?,quase_nenhuma_confianca = ?, alguma_confianca = ?, muita_confianca = ?, nao_conheco = ?, ano = ?, indice_confianca = ?, indice_confianca_ibope = ? WHERE id = ?');
         $stmt->bindValue(1, ($nome));
-        $stmt->bindValue(2, ($nenhuma_confianca));
-        $stmt->bindValue(3, ($quase_nenhuma_confianca));
-        $stmt->bindValue(4, ($alguma_confianca));
-        $stmt->bindValue(5, ($muita_confianca));
-        $stmt->bindValue(6, ($nao_conheco));
+        $stmt->bindValue(2, str_replace(',', '.', $nenhuma_confianca));
+        $stmt->bindValue(3, str_replace(',', '.', $quase_nenhuma_confianca));
+        $stmt->bindValue(4, str_replace(',', '.', $alguma_confianca));
+        $stmt->bindValue(5, str_replace(',', '.', $muita_confianca));
+        $stmt->bindValue(6, str_replace(',', '.', $nao_conheco));
         $stmt->bindValue(7, ($ano));
-        $stmt->bindValue(8, ($indice_confianca));
-        $stmt->bindValue(9, ($indice_confianca_ibope));
+        $stmt->bindValue(8, str_replace(',', '.', $indice_confianca));
+        $stmt->bindValue(9, str_replace(',', '.', $indice_confianca_ibope));
         $stmt->bindValue(10, ($id));
     }
     $stmt->execute();
@@ -62,6 +62,8 @@ if (!empty($_GET['editar'])) {
     $stmt = $conexao->query('SELECT * From instituicao WHERE id =' . $editar);
     $instituicao = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+// print_r($instituicao);
+// exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,81 +77,79 @@ if (!empty($_GET['editar'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/style.css?v5">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src="./assets/css/script.js"></script> -->
+    <script src="../../assets/css/script.js"></script>
 </head>
 
 <body>
-    <div class="menu_fixo">
-        <div class="submenu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
-                        </div>
+    <div class="submenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="tipoazul bordasuperior"></div>
-        <div style="width: 100%; " class="breadcrumb">
-            <div class="col-md-10 offset-1 row">
-                <div class="col-3">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
-                    </button>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../grupoSocial/index.php?">Grupo Social</a>
-                    </button>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%;" class="breadcrumb navbar-botton__fixed">
+        <div class="col-md-10 offset-1 row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../grupoSocial/index.php?">Grupo Social</a>
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <form class=" col-7 container" style=" padding-top: 250px; font-family: verdana; color: #005FA4;" method="POST">
+    <form class=" col-7 container" style="font-family: verdana; color: #005FA4;" method="POST">
         <input name="id" value="<?php echo $instituicao['id'] ?>" type="hidden">
         <div class="form-group">
             <label>Digite nome da instituicão</label>
-            <input required name="nome" class="form-control" placeholder="Digite nome">
+            <input required name="nome" value="<?php echo $instituicao['nome'] ?>" class="form-control" placeholder="Digite nome">
         </div>
         <div class="form-group">
             <label>Nenhuma confiança</label>
-            <input required name="nenhuma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="nenhuma_confianca" value="<?php echo $instituicao['nenhuma_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Quase nenhuma confiança</label>
-            <input required name="quase_nenhuma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="quase_nenhuma_confianca" value="<?php echo $instituicao['quase_nenhuma_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Alguma confiança</label>
-            <input required name="alguma_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="alguma_confianca" value="<?php echo $instituicao['alguma_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Muita confiança</label>
-            <input required name="muita_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="muita_confianca" value="<?php echo $instituicao['muita_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Nâo conheço</label>
-            <input required name="nao_conheco" class="form-control" placeholder="Digite valor">
+            <input required name="nao_conheco" value="<?php echo $instituicao['nao_conheco'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Ano</label>
-            <input required name="ano" class="form-control" placeholder="Digite valor">
+            <input required name="ano" value="<?php echo $instituicao['ano'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Indice de confiança</label>
-            <input required name="indice_confianca" class="form-control" placeholder="Digite valor">
+            <input required name="indice_confianca" value="<?php echo $instituicao['indice_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
             <label>Indice de confiança do Ibope</label>
-            <input required name="indice_confianca_ibope" class="form-control" placeholder="Digite valor">
+            <input required name="indice_confianca_ibope" value="<?php echo $instituicao['indice_confianca_ibope'] ?>" class="form-control" placeholder="Digite valor">
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

@@ -44,7 +44,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/css/style.css?v5">
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src="./assets/css/script.js"></script> -->
+    <script src="assets/css/script.js"></script>
     <script>
         let dados = [
             ['Respostas', 'Percentual de Respostas', {
@@ -93,7 +93,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
                 animation: {
-                    startup:true,
+                    startup: true,
                     duration: 4000,
                     easing: 'out',
                 },
@@ -162,7 +162,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                     position: "none"
                 },
                 animation: {
-                    startup:true,
+                    startup: true,
                     duration: 4000,
                     easing: 'out',
                 },
@@ -192,7 +192,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1  ">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                 <a href="index.php#"><i class="fas fa-chalkboard"> Página inicial </i></a>

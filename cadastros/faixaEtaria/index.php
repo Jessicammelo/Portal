@@ -40,44 +40,44 @@ if (!empty($_GET['instituicao'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/style.css?v5">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src="./assets/css/script.js"></script> -->
+     <script src="../../assets/css/script.js"></script> 
 </head>
 
 <body>
-    <div class="menu_fixo">
-        <div class="submenu ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
-                        </div>
+
+    <div class="submenu ">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="tipoazul bordasuperior"></div>
-        <div style="width: 100%" class="breadcrumb">
-            <div class="col-md-10 offset-1 row">
-                <div class="col-3">
-                    <button type="button" class="btn btn-light font-sizeBotao">
-                        <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
-                    </button>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="btn btn-light font-sizeBotao ">
-                        <a href="../grupoSocial/index.php?"> Grupo Social</a>
-                    </button>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-7 container"  style="padding-top: 200px;" >
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
+        <div class="col-md-10 offset-1 row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao">
+                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao ">
+                    <a href="../grupoSocial/index.php?"> Grupo Social</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7 container">
         <?php
         if (!empty($_GET['instituicao'])) {
             ?>

@@ -34,7 +34,7 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/style.css?v5">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src=".//css/script.js"></script> -->
+    <script src="../../css/script.js"></script>
 </head>
 
 <body>
@@ -55,7 +55,7 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1 row">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
@@ -75,6 +75,13 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class=" col-7 container">
+        <?php
+        if (isset($_GET['erro'])) {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda vínculados.
+            </div>
+        <?php } ?>
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana;" href=" cadastro.php">Cadastrar
         </a>
         <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
@@ -117,10 +124,10 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </td>
                         <td>
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
-                                </button>
+                                </a>
                                 <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $grupoSocial[$i]['id'] ?>">Apagar</a>
                                     <a class="dropdown-item topicos" href="index.php?editar=<?php echo $grupoSocial[$i]['id'] ?>">Editar</a>
@@ -136,13 +143,13 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 }
                 ?>
-                 <?php
-            if (!empty($_GET['erro=1'])) {
+                <?php
+                if (!empty($_GET['erro=1'])) {
+                    ?>
+                    <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
+                <?php
+                }
                 ?>
-                <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
-            <?php
-            }
-            ?>
             </tbody>
         </table>
         <br>

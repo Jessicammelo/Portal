@@ -6,7 +6,7 @@ $conexao = $db->instancia();
 if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
     $titulo = $_POST['titulo'];
     $mensagem = $_POST['mensagem'];
-    if (empty($_POST['id'])) {
+    if (!isset($_POST['id'])) {
         $stmt = $conexao->prepare('INSERT INTO metodologia (titulo,mensagem) VALUES (?, ?)');
         $stmt->bindValue(1, $titulo);
         $stmt->bindValue(2, nl2br($mensagem));
@@ -29,6 +29,7 @@ if (!empty($_GET['editar'])) {
     $editar = $_GET['editar'];
     $stmt = $conexao->query('SELECT * From metodologia WHERE id =' . $editar);
     $metodologia = $stmt->fetch(PDO::FETCH_ASSOC);
+    $metodologia['mensagem'] = str_replace('<br />', '', $metodologia['mensagem']);
 }
 ?>
 <html>
@@ -42,7 +43,7 @@ if (!empty($_GET['editar'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/style.css?v5">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src="./assets/css/script.js"></script> -->
+    <script src="../../assets/css/script.js"></script>
 </head>
 
 <body>
@@ -63,7 +64,7 @@ if (!empty($_GET['editar'])) {
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1 row">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">

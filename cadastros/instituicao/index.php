@@ -34,49 +34,54 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../assets/css/style.css?v5">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <!-- <script src="./assets/css/script.js"></script> -->
+    <script src="../../assets/css/script.js"></script>
 </head>
 
 <body>
-    <div class="menu_fixo">
-        <div class="submenu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="col-12">
-                            <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
-                        </div>
+    <div class="submenu">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="tipoazul bordasuperior"></div>
-        <div style="width: 100%;" class="breadcrumb">
-            <div class="col-md-10 offset-1 row">
-                <div class="col-2">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../metodologia/index.php?">Metodologia</a>
-                    </button>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
-                    </button>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../grupoSocial/index.php?">Grupo Social</a>
-                    </button>
+                <div class="col-6">
+                    <div class="col-12">
+                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class=" col-7 container" style="padding-top: 200px;">
+    <div class="tipoazul bordasuperior"></div>
+    <div style="width: 100%;" class="breadcrumb navbar-botton__fixed">
+        <div class="col-md-10 offset-1 row">
+            <div class="col-2">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../metodologia/index.php?">Metodologia</a>
+                </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
+                </button>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../grupoSocial/index.php?">Grupo Social</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class=" col-7 container">
+        <?php
+        if (isset($_GET['erro'])) {
+        ?>
+            <div class="alert alert-danger" role="alert">
+                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda vínculados.
+            </div>
+        <?php } ?>
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php">Cadastrar
         </a>
         <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
@@ -119,13 +124,13 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </td>
                         <td>
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
-                                </button>
+                                </a>
                                 <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                    <a class="dropdown-item topicos" href="cadastro.php?editar<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
                                     <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
                                     <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
                                     <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>

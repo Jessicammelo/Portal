@@ -15,6 +15,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="assets/css/script.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                 <a href="../Portal/grafico.php?instituicao=1&grupo=2"><i class="fas fa-chart-bar"> Índice de Confiança
@@ -45,18 +46,20 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="col-8 offset-1">
         <?php
-                for ($i = 0; $i < count($metodologia); $i++) {
+        for ($i = 0; $i < count($metodologia); $i++) {
             ?>
 
-                <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
+            <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
+                <br>
                     <p class="textoMetodologia">
                         <?php echo $metodologia[$i]['mensagem'] ?>
                     </p>
+                    <br>
                 <?php
                 }
                 ?>
-        <br>
-        <br>
+                <br>
+                <br>
     </div>
 </body>
 
