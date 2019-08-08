@@ -90,7 +90,7 @@ if (
             </div>
         </div>
     </div>
-    <form class=" col-6 container"  style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
+    <form class=" col-6 container"  style=" font-family: verdana; color: #005FA4;" method="POST">
         <div class="form-group">
             <label>Até 2000 reais</label>
             <input required name="ate_2000" class="form-control" placeholder="Digite valor">

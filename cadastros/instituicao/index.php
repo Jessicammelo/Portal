@@ -14,8 +14,8 @@ if (!empty($_GET["delete"])) {
         $stmt->bindValue(1, $id);
         $stmt->execute();
     } catch (Exception $e) {
-        echo 'deve ser apagado primiro as insfkshsdjf hdjfh';
         header('location: index.php?erro=1');
+        exit;
     }
 }
 $stmt = $conexao->query('SELECT * FROM instituicao');
@@ -119,13 +119,13 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </td>
                         <td>
-                            <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
-                                </a>
+                                </button>
                                 <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="cadastro.php?editar<?php echo $instituicao[$i]['id'] ?>">Editar</a>
                                     <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
                                     <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
                                     <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>

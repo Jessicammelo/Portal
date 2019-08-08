@@ -44,38 +44,40 @@ if (!empty($_GET['instituicao'])) {
 </head>
 
 <body>
-    <div class="submenu ">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <div class="col-12">
-                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+    <div class="menu_fixo">
+        <div class="submenu ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="col-12">
-                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb">
-        <div class="col-md-10 offset-1 row">
-            <div class="col-3">
-                <button type="button" class="btn btn-light font-sizeBotao">
-                    <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
-                </button>
-            </div>
-            <div class="col-3">
-                <button type="button" class="btn btn-light font-sizeBotao ">
-                    <a href="../grupoSocial/index.php?"> Grupo Social</a>
-                </button>
+        <div class="tipoazul bordasuperior"></div>
+        <div style="width: 100%" class="breadcrumb">
+            <div class="col-md-10 offset-1 row">
+                <div class="col-3">
+                    <button type="button" class="btn btn-light font-sizeBotao">
+                        <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-light font-sizeBotao ">
+                        <a href="../grupoSocial/index.php?"> Grupo Social</a>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-7 container">
+    <div class="col-7 container"  style="padding-top: 200px;" >
         <?php
         if (!empty($_GET['instituicao'])) {
             ?>
@@ -90,7 +92,7 @@ if (!empty($_GET['instituicao'])) {
         <?php
         }
         ?>
-        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
+        <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th colspan="6">
                     Faixa Etária

@@ -87,7 +87,7 @@ if (!empty($_GET["instituicao"])) {
         <?php
         }
         ?>
-        <table class="table" style="text-align:center;font-family: verdana;background: #e9ecef; color: #005FA4;">
+        <table class="table" style="text-align:center;font-family: verdana; color: #005FA4;">
             <thead>
                 <th colspan="3">
                     Sexo

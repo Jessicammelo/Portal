@@ -76,7 +76,7 @@ if (!empty($_POST['masculino']) && !empty($_POST['feminino']) && !empty($_GET['i
             </div>
         </div>
     </div>
-    <form class=" col-6 container" style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
+    <form class=" col-7 container" style="font-family: verdana; color: #005FA4;" method="POST">
         <div class="form-group">
             <label>Masculino</label>
             <input required name="masculino" class="form-control" placeholder="Digite valor">

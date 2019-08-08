@@ -89,12 +89,12 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             var data = google.visualization.arrayToDataTable(dados);
             var view = new google.visualization.DataView(data);
             var options = {
-                title: 'Índice de Confiança nas Instituíções Brasileiras',
+                title: 'Índice de Confiança nas Instituições Brasileiras',
                 subtitle: 'Universidade Regional de Blumenau-FURB, Blumenau, 2019',
                 colors: ['#005fa4'],
                 animation: {
                     startup:true,
-                    duration: 3000,
+                    duration: 4000,
                     easing: 'out',
                 },
 
@@ -163,7 +163,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                 },
                 animation: {
                     startup:true,
-                    duration: 3000,
+                    duration: 4000,
                     easing: 'out',
                 },
             };
@@ -245,7 +245,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                     for ($i = 0; $i < count($data); $i++) {
                                         if ($data[$i]['id'] == $instituicao) {
                                             ?> <?php echo $data[$i]['nome'] ?>
-                                            (Nota de 0 à 100)
+                                            (0 à 100)
                                         <?php
                                         }
                                         ?>
@@ -472,7 +472,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                     for ($i = 0; $i < count($data2); $i++) {
                                         if ($data2[$i]['id'] == $grupo) {
                                             ?> <?php echo $data2[$i]['nome'] ?>
-                                            (Nota de 0 à 100)
+                                            (0 à 100)
                                         <?php
                                         }
                                         ?>

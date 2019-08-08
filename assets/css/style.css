@@ -50,7 +50,7 @@
     
 }
 .topicos {
-    color: #e9ecef;
+    color:white;
     background: #005fa4;
     border-bottom: solid 2px #FFCC00;
     cursor: pointer;
@@ -102,7 +102,7 @@
 .textoMetodologia {
     font-size: 18px;
     font-family: arial;
-    word-spacing: 8px;
+    word-spacing: 1px;
     white-space: pre-wrap;
     white-space: pre-line;
 }

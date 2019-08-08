@@ -67,7 +67,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="col-7 container">
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana " href="cadastro.php">Cadastrar
         </a>
-        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
+        <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th>
                     Título

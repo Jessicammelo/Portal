@@ -6,18 +6,18 @@ $conexao = $db->instancia();
 if (!empty($_POST['titulo']) && !empty($_POST['mensagem'])) {
     $titulo = $_POST['titulo'];
     $mensagem = $_POST['mensagem'];
-    if(empty($_POST['id'])){
+    if (empty($_POST['id'])) {
         $stmt = $conexao->prepare('INSERT INTO metodologia (titulo,mensagem) VALUES (?, ?)');
         $stmt->bindValue(1, $titulo);
         $stmt->bindValue(2, nl2br($mensagem));
-    }else{
+    } else {
         $id = $_POST['id'];
         $stmt = $conexao->prepare('UPDATE metodologia SET titulo = ?, mensagem = ? WHERE id = ?');
-        $stmt->bindValue(1,$titulo);
-        $stmt->bindValue(2,nl2br($mensagem));
-        $stmt->bindValue(3,$id);
+        $stmt->bindValue(1, $titulo);
+        $stmt->bindValue(2, nl2br($mensagem));
+        $stmt->bindValue(3, $id);
     }
-    
+
     $stmt->execute();
     header("location:index.php");
 }
@@ -65,27 +65,32 @@ if (!empty($_GET['editar'])) {
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb">
         <div class="col-md-10 offset-1 row">
+            <div class="col-2">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                    <a href="../metodologia/index.php?">Metodologia</a>
+                </button>
+            </div>
             <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                     <a href="../grupoSocial/index.php?"> Grupo Social</a>
                 </button>
             </div>
         </div>
     </div>
-    <form class=" col-6 container" style=" font-family: verdana; background: #e9ecef; color: #005FA4;" method="POST">
-        <input name="id" value="<?php echo $metodologia['id']?>" type="hidden">
+    <form class=" col-7 container" style=" font-family: verdana; color: #005FA4;" method="POST">
+        <input name="id" value="<?php echo $metodologia['id'] ?>" type="hidden">
         <div class="form-group">
             <label>Título</label>
-            <input required name="titulo" value="<?php echo $metodologia['titulo']?>" class="form-control" placeholder="Digite título">
+            <input required name="titulo" value="<?php echo $metodologia['titulo'] ?>" class="form-control" placeholder="Digite título">
         </div>
         <div class="form-group">
             <label>Mensagem</label>
-            <textarea required name="mensagem" class="form-control"><?php echo $metodologia['mensagem']?></textarea>
+            <textarea required name="mensagem" class="form-control"><?php echo $metodologia['mensagem'] ?></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

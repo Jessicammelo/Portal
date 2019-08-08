@@ -9,9 +9,14 @@ $db = new BancoDados;
 $conexao = $db->instancia();
 if (!empty($_GET["delete"])) {
     $id = $_GET["delete"];
-    $stmt = $conexao->prepare('DELETE FROM grupo_social WHERE id = ?');
-    $stmt->bindValue(1, $id);
-    $stmt->execute();
+    try {
+        $stmt = $conexao->prepare('DELETE FROM grupo_social WHERE id = ?');
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+    } catch (Exception $e) {
+        header('location: index.php?erro=1');
+        exit;
+    }
 }
 $stmt = $conexao->query('SELECT * FROM grupo_social');
 $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -72,7 +77,7 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class=" col-7 container">
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana;" href=" cadastro.php">Cadastrar
         </a>
-        <table class="table" style="text-align:center; font-family: verdana; background: #e9ecef; color: #005FA4">
+        <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th>
                     Grupo Social
@@ -81,10 +86,10 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     Ano
                 </th>
                 <th>
-                    Índice de confiança
+                    Índice de Confiança
                 </th>
                 <th>
-                    Índice de confiança Ibope do último ano
+                    Índice de Confiança Ibope do último ano
                 </th>
                 <th width="50px">
                     #
@@ -112,13 +117,13 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                         </td>
                         <td>
-                            <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Selecione
-                                </a>
+                                </button>
                                 <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                                     <a class="dropdown-item topicos" href="index.php?delete=<?php echo $grupoSocial[$i]['id'] ?>">Apagar</a>
-                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $grupoSocial[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="index.php?editar=<?php echo $grupoSocial[$i]['id'] ?>">Editar</a>
                                     <a class="dropdown-item topicos" href="../sexo/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Sexo</a>
                                     <a class="dropdown-item topicos" href="../faixaEtaria/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Faixa Etária</a>
                                     <a class="dropdown-item topicos" href="../renda/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Renda Familiar</a>
@@ -131,6 +136,13 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 }
                 ?>
+                 <?php
+            if (!empty($_GET['erro=1'])) {
+                ?>
+                <h4 style="color: red; text-align:center">Usuário ou senha inválidos!</h4>
+            <?php
+            }
+            ?>
             </tbody>
         </table>
         <br>
