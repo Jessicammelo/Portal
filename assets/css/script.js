@@ -5,3 +5,4 @@ $(document).scroll(() => {
         $('.navbar-botton__fixed').removeClass('menu_fixo');
     }
 })
+function hideLoad(){$('.loader').hide();}

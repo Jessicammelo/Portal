@@ -77,15 +77,18 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class=" col-7 container">
         <?php
         if (isset($_GET['erro'])) {
-        ?>
+            ?>
             <div class="alert alert-danger" role="alert">
-                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda vínculados.
+                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
             </div>
         <?php } ?>
         <a class="btn btn-primary" style="margin: 40px; font-family: verdana" href="cadastro.php">Cadastrar
         </a>
         <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
+                <th>
+                    #
+                </th>
                 <th>
                     Instituição
                 </th>
@@ -107,6 +110,10 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 for ($i = 0; $i < count($instituicao); $i++) {
                     ?>
                     <tr>
+                        <td>
+                            <?php echo $i + 1;
+                            ?>
+                        </td>
                         <td>
                             <?php echo $instituicao[$i]['nome'];
                             ?>

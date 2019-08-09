@@ -8,6 +8,7 @@ if (
     && !empty($_POST['nao_conheco']) && !empty($_POST['ano']) && !empty($_POST['indice_confianca'])
     && !empty($_POST['indice_confianca_ibope'])
 ) {
+
     $nome = $_POST['nome'];
     $nenhuma_confianca = $_POST['nenhuma_confianca'];
     $quase_nenhuma_confianca = $_POST['quase_nenhuma_confianca'];
@@ -17,8 +18,8 @@ if (
     $ano = $_POST['ano'];
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
-    if (!isset($_POST['id'])) {
-        $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    if (!isset($_POST['id']) || empty($_POST['id'])) {
+        $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)');
         $stmt->bindValue(1, ($nome));
         $stmt->bindValue(2, str_replace(',', '.', $nenhuma_confianca));
         $stmt->bindValue(3, str_replace(',', '.', $quase_nenhuma_confianca));
@@ -46,6 +47,7 @@ if (
     header("location:index.php");
 }
 $instituicao = [
+    'id' => '',
     'nome' => '',
     'nenhuma_confianca' => '',
     'quase_nenhuma_confianca' => '',
@@ -136,7 +138,7 @@ if (!empty($_GET['editar'])) {
             <input required name="muita_confianca" value="<?php echo $instituicao['muita_confianca'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
-            <label>Nâo conheço</label>
+            <label>Não conheço</label>
             <input required name="nao_conheco" value="<?php echo $instituicao['nao_conheco'] ?>" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">

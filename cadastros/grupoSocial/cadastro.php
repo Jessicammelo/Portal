@@ -16,7 +16,7 @@ if (
     $ano = $_POST['ano'];
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
-    if (empty($_POST['id'])) {
+    if (!isset($_POST['id']) || empty($_POST['id']))  {
         $stmt = $conexao->prepare('INSERT INTO grupo_social (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,ano,indice_confianca,indice_confianca_ibope) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->bindValue(1, ($nome));
         $stmt->bindValue(2, ($nenhuma_confianca));
@@ -43,6 +43,7 @@ if (
     header("location:index.php");
 }
 $grupoSocial = [
+    'id' => '',
     'nome' => '',
     'nenhuma_confianca' => '',
     'quase_nenhuma_confianca' => '',
@@ -133,11 +134,11 @@ if (!empty($_GET['editar'])) {
             <input required name="ano" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
-            <label>Nota do Indice de confiança</label>
+            <label>Indice de confiança</label>
             <input required name="indice_confianca" class="form-control" placeholder="Digite valor">
         </div>
         <div class="form-group">
-            <label>Nota do Indice de confiança do Ibope</label>
+            <label>sIndice de confiança do Ibope</label>
             <input required name="indice_confianca_ibope" class="form-control" placeholder="Digite valor">
         </div>
 

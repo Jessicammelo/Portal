@@ -1,35 +1,49 @@
 <?php
 require "backend/classes/bancoDados.php";
-$instituicao = $_GET['instituicao'];
-$grupo = $_GET['grupo'];
-if (empty($instituicao) || empty($grupo)) {
-    header("location:index.php");
-    exit;
-}
+$instituicao = isset($_GET['instituicao']) ? $_GET['instituicao'] : null;
+$grupo = isset($_GET['grupo']) ? $_GET['grupo'] : null;
+
 $db = new BancoDados();
 $conexao = $db->instancia();
-$stmt = $conexao->query('SELECT * FROM instituicao ORDER BY nome ASC ');
+$stmt = $conexao->query('SELECT * FROM instituicao WHERE ano = ' . $_GET['ano'] . ' ORDER BY nome ASC ');
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM instituicao WHERE id = ' . $instituicao . ' ORDER BY nome ASC ');
-$instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $instituicao);
-$sexo =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao = ' . $instituicao);
-$faixa_etaria = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = ' . $instituicao);
-$renda_familiar = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM grupo_social ORDER BY nome ASC');
-$data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' ORDER BY nome ASC ');
-$grupoSelecionado =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM sexo WHERE grupo_social = ' . $grupo);
-$sexo2 =  $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $grupo);
-$faixa_etaria2 = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $grupo);
-$renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE instituicao = ' . $instituicao);
-$religiao = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!empty($instituicao)) {
+    $stmt = $conexao->query('SELECT * FROM instituicao WHERE id = ' . $instituicao . ' and ano = ' . $_GET['ano'] . ' ORDER BY nome ASC ');
+    $instituicaoSelecionada =  $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $instituicaoSelecionada = $data[0];
+    $instituicao = $data[0]['id'];
+}
+if (!empty($instituicao)) {
+    $stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $instituicao);
+    $sexo =  $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE instituicao = ' . $instituicao);
+    $faixa_etaria = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE instituicao = ' . $instituicao);
+    $renda_familiar = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM grupo_social WHERE ano = ' . $_GET['ano'] . ' ORDER BY nome ASC ');
+    $data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM igreja_religiao WHERE instituicao = ' . $instituicao);
+    $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+if (!empty($grupo)) {
+    $stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' and ano =' . $_GET['ano'] . ' ORDER BY nome ASC ');
+    $grupoSelecionado =  $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $grupoSelecionado = !empty($data2)? $data2[0] : null;
+    $grupo = !empty($data2) ? $data2[0]['id']: null;
+}
+if (!empty($grupo)) {
+    $stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' ORDER BY nome ASC ');
+    $grupoSelecionado =  $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM sexo WHERE grupo_social = ' . $grupo);
+    $sexo2 =  $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM faixa_etaria WHERE grupo_social = ' . $grupo);
+    $faixa_etaria2 = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conexao->query('SELECT * FROM renda_familiar WHERE grupo_social = ' . $grupo);
+    $renda_familiar2 = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 ?>
 
 <html>
@@ -104,6 +118,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
             chart.draw(view, options);
         }
+
         //inicio segundo grafico //
         let dados2 = [
             [
@@ -173,7 +188,7 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
     </script>
 </head>
 
-<body>
+<body onload="hideLoad()">
     <div class="submenu">
         <div class="container">
             <div class="row">
@@ -199,139 +214,326 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
             </button>
         </div>
     </div>
-    <div class="container-fluid row">
-        <div class="col-10 offset-1 row">
-            <div class="col-3" style="text-align:center">
-                <h4>
-                    Instituições
-                </h4>
+    <?php
+    if (!empty($instituicao)) {
+        ?>
+        <div class="container-fluid row">
+            <div class="col-10 offset-1 row">
+                <div class="col-3" style="text-align:center">
+                    <h4>
+                        Instituições
+                    </h4>
+                </div>
             </div>
-        </div>
-        <div class="col-10 offset-1 row">
-            <div class="col-3">
-                <?php
-                for ($i = 0; $i < count($data); $i++) {
-                    if ($data[$i]['id'] == $instituicao) {
-                        ?>
-                        <div class="topicos selecionado">
-                            <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
-                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
-                        </div>
+            <div class="col-10 offset-1 row">
+                <div class="col-3">
                     <?php
-                    } else {
-                        ?>
-                        <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>">
-                            <div class="topicos">
+                    for ($i = 0; $i < count($data); $i++) {
+                        if ($data[$i]['id'] == $instituicao) {
+                            ?>
+                            <div class="topicos selecionado">
                                 <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
                             </div>
-                        </a>
+                        <?php
+                        } else {
+                            ?>
+                            <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                                <div class="topicos">
+                                    <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
+                                    <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                                </div>
+                            </a>
+                        <?php
+                        }
+                        ?>
                     <?php
                     }
                     ?>
-                <?php
-                }
-                ?>
-            </div>
-            <!--terminou menu esquerdo-->
-            <div class="col-9 row titulo">
-                <div class="col-12">
-                    <div class="col-5" style="margin:auto">
-                        <table class="table table-bordered" style="text-align:center; font-size:14px; margin:center">
-                            <thead>
-                                <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                    Índice -
-                                    <?php
-                                    for ($i = 0; $i < count($data); $i++) {
-                                        if ($data[$i]['id'] == $instituicao) {
-                                            ?> <?php echo $data[$i]['nome'] ?>
-                                            (0 à 100)
+                </div>
+                <!--terminou menu esquerdo-->
+
+                <div class="col-9 row titulo">
+                    <div class="col-12">
+                        <div class="col-5" style="margin:auto">
+                            <table class="table table-bordered" style="text-align:center; font-size:14px; margin:center">
+                                <thead>
+                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                        Índice -
+                                        <?php
+                                        for ($i = 0; $i < count($data); $i++) {
+                                            if ($data[$i]['id'] == $instituicao) {
+                                                ?> <?php echo $data[$i]['nome'] ?>
+                                                (0 à 100)
+                                            <?php
+                                            }
+                                            ?>
                                         <?php
                                         }
                                         ?>
-                                    <?php
-                                    }
-                                    ?>
-                                </th>
-                            </thead>
-                            <tbody style="background-color: white;">
-                                <tr>
-                                    <td>
-                                        FOCUS 2019
-                                    </td>
-                                    <td>
-                                        IBOPE 2018
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <?php echo $instituicaoSelecionada['indice_confianca'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $instituicaoSelecionada['indice_confianca_ibope'] ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white;">
+                                    <tr>
+                                        <td>
+                                            FOCUS 2019
+                                        </td>
+                                        <td>
+                                            IBOPE 2018
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $instituicaoSelecionada['indice_confianca'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $instituicaoSelecionada['indice_confianca_ibope'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-7">
+                            <div id="columnchart_material" style="width: 100vh; height:450px"></div>
+                        </div>
+                        <br>
                     </div>
-                    <div class="col-7">
-                        <div id="columnchart_material" style="width: 100vh; height:450px"></div>
+                    <div class="col-12" style="margin:auto">
+                        <!-- tabela-->
+                        <?php
+                        if (!empty($religiao)) {
+                            ?>
+                            <table class="table table-bordered" style="text-align:center; font-size:12px">
+                                <thead>
+                                    <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                        Católica
+                                    </th>
+                                    <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                        Evangélica
+                                    </th>
+                                    <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                        Luterana
+                                    </th>
+                                    <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                        Outra
+                                    </th>
+                                    <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                        Não tenho religião
+                                    </th>
+                                    <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                        Muitas religiões / Não tenho religião específica
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white">
+                                    <tr>
+                                        <td>
+                                            <?php echo $religiao['catolica'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $religiao['evangelica'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $religiao['luterana'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $religiao['outra'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $religiao['nao_tenho_religiao'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $religiao['muitas_religioes_nenhuma_especifica'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <?php
+                        } else {
+                            ?>
+                            <table class="table table-bordered" style="text-align:center; font-size:14px">
+                                <thead>
+                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                        Sexo (%)
+                                    </th>
+                                    <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
+                                        Faixa etária (%)
+                                    </th>
+                                    <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                        Renda famíliar (R$) (%)
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white">
+                                    <tr>
+                                        <td>
+                                            Masc.
+                                        </td>
+                                        <td>
+                                            Fem.
+                                        </td>
+                                        <td>
+                                            16-24
+                                        </td>
+                                        <td>
+                                            25-29
+                                        </td>
+                                        <td>
+                                            30-39
+                                        </td>
+                                        <td>
+                                            40-49
+                                        </td>
+                                        <td>
+                                            50+
+                                        </td>
+                                        <td>
+                                            Até 2000
+                                        </td>
+                                        <td>
+                                            2000-6000
+                                        </td>
+                                        <td>
+                                            +6000
+                                        </td>
+                                        <td>
+                                            Recusou
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $sexo['masculino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $sexo['feminino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['16_24'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['25_29'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['30_39'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['40_49'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['_50'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['ate_2000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['2000_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['mais_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['recusou'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
+    <br>
+    <br>
+    <div class="loader"></div>
+    <!-- inicio segundo grafico-->
+    <?php
+    if (!empty($grupo)) {
+        ?>
+        <div class="container-fluid row">
+            <div class="col-10 offset-1 row">
+                <div class="col-3" style="text-align:center">
+                    <h4>
+                        Grupos sociais
+                    </h4>
+                </div>
+            </div>
+            <div class="col-10 offset-1 row ">
+                <div class="col-3 ">
+                    <?php
+                    for ($i = 0; $i < count($data2); $i++) {
+                        if ($data2[$i]['id'] == $grupo) {
+                            ?>
+                            <div class="topicos selecionado">
+                                <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                            </div>
+                        <?php
+                        } else {
+                            ?>
+                            <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
+                                <div class="topicos">
+                                    <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                                    <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                                </div>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <div class="col-9 row titulo">
+                    <div class="col-12">
+                        <div class="col-5" style="margin: auto">
+                            <table class="table table-bordered" style="text-align:center; font-size:14px">
+                                <thead>
+                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                        Índice -
+                                        <?php
+                                        for ($i = 0; $i < count($data2); $i++) {
+                                            if ($data2[$i]['id'] == $grupo) {
+                                                ?> <?php echo $data2[$i]['nome'] ?>
+                                                (0 à 100)
+                                            <?php
+                                            }
+                                            ?>
+                                        <?php
+                                        }
+                                        ?>
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white">
+                                    <tr>
+                                        <td>
+                                            FOCUS 2019
+                                        </td>
+                                        <td>
+                                            IBOPE 2018
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $grupoSelecionado['indice_confianca'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $grupoSelecionado['indice_confianca_ibope'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-7" style="margin: auto">
+                            <div id="barchart_values" style="width: 600px; height:400px"></div>
+                        </div>
+
                     </div>
                     <br>
-                </div>
-                <div class="col-12" style="margin:auto">
-                    <!-- tabela-->
-                    <?php
-                    if (!empty($religiao)) {
-                        ?>
-                        <table class="table table-bordered" style="text-align:center; font-size:12px">
-                            <thead>
-                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                    Católica
-                                </th>
-                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                    Evangélica
-                                </th>
-                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                    Luterana
-                                </th>
-                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                    Outra
-                                </th>
-                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                    Não tenho religião
-                                </th>
-                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                    Muitas religiões / Não tenho religião específica
-                                </th>
-                            </thead>
-                            <tbody style="background-color: white">
-                                <tr>
-                                    <td>
-                                        <?php echo $religiao['catolica'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $religiao['evangelica'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $religiao['luterana'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $religiao['outra'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $religiao['nao_tenho_religiao'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $religiao['muitas_religioes_nenhuma_especifica'] ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    <?php
-                    } else {
-                        ?>
-                        <table class="table table-bordered" style="text-align:center; font-size:14px">
+                    <br>
+                    <div class="col-12" style="margin: auto">
+                        <table class=" table table-bordered" style="text-align:center; font-size:14px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
                                     Sexo (%)
@@ -381,223 +583,46 @@ $religiao = $stmt->fetch(PDO::FETCH_ASSOC);
                                 </tr>
                                 <tr>
                                     <td>
-                                        <?php echo $sexo['masculino'] ?>
+                                        <?php echo $sexo2['masculino'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $sexo['feminino'] ?>
+                                        <?php echo $sexo2['feminino'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['16_24'] ?>
+                                        <?php echo $faixa_etaria2['16_24'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['25_29'] ?>
+                                        <?php echo $faixa_etaria2['25_29'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['30_39'] ?>
+                                        <?php echo $faixa_etaria2['30_39'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['40_49'] ?>
+                                        <?php echo $faixa_etaria2['40_49'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $faixa_etaria['_50'] ?>
+                                        <?php echo $faixa_etaria2['_50'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $renda_familiar['ate_2000'] ?>
+                                        <?php echo $renda_familiar2['ate_2000'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $renda_familiar['2000_6000'] ?>
+                                        <?php echo $renda_familiar2['2000_6000'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $renda_familiar['mais_6000'] ?>
+                                        <?php echo $renda_familiar2['mais_6000'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $renda_familiar['recusou'] ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <br>
-    <!-- inicio segundo grafico-->
-    <div class="container-fluid row">
-        <div class="col-10 offset-1 row">
-            <div class="col-3" style="text-align:center">
-                <h4>
-                    Grupos sociais
-                </h4>
-            </div>
-        </div>
-        <div class="col-10 offset-1 row ">
-            <div class="col-3 ">
-                <?php
-                for ($i = 0; $i < count($data2); $i++) {
-                    if ($data2[$i]['id'] == $grupo) {
-                        ?>
-                        <div class="topicos selecionado">
-                            <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
-                            <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                        </div>
-                    <?php
-                    } else {
-                        ?>
-                        <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>">
-                            <div class="topicos">
-                                <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
-                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                            </div>
-                        </a>
-                    <?php
-                    }
-                    ?>
-                <?php
-                }
-                ?>
-            </div>
-            <div class="col-9 row titulo">
-                <div class="col-12">
-                    <div class="col-5" style="margin: auto">
-                        <table class="table table-bordered" style="text-align:center; font-size:14px">
-                            <thead>
-                                <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                    Índice -
-                                    <?php
-                                    for ($i = 0; $i < count($data2); $i++) {
-                                        if ($data2[$i]['id'] == $grupo) {
-                                            ?> <?php echo $data2[$i]['nome'] ?>
-                                            (0 à 100)
-                                        <?php
-                                        }
-                                        ?>
-                                    <?php
-                                    }
-                                    ?>
-                                </th>
-                            </thead>
-                            <tbody style="background-color: white">
-                                <tr>
-                                    <td>
-                                        FOCUS 2019
-                                    </td>
-                                    <td>
-                                        IBOPE 2018
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <?php echo $grupoSelecionado['indice_confianca'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $grupoSelecionado['indice_confianca_ibope'] ?>
+                                        <?php echo $renda_familiar2['recusou'] ?>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-7" style="margin: auto">
-                        <div id="barchart_values" style="width: 600px; height:400px"></div>
-                    </div>
-
-                </div>
-                <br>
-                <br>
-                <div class="col-12" style="margin: auto">
-                    <table class=" table table-bordered" style="text-align:center; font-size:14px">
-                        <thead>
-                            <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                Sexo (%)
-                            </th>
-                            <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                Faixa etária (%)
-                            </th>
-                            <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                Renda famíliar (R$) (%)
-                            </th>
-                        </thead>
-                        <tbody style="background-color: white">
-                            <tr>
-                                <td>
-                                    Masc.
-                                </td>
-                                <td>
-                                    Fem.
-                                </td>
-                                <td>
-                                    16-24
-                                </td>
-                                <td>
-                                    25-29
-                                </td>
-                                <td>
-                                    30-39
-                                </td>
-                                <td>
-                                    40-49
-                                </td>
-                                <td>
-                                    50+
-                                </td>
-                                <td>
-                                    Até 2000
-                                </td>
-                                <td>
-                                    2000-6000
-                                </td>
-                                <td>
-                                    +6000
-                                </td>
-                                <td>
-                                    Recusou
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <?php echo $sexo2['masculino'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $sexo2['feminino'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $faixa_etaria2['16_24'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $faixa_etaria2['25_29'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $faixa_etaria2['30_39'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $faixa_etaria2['40_49'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $faixa_etaria2['_50'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $renda_familiar2['ate_2000'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $renda_familiar2['2000_6000'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $renda_familiar2['mais_6000'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $renda_familiar2['recusou'] ?>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <br>
     <br>
 </body>
