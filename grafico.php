@@ -30,8 +30,8 @@ if (!empty($grupo)) {
     $stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' and ano =' . $_GET['ano'] . ' ORDER BY nome ASC ');
     $grupoSelecionado =  $stmt->fetch(PDO::FETCH_ASSOC);
 } else {
-    $grupoSelecionado = !empty($data2)? $data2[0] : null;
-    $grupo = !empty($data2) ? $data2[0]['id']: null;
+    $grupoSelecionado = !empty($data2) ? $data2[0] : null;
+    $grupo = !empty($data2) ? $data2[0]['id'] : null;
 }
 if (!empty($grupo)) {
     $stmt = $conexao->query('SELECT * FROM grupo_social WHERE id = ' . $grupo . ' ORDER BY nome ASC ');
@@ -276,10 +276,10 @@ if (!empty($grupo)) {
                                 <tbody style="background-color: white;">
                                     <tr>
                                         <td>
-                                            FOCUS 2019
+                                            FOCUS <?php echo $instituicaoSelecionada['ano'] ?>
                                         </td>
                                         <td>
-                                            IBOPE 2018
+                                            IBOPE <?php echo $instituicaoSelecionada['ano'] ?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -508,10 +508,10 @@ if (!empty($grupo)) {
                                 <tbody style="background-color: white">
                                     <tr>
                                         <td>
-                                            FOCUS 2019
+                                            FOCUS <?php echo $grupoSelecionado['ano'] ?>
                                         </td>
                                         <td>
-                                            IBOPE 2018
+                                            IBOPE <?php echo $grupoSelecionado['ano'] ?>
                                         </td>
                                     </tr>
                                     <tr>
