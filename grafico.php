@@ -189,6 +189,7 @@ if (!empty($grupo)) {
 </head>
 
 <body onload="hideLoad()">
+    <div class="loader"></div>
     <div class="submenu">
         <div class="container">
             <div class="row">

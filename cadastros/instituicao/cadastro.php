@@ -18,8 +18,13 @@ if (
     $ano = $_POST['ano'];
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
+    if(isset($_FILES['icone'])){
+        move_uploaded_file($_FILES['icone']['tmp_name'],'../../assets/image/Ícones_Focus/'.$_FILES['icone']['name']);
+    }
+    
+
     if (!isset($_POST['id']) || empty($_POST['id'])) {
-        $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)');
+        $stmt = $conexao->prepare('INSERT INTO instituicao (nome,nenhuma_confianca,quase_nenhuma_confianca,alguma_confianca,muita_confianca,nao_conheco,ano,indice_confianca,indice_confianca_ibope,icone) VALUES ( ?,?, ?, ?, ?, ?, ?, ?, ?,?)');
         $stmt->bindValue(1, ($nome));
         $stmt->bindValue(2, str_replace(',', '.', $nenhuma_confianca));
         $stmt->bindValue(3, str_replace(',', '.', $quase_nenhuma_confianca));
@@ -29,6 +34,7 @@ if (
         $stmt->bindValue(7, ($ano));
         $stmt->bindValue(8, str_replace(',', '.', $indice_confianca));
         $stmt->bindValue(9, str_replace(',', '.', $indice_confianca_ibope));
+        $stmt->bindValue(10, $_FILES['icone']['name']);
     } else {
         $id = $_POST['id'];
         $stmt = $conexao->prepare('UPDATE instituicao SET nome = ?, nenhuma_confianca = ?,quase_nenhuma_confianca = ?, alguma_confianca = ?, muita_confianca = ?, nao_conheco = ?, ano = ?, indice_confianca = ?, indice_confianca_ibope = ? WHERE id = ?');
@@ -115,7 +121,7 @@ if (!empty($_GET['editar'])) {
         </div>
     </div>
 
-    <form class=" col-7 container" style="font-family: verdana; color: #005FA4;" method="POST">
+    <form class=" col-7 container" style="font-family: verdana; color: #005FA4;" method="POST" enctype="multipart/form-data">
         <input name="id" value="<?php echo $instituicao['id'] ?>" type="hidden">
         <div class="form-group">
             <label>Digite nome da instituicão</label>
@@ -153,8 +159,18 @@ if (!empty($_GET['editar'])) {
             <label>Indice de confiança do Ibope</label>
             <input required name="indice_confianca_ibope" value="<?php echo $instituicao['indice_confianca_ibope'] ?>" class="form-control" placeholder="Digite valor">
         </div>
-
+        <?php
+        if(!isset($_GET['editar'])){
+        ?>
+        <div class="form-group">
+            <label>Imagem</label>
+            <input  type="file" required name="icone" class="form-control" placeholder="imagem">
+        </div>
+        <?php
+        }
+        ?>
         <button type="submit" class="btn btn-primary">Salvar</button>
+
         <br>
         <br>
     </form>

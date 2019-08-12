@@ -5,4 +5,9 @@ $(document).scroll(() => {
         $('.navbar-botton__fixed').removeClass('menu_fixo');
     }
 })
-function hideLoad(){$('.loader').hide();}
+function hideLoad(){
+    setTimeout(() => {
+        $('.loader').hide();
+    }, 1000);
+    
+}
