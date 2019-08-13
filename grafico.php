@@ -239,7 +239,7 @@ if (!empty($grupo)) {
                 </div>
             </div>
             <div class="col-10 offset-1 row">
-                <div class="col-3">
+                <div class="col-3" >
                     <?php
                     for ($i = 0; $i < count($data); $i++) {
                         if ($data[$i]['id'] == $instituicao) {
@@ -486,7 +486,7 @@ if (!empty($grupo)) {
                             ?>
                             <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
                                 <div class="topicos">
-                                    <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                    <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                     <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                                 </div>
                             </a>

@@ -18,8 +18,16 @@ if (!empty($_GET["delete"])) {
         exit;
     }
 }
-$stmt = $conexao->query('SELECT * FROM grupo_social');
+if (isset($_GET['ano'])) {
+    $ano = $_GET['ano'];
+    $stmt = $conexao->query('SELECT * from grupo_social WHERE ano = ' . $ano);
+} else {
+    $stmt = $conexao->query('SELECT * FROM grupo_social');
+}
 $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $conexao->query('SELECT distinct ano FROM grupo_social ORDER BY ano ASC ');
+$ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 <!DOCTYPE html>
@@ -82,8 +90,31 @@ $grupoSocial = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
             </div>
         <?php } ?>
-        <a class="btn btn-primary" style="margin: 40px; font-family: verdana;" href=" cadastro.php">Cadastrar
-        </a>
+        <div class="col-6 row" style="margin: 40px;">
+            <div class="col-3">
+                <a class="btn btn-primary" style=" font-family: verdana" href="cadastro.php">Cadastrar
+                </a>
+            </div>
+            <div class="col-3">
+                <div class=" dropdown">
+                    <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ano
+                    </a>
+                    <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
+                        <?php
+                        for ($i = 0; $i < count($ano); $i++) {
+                            ?>
+                            <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
+                                <?php echo $ano[$i]['ano'] ?>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th>
