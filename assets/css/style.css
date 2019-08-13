@@ -144,3 +144,11 @@
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 1000px) 
+{
+  .hidden-xs {
+      display: none;
+  }
+  
+}

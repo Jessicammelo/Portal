@@ -231,15 +231,15 @@ if (!empty($grupo)) {
     if (!empty($instituicao)) {
         ?>
         <div class="container-fluid row">
-            <div class="col-10 offset-1 row">
+            <div class="col-10 offset-1 hidden-xs row">
                 <div class="col-3" style="text-align:center">
                     <h4>
                         Instituições
                     </h4>
                 </div>
             </div>
-            <div class="col-10 offset-1 row">
-                <div class="col-3" >
+            <div class="container row">
+                <div class="col-3 hidden-xs">
                     <?php
                     for ($i = 0; $i < count($data); $i++) {
                         if ($data[$i]['id'] == $instituicao) {
@@ -266,7 +266,7 @@ if (!empty($grupo)) {
                 </div>
                 <!--terminou menu esquerdo-->
 
-                <div class="col-9 row titulo">
+                <div class="col-lg-9 col-md-9 col-12 row titulo">
                     <div class="col-12">
                         <div class="col-5" style="margin:auto">
                             <table class="table table-bordered" style="text-align:center; font-size:14px; margin:center">
@@ -306,8 +306,8 @@ if (!empty($grupo)) {
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-7">
-                            <div id="columnchart_material" style="width: 110vh; height:500px"></div>
+                        <div class="col-12">
+                            <div id="columnchart_material" style="width: 110%; height:500px"></div>
                         </div>
                     </div>
                     <div class="col-12" style="margin:auto">
