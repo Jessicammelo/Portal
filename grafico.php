@@ -108,7 +108,7 @@ if (!empty($grupo)) {
                 colors: ['#005fa4'],
                 animation: {
                     startup: true,
-                    duration: 4000,
+                    duration: 3000,
                     easing: 'out',
                 },
 
@@ -169,16 +169,19 @@ if (!empty($grupo)) {
             var view = new google.visualization.DataView(data);
 
             var options = {
+
                 title: "Índice de Confiança nesses grupos sociais",
+               
                 bar: {
-                    groupWidth: "95%"
+                    groupWidth: "78%"
+
                 },
                 legend: {
                     position: "none"
                 },
                 animation: {
                     startup: true,
-                    duration: 4000,
+                    duration: 3000,
                     easing: 'out',
                 },
             };
@@ -195,12 +198,12 @@ if (!empty($grupo)) {
             <div class="row">
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; color: white" src="assets/image/Ícones_Focus/Focus@6x-8.png">
+                        <img style="width: 150px; color: white" src="assets/image/icones/Focus@6x-8.png">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px;  float:right; color: white" src="assets/image/Ícones_Focus/FURB@6x-8.png">
+                        <img style="width: 150px;  float:right; color: white" src="assets/image/icones/FURB@6x-8.png">
 
                     </div>
                 </div>
@@ -209,10 +212,19 @@ if (!empty($grupo)) {
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1  ">
-            <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="index.php#"><i class="fas fa-chalkboard"> Página inicial </i></a>
-            </button>
+        <div class="col-md-10 offset-1 row ">
+            <div class="col-8 row">
+                <div class="col-4 ">
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="index.php#"><i class="fas fa-step-backward"> Página inicial </i></a>
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <?php
@@ -233,7 +245,7 @@ if (!empty($grupo)) {
                         if ($data[$i]['id'] == $instituicao) {
                             ?>
                             <div class="topicos selecionado">
-                                <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
+                                <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
                             </div>
                         <?php
@@ -241,7 +253,7 @@ if (!empty($grupo)) {
                             ?>
                             <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
                                 <div class="topicos">
-                                    <img style="width: 30px" src="assets/image/Ícones_Focus/<?php echo $data[$i]['icone'] ?>">
+                                    <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
                                     <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
                                 </div>
                             </a>
@@ -259,7 +271,7 @@ if (!empty($grupo)) {
                         <div class="col-5" style="margin:auto">
                             <table class="table table-bordered" style="text-align:center; font-size:14px; margin:center">
                                 <thead>
-                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                    <th class="topicos" colspan="2" style=" border-bottom: 3px solid #FFCC00">
                                         Índice -
                                         <?php
                                         for ($i = 0; $i < count($data); $i++) {
@@ -295,9 +307,8 @@ if (!empty($grupo)) {
                             </table>
                         </div>
                         <div class="col-7">
-                            <div id="columnchart_material" style="width: 100vh; height:450px"></div>
+                            <div id="columnchart_material" style="width: 110vh; height:500px"></div>
                         </div>
-                        <br>
                     </div>
                     <div class="col-12" style="margin:auto">
                         <!-- tabela-->
@@ -444,7 +455,7 @@ if (!empty($grupo)) {
             </div>
         </div>
     <?php } ?>
-
+    <br>
     <br>
     <br>
     <div class="loader"></div>
@@ -467,7 +478,7 @@ if (!empty($grupo)) {
                         if ($data2[$i]['id'] == $grupo) {
                             ?>
                             <div class="topicos selecionado">
-                                <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                                <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                 <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                             </div>
                         <?php
@@ -475,7 +486,7 @@ if (!empty($grupo)) {
                             ?>
                             <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
                                 <div class="topicos">
-                                    <img style="width: 30px; color: white" src="assets/image/Ícones_Focus/<?php echo $data2[$i]['icone'] ?>">
+                                    <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                     <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                                 </div>
                             </a>
@@ -527,13 +538,11 @@ if (!empty($grupo)) {
                             </table>
                         </div>
                         <div class="col-7" style="margin: auto">
-                            <div id="barchart_values" style="width: 600px; height:400px"></div>
+                            <div id="barchart_values" style="width: 650px; height:500px"></div>
                         </div>
-
                     </div>
-                    <br>
-                    <br>
                     <div class="col-12" style="margin: auto">
+                    <br>                    
                         <table class=" table table-bordered" style="text-align:center; font-size:14px">
                             <thead>
                                 <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">

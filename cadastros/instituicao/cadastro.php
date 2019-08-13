@@ -19,7 +19,7 @@ if (
     $indice_confianca = $_POST['indice_confianca'];
     $indice_confianca_ibope = $_POST['indice_confianca_ibope'];
     if(isset($_FILES['icone'])){
-        move_uploaded_file($_FILES['icone']['tmp_name'],'../../assets/image/Ícones_Focus/'.$_FILES['icone']['name']);
+        move_uploaded_file($_FILES['icone']['tmp_name'],'../../assets/image/icones/'.$_FILES['icone']['name']);
     }
     
 
@@ -94,12 +94,12 @@ if (!empty($_GET['editar'])) {
             <div class="row">
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+                        <img style="width: 150px; color: white" src="../../assets/image/icones/Focus@6x-8.png">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/icones/FURB@6x-8.png">
                     </div>
                 </div>
             </div>

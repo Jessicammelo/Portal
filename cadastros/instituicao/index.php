@@ -43,12 +43,12 @@ $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; color: white" src="../../assets/image/Ícones_Focus/Focus@6x-8.png">
+                        <img style="width: 150px; color: white" src="../../assets/image/icones/Focus@6x-8.png">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/Ícones_Focus/FURB@6x-8.png">
+                        <img style="width: 150px;  float:right; color: white" src="../../assets/image/icones/FURB@6x-8.png">
                     </div>
                 </div>
             </div>
