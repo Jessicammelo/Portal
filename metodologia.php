@@ -44,7 +44,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </button>
         </div>
     </div>
-    <div class="col-8 offset-1">
+    <div class=" container col-9">
         <?php
         for ($i = 0; $i < count($metodologia); $i++) {
             ?>
