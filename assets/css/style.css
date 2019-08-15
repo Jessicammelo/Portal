@@ -127,7 +127,7 @@
     position: fixed;
     border: 16px solid #f3f3f3;
     /* Light grey */
-    border-top: 16px solid #3498db;
+    border-top: 16px solid #005fa4;
     /* Blue */
     border-radius: 50%;
     width: 80px;
@@ -145,10 +145,93 @@
     }
 }
 
-@media (max-width: 1000px) 
-{
-  .hidden-xs {
-      display: none;
-  }
-  
+@media (max-width: 1000px) {
+    .hidden-xs {
+        display: none;
+    }
 }
+
+/*/@media (width:1000px)
+//{
+    //.topicoResp {
+      //  display:inline-block; 
+    //}
+/}*/
+
+
+
+/* Coloca os itens da lista do Menu lado a lado, e flutua os itens para a esquerda */
+
+ul.topnav li {
+    display: none;
+    margin-left: 0.5em;
+    font-size: 0.9em;
+    float: left;
+}
+
+/* Estilo dos links dentro da lista */
+
+ul.topnav li a {
+    display: block;
+    color: #005fa4;
+    text-decoration: none;
+   
+    
+    padding: 0 0.3em 0 0.3em;
+    outline: 0;
+}
+
+
+
+/* Esconde os itens da lista quando a resolução da tela for pequena */
+
+ul.topnav li.icon {
+    display: none;
+}
+
+/* Quando a tela é menor do que 680 pixels de largura, ocultar todos os itens da lista. Mostra o item da lista que contém o link para abrir e fechar a nav superior (li.icon) */
+
+@media screen and (max-width:1000px) {
+    ul.topnav li {
+        display: none;
+    }
+    ul.topnav li.icon {
+        float: left;
+        /*O ícone será exibido ao lado esquerdo*/
+        display: inline-block;
+    }
+}
+
+/*A classe responsiva é adicionada à ul superior com o JavaScript quando o usuário clica no ícone. Esta classe faz com que os itens principais do menu fiquem ok em telas menores */
+
+@media screen and (max-width:680px) {
+    ul.topnav.responsive {
+        position: relative;
+        
+        height: auto;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        line-height: 5px;
+        width: 100%;
+    }
+    ul.topnav.responsive li.icon {
+        position:relative;
+        right: 0;
+        top: 0;
+    }
+    ul.topnav.responsive li {
+        text-align:left;
+        float: none;
+        padding: 0;
+        display: inline;
+    }
+    ul.topnav.responsive li a {
+        display: block;
+        padding: 0;
+        text-align: left;
+        line-height: 30px;
+        text-align: left;
+    }
+}
+
+/*FIM DO MENU RESPONSIVO*/

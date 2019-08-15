@@ -231,13 +231,48 @@ if (!empty($grupo)) {
     if (!empty($instituicao)) {
         ?>
         <div class="container">
-            <div class="col-10 hidden-xs ">
+            <div class="col-10  ">
                 <!--hidden-xs faz os tópicos desaparecer da tela-->
                 <div class="col-3">
                     <h4>
                         Instituições
                     </h4>
                 </div>
+            </div>
+            <div class="col-8">
+                <nav>
+                    <ul class="topnav">
+                        <?php
+                        for ($i = 0; $i < count($data); $i++) {
+                            if ($data[$i]['id'] == $instituicao) {
+                                ?>
+                                <li>
+                                    <div class="topicos"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                                        <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                                    </div>
+                                </li>
+                            <?php
+                            } else {
+                                ?>
+                                <li><a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                                        <div class="topicos">
+                                            <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                        <?php
+                        }
+                        ?>
+                        <li class="icon">
+                            <a href="javascript:void(0);" onclick="myFunction()">&#9776;
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
             <div>
                 <div class="row">
@@ -469,12 +504,47 @@ if (!empty($grupo)) {
         if (!empty($grupo)) {
             ?>
             <div class="container">
-                <div class="col-10 hidden-xs">
+                <div class="col-10">
                     <div class="col-3">
                         <h4>
                             Grupos sociais
                         </h4>
                     </div>
+                </div>
+                <div class="col-8">
+                    <nav>
+                        <ul class="topnav">
+                            <?php
+                            for ($i = 0; $i < count($data2); $i++) {
+                                if ($data2[$i]['id'] == $grupo) {
+                                    ?>
+                                    <li>
+                                        <div class="topicos"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                            <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                                        </div>
+                                    </li>
+                                <?php
+                                } else {
+                                    ?>
+                                    <li><a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
+                                            <div class="topicos">
+                                                <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            <?php
+                            }
+                            ?>
+                            <li class="icon">
+                                <a href="javascript:void(0);" onclick="myFunction()">&#9776;
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 <div>
                     <div class="row">
