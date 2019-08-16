@@ -158,8 +158,6 @@
     //}
 /}*/
 
-
-
 /* Coloca os itens da lista do Menu lado a lado, e flutua os itens para a esquerda */
 
 ul.topnav li {
@@ -169,19 +167,18 @@ ul.topnav li {
     float: left;
 }
 
+ul.topnav.li.selecionado {
+    background: #4682B4!important;
+}
 /* Estilo dos links dentro da lista */
 
-ul.topnav li a {
+ul.topnav li a{
     display: block;
     color: #005fa4;
     text-decoration: none;
-   
-    
     padding: 0 0.3em 0 0.3em;
     outline: 0;
 }
-
-
 
 /* Esconde os itens da lista quando a resolução da tela for pequena */
 
@@ -207,7 +204,6 @@ ul.topnav li.icon {
 @media screen and (max-width:680px) {
     ul.topnav.responsive {
         position: relative;
-        
         height: auto;
         padding-top: 15px;
         padding-bottom: 10px;
@@ -215,12 +211,13 @@ ul.topnav li.icon {
         width: 100%;
     }
     ul.topnav.responsive li.icon {
-        position:relative;
+        position: relative;
         right: 0;
         top: 0;
+       
     }
     ul.topnav.responsive li {
-        text-align:left;
+        text-align: left;
         float: none;
         padding: 0;
         display: inline;
@@ -235,3 +232,4 @@ ul.topnav li.icon {
 }
 
 /*FIM DO MENU RESPONSIVO*/
+

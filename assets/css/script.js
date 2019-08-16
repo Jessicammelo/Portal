@@ -5,12 +5,17 @@ $(document).scroll(() => {
         $('.navbar-botton__fixed').removeClass('menu_fixo');
     }
 })
-function hideLoad(){
+function hideLoad() {
     setTimeout(() => {
         $('.loader').hide();
     }, 1000);
-    
+
 }
 function myFunction() {
+
     document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
+
+
+
 }
+

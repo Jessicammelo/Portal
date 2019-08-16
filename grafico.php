@@ -329,7 +329,7 @@ if (!empty($grupo)) {
                                                 FOCUS <?php echo $instituicaoSelecionada['ano'] ?>
                                             </td>
                                             <td>
-                                                IBOPE <?php echo $instituicaoSelecionada['ano'] ?>
+                                                IBOPE <?php echo --$instituicaoSelecionada['ano'] ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -512,21 +512,21 @@ if (!empty($grupo)) {
                     </div>
                 </div>
                 <div class="col-8">
-                    <nav>
+                    <nav id="menu">
                         <ul class="topnav">
                             <?php
                             for ($i = 0; $i < count($data2); $i++) {
                                 if ($data2[$i]['id'] == $grupo) {
                                     ?>
                                     <li>
-                                        <div class="topicos"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                        <div class="topicos selecionado"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                             <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                                         </div>
                                     </li>
                                 <?php
                                 } else {
                                     ?>
-                                    <li><a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
+                                    <li><a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
                                             <div class="topicos">
                                                 <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                                 <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
@@ -560,7 +560,7 @@ if (!empty($grupo)) {
                                 <?php
                                 } else {
                                     ?>
-                                    <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $instituicao ?>&ano=<?php echo $_GET['ano'] ?>">
+                                    <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
                                         <div class="topicos">
                                             <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
                                             <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
@@ -599,7 +599,7 @@ if (!empty($grupo)) {
                                                     FOCUS <?php echo $grupoSelecionado['ano'] ?>
                                                 </td>
                                                 <td>
-                                                    IBOPE <?php echo $grupoSelecionado['ano'] ?>
+                                                    IBOPE <?php echo --$grupoSelecionado['ano'] ?>
                                                 </td>
                                             </tr>
                                             <tr>
