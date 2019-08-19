@@ -35,43 +35,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="col-5">
-        <nav>
-            <ul class="topnav">
-                <?php
-                for ($i = 0; $i < count($data); $i++) {
-                    ?>
-                    <li>
-                        <div class="col-6 textoIndex">
-                            <br>
-                            <h3>SOBRE O PROJETO</h3>
-                            Tem o objetivo de aprofundar a relação dialógica,
-                            incorporando a extensão as práticas de ensino e pesquisa dos
-                            cursos da FURB diretamente envolvidas na sua realização.
-                            <br>
-                            Após obter as informações, socializa-las de modo a permitir
-                            que a comunidade regional se conheça e reconheça na interpretação
-                            de seus resultados.
-                            <br>
-                            (PROJETO DE EXTENSÃO APROVADO NO EDITAL FURB PROPEX – 2018)
-                            <br>
-                            <br>
-                        </div>
-                    </li>
-                <?php
-                }
-                ?>
-                <br>
-                <br>
-                <li class="icon">
-                    <a href="javascript:void(0);" onclick="myFunction()">&#9776;
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="row" style="margin-left: 45px; margin-right: 25px">
-        <div class="col-6 textoIndex hidden-xs">
+        <div class="row" style="margin-left: 45px; margin-right: 25px">
+        <div class="col-md-6 col-xs-12 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
             Tem o objetivo de aprofundar a relação dialógica,
@@ -87,11 +52,11 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
         </div>
 
-        <div class="col-6 row">
+        <div class="col-md-6 col-xs-12 row">
             <?php
             for ($i = 0; $i < count($data); $i++) {
                 ?>
-                <div class="col-8 offset-2">
+                <div class="col-md-8 offset-md-2 col-xs-12">
                     <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Índice de Confiança nas Instituicões Brasileiras
                         ano <?php echo $data[$i]['ano'] ?></a>
                 </div>

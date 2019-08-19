@@ -12,10 +12,10 @@ function hideLoad() {
 
 }
 function myFunction() {
+    document.getElementById("navtop").classList.toggle("responsive");
+}
 
-    document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
-
-
-
+function myFunction2() {
+    document.getElementById("navtop2").classList.toggle("responsive");
 }
 

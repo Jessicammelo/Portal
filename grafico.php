@@ -241,7 +241,7 @@ if (!empty($grupo)) {
             </div>
             <div class="col-8">
                 <nav>
-                    <ul class="topnav">
+                    <ul class="topnav" id="navtop">
                         <?php
                         for ($i = 0; $i < count($data); $i++) {
                             if ($data[$i]['id'] == $instituicao) {
@@ -513,7 +513,7 @@ if (!empty($grupo)) {
                 </div>
                 <div class="col-8">
                     <nav id="menu">
-                        <ul class="topnav">
+                        <ul class="topnav" id="navtop2">
                             <?php
                             for ($i = 0; $i < count($data2); $i++) {
                                 if ($data2[$i]['id'] == $grupo) {
@@ -540,7 +540,7 @@ if (!empty($grupo)) {
                             }
                             ?>
                             <li class="icon">
-                                <a href="javascript:void(0);" onclick="myFunction()">&#9776;
+                                <a href="javascript:void(0);" onclick="myFunction2()">&#9776;
                                 </a>
                             </li>
                         </ul>
