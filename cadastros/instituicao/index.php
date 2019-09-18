@@ -85,9 +85,9 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php
         if (isset($_GET['erro'])) {
             ?>
-            <div class="alert alert-danger" role="alert">
-                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
-            </div>
+        <div class="alert alert-danger" role="alert">
+            Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
+        </div>
         <?php } ?>
         <div class="col-6 row" style="margin: 40px;">
             <div class="col-3">
@@ -103,9 +103,9 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         for ($i = 0; $i < count($ano); $i++) {
                             ?>
-                            <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
-                                <?php echo $ano[$i]['ano'] ?>
-                            </a>
+                        <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
+                            <?php echo $ano[$i]['ano'] ?>
+                        </a>
                         <?php
                         }
                         ?>
@@ -138,42 +138,41 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 for ($i = 0; $i < count($instituicao); $i++) {
                     ?>
-                    <tr>
-                        <td>
-                            <?php echo $i + 1;
+                <tr>
+                    <td>
+                        <?php echo $i + 1;
                             ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['nome'];
+                    </td>
+                    <td>
+                        <?php echo $instituicao[$i]['nome'];
                             ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['ano'];
+                    </td>
+                    <td>
+                        <?php echo $instituicao[$i]['ano'];
                             ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['indice_confianca'];
+                    </td>
+                    <td>
+                        <?php echo $instituicao[$i]['indice_confianca'];
                             ?>
-                        </td>
-                        <td>
-                            <?php echo $instituicao[$i]['indice_confianca_ibope'];
+                    </td>
+                    <td>
+                        <?php echo $instituicao[$i]['indice_confianca_ibope'];
                             ?>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Selecione
-                                </a>
-                                <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
-                                    <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
-                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
-                                    <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
-                                    <a class="dropdown-item topicos" href="../igreja_religiao/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>" class="btn btn-primary">Religião</a>
-                                </div>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Selecione
+                            </a>
+                            <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
+                                <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
+                                <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
+                                <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
                             </div>
-                        </td>
+                        </div>
+                    </td>
                     <?php
                     }
                     ?>

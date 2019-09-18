@@ -4,7 +4,7 @@ $(document).scroll(() => {
     } else {
         $('.navbar-botton__fixed').removeClass('menu_fixo');
     }
-})
+});
 function hideLoad() {
     setTimeout(() => {
         $('.loader').hide();

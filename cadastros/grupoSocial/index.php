@@ -63,7 +63,7 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
+    <div style="width: 100%" class="breadcrumb navbar-botton__fixed ">
         <div class="col-md-10 offset-1 row">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
@@ -172,7 +172,6 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <a class="dropdown-item topicos" href="../sexo/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Sexo</a>
                                     <a class="dropdown-item topicos" href="../faixaEtaria/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Faixa Etária</a>
                                     <a class="dropdown-item topicos" href="../renda/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>">Renda Familiar</a>
-                                    <a class="dropdown-item topicos" href="../igreja_religiao/index.php?grupo_social=<?php echo $grupoSocial[$i]['id'] ?>" class="btn btn-primary">Religião</a>
                                 </div>
                             </div>
                         </td>

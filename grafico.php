@@ -108,7 +108,7 @@ if (!empty($grupo)) {
                 colors: ['#005fa4'],
                 animation: {
                     startup: true,
-                    duration: 3000,
+                    duration: 4000,
                     easing: 'out',
                 },
 
@@ -181,7 +181,7 @@ if (!empty($grupo)) {
                 },
                 animation: {
                     startup: true,
-                    duration: 3000,
+                    duration: 4000,
                     easing: 'out',
                 },
             };
@@ -230,270 +230,270 @@ if (!empty($grupo)) {
     <?php
     if (!empty($instituicao)) {
         ?>
-        <div class="container">
-            <div class="col-10  ">
-                <!--hidden-xs faz os tópicos desaparecer da tela-->
-                <div class="col-3">
-                    <h4>
-                        Instituições
-                    </h4>
-                </div>
+    <div class="container">
+        <div class="col-10  ">
+            <!--hidden-xs faz os tópicos desaparecer da tela-->
+            <div class="col-3">
+                <h4>
+                    Instituições
+                </h4>
             </div>
-            <div class="col-8">
-                <nav>
-                    <ul class="topnav" id="navtop">
-                        <?php
+        </div>
+        <div class="col-8">
+            <nav>
+                <ul class="topnav" id="navtop">
+                    <?php
                         for ($i = 0; $i < count($data); $i++) {
                             if ($data[$i]['id'] == $instituicao) {
                                 ?>
-                                <li>
-                                    <div class="topicos"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
-                                        <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
-                                    </div>
-                                </li>
-                            <?php
+                    <li>
+                        <div class="topicos selecionado"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                        </div>
+                    </li>
+                    <?php
                             } else {
                                 ?>
-                                <li><a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
-                                        <div class="topicos">
-                                            <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
-                                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
-                                        </div>
-                                    </a>
-                                </li>
-                            <?php
+                    <li><a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                            <div class="topicos">
+                                <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                                <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
                             }
                             ?>
-                        <?php
+                    <?php
                         }
                         ?>
-                        <li class="icon">
-                            <a href="javascript:void(0);" onclick="myFunction()">&#9776;
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div>
-                <div class="row">
-                    <div class="col-3 hidden-xs">
-                        <?php
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="myFunction()">&#9776;
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-3 hidden-xs">
+                    <?php
                         for ($i = 0; $i < count($data); $i++) {
                             if ($data[$i]['id'] == $instituicao) {
                                 ?>
-                                <div class="topicos selecionado">
-                                    <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
-                                    <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
-                                </div>
-                            <?php
-                            } else {
-                                ?>
-                                <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
-                                    <div class="topicos">
-                                        <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
-                                        <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
-                                    </div>
-                                </a>
-                            <?php
-                            }
-                            ?>
-                        <?php
-                        }
-                        ?>
+                    <div class="topicos selecionado">
+                        <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                        <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
                     </div>
-                    <!--terminou menu esquerdo-->
+                    <?php
+                            } else {
+                                ?>
+                    <a class="removerLinha" href="grafico.php?instituicao=<?php echo $data[$i]['id'] ?>&grupo=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                        <div class="topicos">
+                            <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data[$i]['icone'] ?>">
+                            <span class="removerLinha"><?php echo $data[$i]['nome'] ?></span>
+                        </div>
+                    </a>
+                    <?php
+                            }
+                            ?>
+                    <?php
+                        }
+                        ?>
+                </div>
+                <!--terminou menu esquerdo-->
 
-                    <div class="col-lg-9 col-md-9 col-12 titulo row">
-                        <div class="col-12">
-                            <div class="col-5" style="margin:auto">
-                                <table class="table table-bordered" style="text-align:center; font-size:14px;">
-                                    <thead>
-                                        <th class="topicos" colspan="2" style=" border-bottom: 3px solid #FFCC00">
-                                            Índice -
-                                            <?php
+                <div class="col-lg-9 col-md-9 col-12 titulo row">
+                    <div class="col-12">
+                        <div class="col-5" style="margin:auto">
+                            <table class="table table-bordered" style="text-align:center; font-size:14px;">
+                                <thead>
+                                    <th class="topicos" colspan="2" style=" border-bottom: 3px solid #FFCC00">
+                                        Índice -
+                                        <?php
                                             for ($i = 0; $i < count($data); $i++) {
                                                 if ($data[$i]['id'] == $instituicao) {
                                                     ?> <?php echo $data[$i]['nome'] ?>
-                                                    (0 à 100)
-                                                <?php
+                                        (0 à 100)
+                                        <?php
                                                 }
                                                 ?>
-                                            <?php
+                                        <?php
                                             }
                                             ?>
-                                        </th>
-                                    </thead>
-                                    <tbody style="background-color: white;">
-                                        <tr>
-                                            <td>
-                                                FOCUS <?php echo $instituicaoSelecionada['ano'] ?>
-                                            </td>
-                                            <td>
-                                                IBOPE <?php echo --$instituicaoSelecionada['ano'] ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <?php echo $instituicaoSelecionada['indice_confianca'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $instituicaoSelecionada['indice_confianca_ibope'] ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-12">
-                                <div id="columnchart_material" style="width: 110%; height:500px"></div>
-                            </div>
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white;">
+                                    <tr>
+                                        <td>
+                                            FOCUS <?php echo $instituicaoSelecionada['ano'] ?>
+                                        </td>
+                                        <td>
+                                            IBOPE <?php echo --$instituicaoSelecionada['ano'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $instituicaoSelecionada['indice_confianca'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $instituicaoSelecionada['indice_confianca_ibope'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <div class="col-12">
+                            <div id="columnchart_material" style="width: 110%; height:500px"></div>
+                        </div>
+                    </div>
 
-                        <!-- tabela-->
-                        <?php
+                    <!-- tabela-->
+                    <?php
                         if (!empty($religiao)) {
                             ?>
-                            <div class="col-12" style="margin:auto">
-                                <table class="table table-bordered" style="text-align:center; font-size:14px">
-                                    <thead>
-                                        <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                            Católica
-                                        </th>
-                                        <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                            Evangélica
-                                        </th>
-                                        <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                            Luterana
-                                        </th>
-                                        <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                            Outra
-                                        </th>
-                                        <th class="topicos" style="border-bottom: 3px solid #FFCC00">
-                                            Não tenho religião
-                                        </th>
-                                        <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                            Muitas religiões / Não tenho religião específica
-                                        </th>
-                                    </thead>
-                                    <tbody style="background-color: white">
-                                        <tr>
-                                            <td>
-                                                <?php echo $religiao['catolica'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $religiao['evangelica'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $religiao['luterana'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $religiao['outra'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $religiao['nao_tenho_religiao'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $religiao['muitas_religioes_nenhuma_especifica'] ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            <?php
+                    <div class="col-12" style="margin:auto">
+                        <table class="table table-bordered" style="text-align:center; font-size:14px">
+                            <thead>
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                    Católica
+                                </th>
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                    Evangélica
+                                </th>
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                    Luterana
+                                </th>
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                    Outra
+                                </th>
+                                <th class="topicos" style="border-bottom: 3px solid #FFCC00">
+                                    Não tenho religião
+                                </th>
+                                <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                    Muitas religiões / Não tenho religião específica
+                                </th>
+                            </thead>
+                            <tbody style="background-color: white">
+                                <tr>
+                                    <td>
+                                        <?php echo $religiao['catolica'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $religiao['evangelica'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $religiao['luterana'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $religiao['outra'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $religiao['nao_tenho_religiao'] ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $religiao['muitas_religioes_nenhuma_especifica'] ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php
                             } else {
                                 ?>
-                                <div class="col-12" style="margin:auto">
-                                    <table class="table table-bordered" style="text-align:center; font-size:14px">
-                                        <thead>
-                                            <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                                Sexo (%)
-                                            </th>
-                                            <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                                Faixa etária (%)
-                                            </th>
-                                            <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                                Renda famíliar (R$) (%)
-                                            </th>
-                                        </thead>
-                                        <tbody style="background-color: white">
-                                            <tr>
-                                                <td>
-                                                    Masc.
-                                                </td>
-                                                <td>
-                                                    Fem.
-                                                </td>
-                                                <td>
-                                                    16-24
-                                                </td>
-                                                <td>
-                                                    25-29
-                                                </td>
-                                                <td>
-                                                    30-39
-                                                </td>
-                                                <td>
-                                                    40-49
-                                                </td>
-                                                <td>
-                                                    50+
-                                                </td>
-                                                <td>
-                                                    Até 2000
-                                                </td>
-                                                <td>
-                                                    2000-6000
-                                                </td>
-                                                <td>
-                                                    +6000
-                                                </td>
-                                                <td>
-                                                    Recusou
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $sexo['masculino'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $sexo['feminino'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $faixa_etaria['16_24'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $faixa_etaria['25_29'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $faixa_etaria['30_39'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $faixa_etaria['40_49'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $faixa_etaria['_50'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $renda_familiar['ate_2000'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $renda_familiar['2000_6000'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $renda_familiar['mais_6000'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $renda_familiar['recusou'] ?>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                <?php
+                        <div class="col-12" style="margin:auto">
+                            <table class="table table-bordered" style="text-align:center; font-size:14px">
+                                <thead>
+                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                        Sexo (%)
+                                    </th>
+                                    <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
+                                        Faixa etária (%)
+                                    </th>
+                                    <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                        Renda famíliar (R$) (%)
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white">
+                                    <tr>
+                                        <td>
+                                            Masc.
+                                        </td>
+                                        <td>
+                                            Fem.
+                                        </td>
+                                        <td>
+                                            16-24
+                                        </td>
+                                        <td>
+                                            25-29
+                                        </td>
+                                        <td>
+                                            30-39
+                                        </td>
+                                        <td>
+                                            40-49
+                                        </td>
+                                        <td>
+                                            50+
+                                        </td>
+                                        <td>
+                                            Até 2000
+                                        </td>
+                                        <td>
+                                            2000-6000
+                                        </td>
+                                        <td>
+                                            +6000
+                                        </td>
+                                        <td>
+                                            Recusou
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $sexo['masculino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $sexo['feminino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['16_24'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['25_29'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['30_39'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['40_49'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria['_50'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['ate_2000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['2000_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['mais_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar['recusou'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <?php
                                 }
                                 ?>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <?php } ?>
         <br>
         <br>
@@ -503,211 +503,211 @@ if (!empty($grupo)) {
         <?php
         if (!empty($grupo)) {
             ?>
-            <div class="container">
-                <div class="col-10">
-                    <div class="col-3">
-                        <h4>
-                            Grupos sociais
-                        </h4>
-                    </div>
+        <div class="container">
+            <div class="col-10">
+                <div class="col-3">
+                    <h4>
+                        Grupos sociais
+                    </h4>
                 </div>
-                <div class="col-8">
-                    <nav id="menu">
-                        <ul class="topnav" id="navtop2">
-                            <?php
+            </div>
+            <div class="col-8">
+                <nav id="menu">
+                    <ul class="topnav" id="navtop2">
+                        <?php
                             for ($i = 0; $i < count($data2); $i++) {
                                 if ($data2[$i]['id'] == $grupo) {
                                     ?>
-                                    <li>
-                                        <div class="topicos selecionado"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
-                                            <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                                        </div>
-                                    </li>
-                                <?php
+                        <li>
+                            <div class="topicos selecionado"><img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                            </div>
+                        </li>
+                        <?php
                                 } else {
                                     ?>
-                                    <li><a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
-                                            <div class="topicos">
-                                                <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
-                                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                <?php
+                        <li><a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                                <div class="topicos">
+                                    <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                    <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                                </div>
+                            </a>
+                        </li>
+                        <?php
                                 }
                                 ?>
-                            <?php
+                        <?php
                             }
                             ?>
-                            <li class="icon">
-                                <a href="javascript:void(0);" onclick="myFunction2()">&#9776;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div>
-                    <div class="row">
-                        <div class="col-3 hidden-xs">
-                            <?php
+                        <li class="icon">
+                            <a href="javascript:void(0);" onclick="myFunction2()">&#9776;
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-3 hidden-xs">
+                        <?php
                             for ($i = 0; $i < count($data2); $i++) {
                                 if ($data2[$i]['id'] == $grupo) {
                                     ?>
-                                    <div class="topicos selecionado">
-                                        <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
-                                        <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                                    </div>
-                                <?php
-                                } else {
-                                    ?>
-                                    <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
-                                        <div class="topicos">
-                                            <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
-                                            <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
-                                        </div>
-                                    </a>
-                                <?php
-                                }
-                                ?>
-                            <?php
-                            }
-                            ?>
+                        <div class="topicos selecionado">
+                            <img style="width: 35px; margin: 8px;" src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                            <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-12 titulo row">
-                            <div class="col-12">
-                                <div class="col-5" style="margin:auto">
-                                    <table class="table table-bordered" style="text-align:center; font-size:14px;">
-                                        <thead>
-                                            <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00;">
-                                                Índice -
-                                                <?php
+                        <?php
+                                } else {
+                                    ?>
+                        <a class="removerLinha" href="grafico.php?grupo=<?php echo $data2[$i]['id'] ?>&instituicao=<?php echo $grupo ?>&ano=<?php echo $_GET['ano'] ?>">
+                            <div class="topicos">
+                                <img style="width: 35px; margin: 8px; " src="assets/image/icones/<?php echo $data2[$i]['icone'] ?>">
+                                <span class="removerLinha"><?php echo $data2[$i]['nome'] ?></span>
+                            </div>
+                        </a>
+                        <?php
+                                }
+                                ?>
+                        <?php
+                            }
+                            ?>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-12 titulo row">
+                        <div class="col-12">
+                            <div class="col-5" style="margin:auto">
+                                <table class="table table-bordered" style="text-align:center; font-size:14px;">
+                                    <thead>
+                                        <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00;">
+                                            Índice -
+                                            <?php
                                                 for ($i = 0; $i < count($data2); $i++) {
                                                     if ($data2[$i]['id'] == $grupo) {
                                                         ?> <?php echo $data2[$i]['nome'] ?>
-                                                        (0 à 100)
-                                                    <?php
+                                            (0 à 100)
+                                            <?php
                                                     }
                                                     ?>
-                                                <?php
+                                            <?php
                                                 }
                                                 ?>
-                                            </th>
-                                        </thead>
-                                        <tbody style="background-color: white">
-                                            <tr>
-                                                <td>
-                                                    FOCUS <?php echo $grupoSelecionado['ano'] ?>
-                                                </td>
-                                                <td>
-                                                    IBOPE <?php echo --$grupoSelecionado['ano'] ?>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $grupoSelecionado['indice_confianca'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $grupoSelecionado['indice_confianca_ibope'] ?>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-12">
-                                    <div id="barchart_values" style="width: 110%px; height:500px"></div>
-                                </div>
-                            </div>
-                            <div class="col-12" style="margin:auto">
-                                <table class="table table-bordered" style="text-align:center; font-size:14px">
-                                    <thead>
-                                        <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
-                                            Sexo (%)
-                                        </th>
-                                        <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
-                                            Faixa etária (%)
-                                        </th>
-                                        <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
-                                            Renda famíliar (R$) (%)
                                         </th>
                                     </thead>
                                     <tbody style="background-color: white">
                                         <tr>
                                             <td>
-                                                Masc.
+                                                FOCUS <?php echo $grupoSelecionado['ano'] ?>
                                             </td>
                                             <td>
-                                                Fem.
-                                            </td>
-                                            <td>
-                                                16-24
-                                            </td>
-                                            <td>
-                                                25-29
-                                            </td>
-                                            <td>
-                                                30-39
-                                            </td>
-                                            <td>
-                                                40-49
-                                            </td>
-                                            <td>
-                                                50+
-                                            </td>
-                                            <td>
-                                                Até 2000
-                                            </td>
-                                            <td>
-                                                2000-6000
-                                            </td>
-                                            <td>
-                                                +6000
-                                            </td>
-                                            <td>
-                                                Recusou
+                                                IBOPE <?php echo --$grupoSelecionado['ano'] ?>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <?php echo $sexo2['masculino'] ?>
+                                                <?php echo $grupoSelecionado['indice_confianca'] ?>
                                             </td>
                                             <td>
-                                                <?php echo $sexo2['feminino'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria2['16_24'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria2['25_29'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria2['30_39'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria2['40_49'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $faixa_etaria2['_50'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar2['ate_2000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar2['2000_6000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar2['mais_6000'] ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $renda_familiar2['recusou'] ?>
+                                                <?php echo $grupoSelecionado['indice_confianca_ibope'] ?>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="col-12">
+                                <div id="barchart_values" style="width: 110%px; height:500px"></div>
+                            </div>
+                        </div>
+                        <div class="col-12" style="margin:auto">
+                            <table class="table table-bordered" style="text-align:center; font-size:14px">
+                                <thead>
+                                    <th class="topicos" colspan="2" style="border-bottom: 3px solid #FFCC00">
+                                        Sexo (%)
+                                    </th>
+                                    <th class="topicos" colspan="5" style="border-bottom: 3px solid #FFCC00">
+                                        Faixa etária (%)
+                                    </th>
+                                    <th class="topicos" colspan="4" style="border-bottom: 3px solid #FFCC00">
+                                        Renda famíliar (R$) (%)
+                                    </th>
+                                </thead>
+                                <tbody style="background-color: white">
+                                    <tr>
+                                        <td>
+                                            Masc.
+                                        </td>
+                                        <td>
+                                            Fem.
+                                        </td>
+                                        <td>
+                                            16-24
+                                        </td>
+                                        <td>
+                                            25-29
+                                        </td>
+                                        <td>
+                                            30-39
+                                        </td>
+                                        <td>
+                                            40-49
+                                        </td>
+                                        <td>
+                                            50+
+                                        </td>
+                                        <td>
+                                            Até 2000
+                                        </td>
+                                        <td>
+                                            2000-6000
+                                        </td>
+                                        <td>
+                                            +6000
+                                        </td>
+                                        <td>
+                                            Recusou
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php echo $sexo2['masculino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $sexo2['feminino'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria2['16_24'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria2['25_29'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria2['30_39'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria2['40_49'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $faixa_etaria2['_50'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar2['ate_2000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar2['2000_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar2['mais_6000'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $renda_familiar2['recusou'] ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <?php } ?>
         <br>
         <br>

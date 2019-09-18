@@ -38,7 +38,7 @@ if (!empty($_POST['catolica']) && !empty($_POST['evangelica']) && !empty($_POST[
     <!-- <script src="./assets/css/script.js"></script> -->
 </head>
 <body>
-div class="submenu">
+<div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
