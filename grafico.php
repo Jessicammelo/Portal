@@ -211,7 +211,7 @@ if (!empty($grupo)) {
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1 row ">
-            <div class="col-lg-9 col-md-8 col-8 row">
+            <div class="col-lg-10 col-md-8 col-12 row">
                 <div class="col-4 row">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                         <a href="index.php#"><i class="fas fa-step-backward"> Página inicial </i></a>
@@ -222,9 +222,9 @@ if (!empty($grupo)) {
                         <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
                     </button>
                 </div>
-                <div class="col-3 ">
+                <div class="col-3" style="margin-left: 35px">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../Portal/contato.php#"><i class="fas fa-envelope"> Contato </i></a>
+                        <a href="../Portal/cadastros/contato.php#"><i class="fas fa-envelope"> Contato </i></a>
                     </button>
                 </div>
             </div>

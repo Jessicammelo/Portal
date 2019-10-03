@@ -223,7 +223,14 @@ ul.topnav li.icon {
         line-height: 30px;
         text-align: left;
     }
+/*FIM DO MENU RESPONSIVO*/
+    textearea{
+        resize: none; /* impede que o próprio usuário altere o tamanho do textarea */
+        width:300px;
+        height:100px;
+        overflow-y: auto;
+    }
 }
 
-/*FIM DO MENU RESPONSIVO*/
+
 

@@ -57,7 +57,7 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
     
     <div class="col-7 container" style="position: relative; min-height: 100vh">
         <form class=" col-6 textoIndex" style="position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%)" method="POST">
-            <h4 class="" style=" text-align:center">Construa o Índice de Confiança Social</h4>
+            <h4 class="" style=" text-align:center">Construa o Índice da Pesquisa</h4>
             <div class="form-group">
                 <label>Digite email</label>
                 <input name="email" type="email" class="form-control" placeholder="Digite o email">
