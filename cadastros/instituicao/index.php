@@ -79,6 +79,11 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <a href="../grupoSocial/index.php?">Grupo Social</a>
                 </button>
             </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
+                    <a href="../novaPesquisa/index.php?">Nova Pesquisa <i class="fas fa-arrow-right"></i></a>
+                </button>
+            </div>
         </div>
     </div>
     <div class=" col-7 container">
