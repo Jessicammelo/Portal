@@ -44,7 +44,7 @@
     <div class=" col-7 container">
     <div class="col-6 row" style="margin: 40px;">
             <div class="col-3">
-                <a class="btn btn-primary" style=" font-family: verdana" href="cadastro.php">Cadastrar
+                <a class="btn btn-primary" style=" font-family: verdana" href="cadastroNovaPesquisa.php">Cadastrar
                 </a>
             </div>
             <div class="col-3">
