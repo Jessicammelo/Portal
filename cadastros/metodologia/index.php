@@ -52,7 +52,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div class="col-md-10 offset-1 row">
-            <div class="col-3">
+            <div class="col-4">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>

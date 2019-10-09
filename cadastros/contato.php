@@ -1,3 +1,6 @@
+<?php
+$enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
+?>
 <html>
 
 <head>
@@ -15,7 +18,7 @@
 
 </head>
 
-<body class="backgroudImagem" style="min-height: 100vh">
+<body class="backgroudImagem" style="min-height: 130%; background-repeat: no-repeat; background-size: 100% 100%;">
     <div class="submenu">
         <div class="container">
             <div class="row">
@@ -33,15 +36,15 @@
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1 row ">
-            <div class="col-lg-12 col-md-8 col-12 row" style="padding: 2px;">
+    <div class="breadcrumb navbar-botton__fixed">
+        <div  style="margin-left: 40px" class="col-md-12 row ">
+            <div class="col-lg-12 col-md-10 col-12 row" style="padding: 2px;">
                 <div class="col-3 ">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="index.php#"><i class="fas fa-step-backward"> Página inicial </i></a>
+                        <a href="../index.php"><i class="fas fa-step-backward"> Página inicial </i></a>
                     </button>
                 </div>
-                <div class="col-3">
+                <div style="margin-right: 30px" class="col-3">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                         <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
                     </button>
@@ -57,8 +60,8 @@
 
     </div>
 
-    <div class="col-7 container" style="position: relative; min-height: 100vh;">
-        <form class=" col-6 textoIndex" style="position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%)" method="POST">
+    <div class="col-md-7 col-xs-8 offset-xs-2 container" style="position: relative; min-height: 100vh;">
+        <form method="POST" action="enviarEmail.php" class="col-md-6 textoIndex" style="position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%)" method="POST">
             <div class="col-12">
                 <h4 style=" text-align:center;">Se enteressou pela pesquisa?</h4>
                 <h5 style=" text-align:center;">Entre em contato conosco:</h5>
@@ -68,7 +71,7 @@
                         <div class="input-group-prepend">
                             <div style="background: #005FA4; color: white" class="input-group-text"><i class="fas fa-user-alt"></i></div>
                         </div>
-                        <input type="nome" class="form-control" id="inlineFormInputGroupUsername" placeholder="Nome">
+                        <input type="text" require name="nome" class="form-control" id="inlineFormInputGroupUsername" placeholder="Nome">
                     </div>
                 </div>
                 <div class="form-group">
@@ -77,7 +80,7 @@
                         <div class="input-group-prepend">
                             <div style="background: #005FA4; color: white" class="input-group-text"><i class="fas fa-envelope"></i></div>
                         </div>
-                        <input type="email" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email">
+                        <input type="email" name="email" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,12 +90,32 @@
                         <div class="input-group-prepend">
                             <div style="background: #005FA4; color: white" class="input-group-text "><i class="fas fa-comment"></i></div>
                         </div>
-                        <input style=" width:300px; height:100px;" type="textarea" class="form-control" id=" inlineFormInputGroupUsername" placeholder="Mensagem">
+                        <textarea type="textarea" name="mensagem" class="form-control" placeholder="Mensagem"></textarea>
+                        <!-- <input style=" width:300px; height:100px;" type="textarea"  id=" inlineFormInputGroupUsername" > -->
                     </div>
 
                 </div>
                 <div style="margin-left: 80%;">
                     <button style="background: #005FA4; color: white" type="submit" class="btn btn">Enviar</button>
+                </div>
+                <div class="col-12" style="margin-top: 15px">
+                    <?php
+                    if (empty($enviado)){
+                        echo '';
+                    } else if ($enviado == 1) {
+                        ?>
+                        <div class="alert alert-success" role="alert">
+                            Email enviado!
+                        </div>
+                    <?php
+                    } else {
+                        ?>
+                        <div class="alert alert-danger" role="alert">
+                            Email não enviado!
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
 

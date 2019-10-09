@@ -65,17 +65,17 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed ">
         <div class="col-md-10 offset-1 row">
-            <div class="col-2">
+            <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../metodologia/index.php?">Metodologia</a>
                 </button>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../grupoSocial/index.php?"> Grupo Social</a>
                 </button>
@@ -90,7 +90,7 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
             </div>
         <?php } ?>
-        <div class="col-6 row" style="margin: 40px;">
+        <div class="col-7 row" style="margin: 40px;">
             <div class="col-3">
                 <a class="btn btn-primary" style=" font-family: verdana" href="cadastro.php">Cadastrar
                 </a>

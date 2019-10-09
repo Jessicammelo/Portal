@@ -36,13 +36,13 @@
         <div class="col-md-10 offset-1 row">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
-                    <a href="../instituicao/index.php?"><i class="fas fa-step-backward">Voltar</i></a>
+                    <a href="cadastros/instituicao/index.php"><i class="fas fa-step-backward">Voltar</i></a>
                 </button>
             </div>
         </div>
     </div>
     <div class=" col-7 container">
-    <div class="col-6 row" style="margin: 40px;">
+    <div class="col-7 row" style="margin: 40px;">
             <div class="col-3">
                 <a class="btn btn-primary" style=" font-family: verdana" href="cadastroNovaPesquisa.php">Cadastrar
                 </a>
