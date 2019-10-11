@@ -37,8 +37,8 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div class="breadcrumb navbar-botton__fixed">
-        <div  style="margin-left: 40px" class="col-md-12 row ">
-            <div class="col-lg-12 col-md-10 col-12 row" style="padding: 2px;">
+        <div style="margin-left: 40px" class="col-md-12 row ">
+            <div class="col-lg-12 col-md-10 col-12 row" style="padding: 2px; margin-left: 200px;">
                 <div class="col-3 ">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                         <a href="../index.php"><i class="fas fa-step-backward"> Página inicial </i></a>
@@ -46,13 +46,13 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
                 </div>
                 <div style="margin-right: 30px" class="col-3">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
+                        <a href="../cadastros/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
                     </button>
                 </div>
                 <div class="col-6 row">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../Portal/grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Índice de Confiança
-                                nas Intituíções Brasileiras </i></a>
+                        <a href="../grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Índice
+                            </i></a>
                     </button>
                 </div>
             </div>
@@ -63,7 +63,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
     <div class="col-md-7 col-xs-8 offset-xs-2 container" style="position: relative; min-height: 100vh;">
         <form method="POST" action="enviarEmail.php" class="col-md-6 textoIndex" style="position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%)" method="POST">
             <div class="col-12">
-                <h4 style=" text-align:center;">Se enteressou pela pesquisa?</h4>
+                <h4 style=" text-align:center;">Se interessou pela pesquisa?</h4>
                 <h5 style=" text-align:center;">Entre em contato conosco:</h5>
                 <div class="form-group">
                     <label class="sr-only" for="inlineFormInputGroupUsername">Nome</label>
@@ -100,7 +100,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
                 </div>
                 <div class="col-12" style="margin-top: 15px">
                     <?php
-                    if (empty($enviado)){
+                    if (empty($enviado)) {
                         echo '';
                     } else if ($enviado == 1) {
                         ?>

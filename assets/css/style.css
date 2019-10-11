@@ -11,7 +11,7 @@
 }
 
 .tipoazul {
-    color: white;
+    
     background: #005FA4;
 }
 
@@ -36,7 +36,7 @@
     text-decoration: none;
 }
 
-.font-sizeBotao:hover {
+.font-sizeBotao {
     color: #005FA4;
     padding-right: 10px;
     text-decoration: none;
@@ -44,13 +44,12 @@
 
 .botaoSegundaPagina {
     margin: 10px;
-    color: #e9ecef;
     text-decoration: none;
 }
 
-.botaoSegundaPagina:hover {
+.botaoSegundaPagina {
     background: #e1e1e1;
-    text-decoration: none;
+    
 }
 
 .topicos {
@@ -66,7 +65,7 @@
 }
 
 .backgroudImagem {
-    background: url("../image/fundo.jpg") ;
+    background: url("../image/fundo.jpg");
     background-size: 100% 115%;
     height: 100%;
 }
@@ -74,7 +73,7 @@
 .botaoInicial {
     background: #005fa4;
     color: white;
-    padding: 35px;
+    padding: 30px;
     margin: 10px;
     font-size: 20px;
 }
@@ -109,14 +108,20 @@
 
 .textoMetodologia {
     font-size: 18px;
-    font-family: arial;
-    word-spacing: 1px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    word-spacing: 2px;
+    background: rgba(110, 146, 165, 0.8);
+    width: 600px;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .tituloMetodologia {
     font-size: 22px;
-    font-family: arial;
+    font-family: 'Ubuntu', 'Montserrat', sans-serif;
     text-align: left;
+    vertical-align: inherit;
+    font-weight: 800;
 }
 
 .loader {
@@ -151,7 +156,6 @@
     }
 }
 
-
 /* Coloca os itens da lista do Menu lado a lado, e flutua os itens para a esquerda */
 
 ul.topnav li {
@@ -164,9 +168,10 @@ ul.topnav li {
 ul.topnav.li.selecionado {
     background: #4682B4!important;
 }
+
 /* Estilo dos links dentro da lista */
 
-ul.topnav li a{
+ul.topnav li a {
     display: block;
     color: #005fa4;
     text-decoration: none;
@@ -208,7 +213,6 @@ ul.topnav li.icon {
         position: relative;
         right: 0;
         top: 0;
-       
     }
     ul.topnav.responsive li {
         text-align: left;
@@ -223,14 +227,12 @@ ul.topnav li.icon {
         line-height: 30px;
         text-align: left;
     }
-/*FIM DO MENU RESPONSIVO*/
-    textearea{
-        resize: none; /* impede que o próprio usuário altere o tamanho do textarea */
-        width:300px;
-        height:100px;
+    /*FIM DO MENU RESPONSIVO*/
+    textearea {
+        resize: none;
+        /* impede que o próprio usuário altere o tamanho do textarea */
+        width: 300px;
+        height: 100px;
         overflow-y: auto;
     }
 }
-
-
-

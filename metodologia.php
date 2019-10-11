@@ -37,29 +37,29 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1">
+        <div  style="margin-left: 900px" class="col-md-10 offset-1">
             <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="../Portal/grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Índice de Confiança
-                        nas Intituíções Brasileiras </i></a>
+                <a href="../Portal/grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Confira o resultado dos Índices </i></a>
             </button>
         </div>
     </div>
-    <div class=" container col-9">
+    <div style="border-block-end-color: black;" class=" container col-9">
         <?php
         for ($i = 0; $i < count($metodologia); $i++) {
             ?>
-
-            <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
-                <br>
-                    <p class="textoMetodologia">
-                        <?php echo $metodologia[$i]['mensagem'] ?>
-                    </p>
-                    <br>
-                <?php
-                }
-                ?>
-                <br>
-                <br>
+            <div class=" col- 10 tituloMetodologia ">
+                <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
+                        <br>
+                        <p class="textoMetodologia">
+                            <?php echo $metodologia[$i]['mensagem'] ?>
+                        </p>
+                        <br>
+            </div>
+        <?php
+        }
+        ?>
+        <br>
+        <br>
     </div>
 </body>
 

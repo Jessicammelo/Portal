@@ -35,7 +35,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-        <div class="row" style="margin-left: 45px; margin-right: 25px">
+    <div class="row" style="margin-left: 45px; margin-right: 25px">
         <div class="col-md-6 col-xs-12 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
@@ -52,20 +52,28 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
         </div>
 
-        <div class="col-md-6 col-xs-12 row">
+
+        <div class="col-md-6 col-xs-12">
+            <div style="margin-left: 200px" class="col-6">
+                <h3>
+                    Pesquisas realizadas
+                </h3>
+            </div>
             <?php
             for ($i = 0; $i < count($data); $i++) {
                 ?>
                 <div class="col-md-8 offset-md-2 col-xs-12">
-                    <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Índice de Confiança nas Instituicões Brasileiras
-                        ano <?php echo $data[$i]['ano'] ?></a>
+                    <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
+                        <?php echo $data[$i]['ano'] ?></a>
                 </div>
             <?php
             }
             ?>
         </div>
-    </div>
 
+    </div>
+  
+ 
 </body>
 
 </html>

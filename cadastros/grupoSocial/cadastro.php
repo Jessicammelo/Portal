@@ -141,7 +141,16 @@ if (!empty($_GET['editar'])) {
             <label>Índice de confiança do Ibope</label>
             <input required name="indice_confianca_ibope" class="form-control" placeholder="Digite valor">
         </div>
-
+        <?php
+        if(!isset($_GET['editar'])){
+        ?>
+        <div class="form-group">
+            <label>Imagem</label>
+            <input  type="file" required name="icone" class="form-control" placeholder="imagem">
+        </div>
+        <?php
+        }
+        ?>
         <button type="submit" class="btn btn-primary">Salvar</button>
         <br>
         <br>

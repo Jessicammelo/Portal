@@ -210,8 +210,8 @@ if (!empty($grupo)) {
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1 row ">
-            <div class="col-lg-10 col-md-8 col-12 row">
+        <div  class="col-md-10 offset-1 row ">
+            <div style="margin-left: 150px;" class="col-lg-10 col-md-8 col-12 row">
                 <div class="col-4 row">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
                         <a href="index.php#"><i class="fas fa-step-backward"> Página inicial </i></a>
@@ -238,7 +238,7 @@ if (!empty($grupo)) {
                 <!--hidden-xs faz os tópicos desaparecer da tela-->
                 <div class="col-3">
                     <h4>
-                        Instituições
+                    Instituições
                     </h4>
                 </div>
             </div>
