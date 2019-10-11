@@ -10,7 +10,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css?v7">
+    <link rel="stylesheet" href="../assets/css/style.css?v7">
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="../assets/css/script.js"></script>
@@ -46,7 +46,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
                 </div>
                 <div style="margin-right: 30px" class="col-3">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../cadastros/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
+                        <a href="../metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
                     </button>
                 </div>
                 <div class="col-6 row">

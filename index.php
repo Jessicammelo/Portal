@@ -53,7 +53,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-xs-12 ">
             <div style="margin-left: 200px" class="col-6">
                 <h3>
                     Pesquisas realizadas
@@ -72,7 +72,17 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
     </div>
-  
+    <div style="margin-left: 45px; margin-right: 25px" class="col-md-6 col-xs-12  textoIndex"> 
+        <h3> Focus na mídia
+        </h3>
+        <div> 
+            <a href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria Santa 2018/1</a>
+        </div>
+        <div>
+            <a href="https://drive.google.com/file/d/1oIVu9A1SclmVttCCZJ2mpOFBSvjAv_ie/view">FON</a>
+        </div>
+
+    </div>
  
 </body>
 
