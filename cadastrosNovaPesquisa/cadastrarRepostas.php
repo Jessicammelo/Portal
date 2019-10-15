@@ -5,10 +5,18 @@ $db = new BancoDados();
 $conexao = $db->instancia();
 
 if (isset($_POST['pergunta'])) {
-    
+
     $pergunta = $_POST['pergunta'];
     $stmt = $conexao->prepare('INSERT INTO pesquisa_perguntas (pergunta, pesquisaId) VALUES (?,?)');
     $stmt->bindValue(1, $pergunta);
+    $stmt->bindValue(2, $_GET['pesquisaId']);
+    $stmt->execute();
+}
+if (isset($_POST['resposta'])) {
+
+    $resposta = $_POST['resposta'];
+    $stmt = $conexao->prepare('INSERT INTO pesquisa_resposta (resposta, pesquisaId) VALUES (?,?)');
+    $stmt->bindValue(1, $resposta);
     $stmt->bindValue(2, $_GET['pesquisaId']);
     $stmt->execute();
 }
@@ -22,6 +30,11 @@ $stmt = $conexao->prepare('SELECT * FROM pesquisa_colunas WHERE pesquisaId = ?')
 $stmt->bindValue(1, $_GET['pesquisaId']);
 $stmt->execute();
 $colunas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $conexao->prepare('SELECT * FROM pesquisa_resposta WHERE pesquisaId = ?');
+$stmt->bindValue(1, $_GET['pesquisaId']);
+$stmt->execute();
+$resposta = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <html>
@@ -73,11 +86,11 @@ $colunas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <select class="form-control">
                 <option>Selecione...</option>
                 <?php
-                    foreach ($perguntas as $pergunta) {
-                        ?>
-                        <option><?php echo $pergunta['pergunta'];?></option>
-                        <?php
-                    }
+                foreach ($perguntas as $pergunta) {
+                    ?>
+                    <option><?php echo $pergunta['pergunta']; ?></option>
+                <?php
+                }
                 ?>
             </select>
         </div>
@@ -86,26 +99,69 @@ $colunas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <select class="form-control">
                 <option>Selecione...</option>
                 <?php
-                    foreach ($colunas as $coluna) {
-                        ?>
-                        <option><?php echo $coluna['coluna'];?></option>
-                        <?php
-                    }
+                foreach ($colunas as $coluna) {
+                    ?>
+                    <option><?php echo $coluna['coluna']; ?></option>
+                <?php
+                }
                 ?>
             </select>
         </div>
         <div class="form-group">
             <label>Resposta</label>
-            <input required name="pergunta" value="" class="form-control" placeholder="Digite a resposta">
+            <input required name="resposta" value="" class="form-control" placeholder="Digite a resposta">
+        </div>
+        <div class="form-group">
+            <label>Índice/Nota/Média</label>
+            <input required name="indice" value="" class="form-control" placeholder="Digite o índice">
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a class="btn btn-warning" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId']?>">Voltar para perguntas</a>
-        <a class="btn btn-success" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId']?>">Concluir</a>
-        <?php 
+        <a class="btn btn-warning" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Voltar para perguntas</a>
+        <a class="btn btn-success" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Concluir</a>
+        <?php
         print_r($perguntas);
+        print_r($resposta);
         ?>
     </form>
+    <div style="font-family: verdana; color: #005FA4;" class="col-10 container">
+        <h4>
+            Tabela para conferência
+        </h4>
+        <table style="font-family: verdana; color: #005FA4;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Índice</th> <!--se tiver indice-->
+                    <?php
+                    foreach ($colunas as $coluna) {
+                        ?>
+                        <th scope="col"><?php echo $coluna['coluna'] ?></th>
+                    <?php
+                    }
+                    ?>
+                </tr>
+            </thead>
+            <tbody>                     
+                        <?php           
+                            for ($i = 0; $i < count($pergunta); $i++) {
+                             ?>
+                                <tr>
+                                <th scope="row"><?php echo $i + 1 ?></th>
+                                <td><?php echo $pergunta['pergunta'] ?></td>                                
+                                <td><?php echo $_POST['indice']?></td>           
+                                <td><?php echo $_POST['resposta']?></td>
+                                </tr> 
+                            <?php
+                         }
+                          ?>                                         
+            </tbody>
+        </table>
+        
+    </div>
+          <br>
+          <br>          
 </body>
 
 </html>
