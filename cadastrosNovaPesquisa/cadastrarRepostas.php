@@ -16,7 +16,7 @@ if (isset($_POST['resposta'])) {
 
     $resposta = $_POST['resposta'];
     $stmt = $conexao->prepare('INSERT INTO pesquisa_resposta (resposta, pesquisaId) VALUES (?,?)');
-    $stmt->bindValue(1, $resposta);
+    $stmt->bindValue(1, $resposta);    
     $stmt->bindValue(2, $_GET['pesquisaId']);
     $stmt->execute();
 }
@@ -71,12 +71,7 @@ $resposta = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%;" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1 row">
-            <div class="col-2">
-                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
-                    <a href="novaPesquisa.php"><i class="fas fa-step-backward">Voltar</i></a>
-                </button>
-            </div>
+        <div style="margin: 20px;" class="col-md-10 offset-1 row"> 
         </div>
     </div>
 
@@ -118,7 +113,7 @@ $resposta = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <button type="submit" class="btn btn-primary">Salvar</button>
         <a class="btn btn-warning" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Voltar para perguntas</a>
-        <a class="btn btn-success" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Concluir</a>
+        <a class="btn btn-success" href="./novaPesquisa.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Concluir</a>
         <?php
         print_r($perguntas);
         print_r($resposta);
@@ -133,35 +128,33 @@ $resposta = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">#</th>
-                    <th scope="col">Índice</th> <!--se tiver indice-->
+                    <th scope="col">Índice</th>
+                    <!--se tiver indice-->
                     <?php
                     foreach ($colunas as $coluna) {
                         ?>
-                        <th scope="col"><?php echo $coluna['coluna'] ?></th>
+                        <th scope="col"><?php echo $coluna['coluna']; ?></th>
                     <?php
                     }
                     ?>
                 </tr>
             </thead>
-            <tbody>                     
-                        <?php           
-                            for ($i = 0; $i < count($pergunta); $i++) {
-                             ?>
-                                <tr>
-                                <th scope="row"><?php echo $i + 1 ?></th>
-                                <td><?php echo $pergunta['pergunta'] ?></td>                                
-                                <td><?php echo $_POST['indice']?></td>           
-                                <td><?php echo $_POST['resposta']?></td>
-                                </tr> 
-                            <?php
-                         }
-                          ?>                                         
+            <tbody>
+                <?php
+                for ($i = 0; $i < count($perguntas); $i++) {
+                    ?>
+                    <tr>
+                        <th scope="row"><?php echo $i + 1; ?></th>
+                        <td><?php echo $pergunta['pergunta']; ?></td>
+                        <td><?php echo $resposta['indice']; ?></td>
+                        <td><?php echo $pergunta['resposta']; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
             </tbody>
         </table>
-        
     </div>
-          <br>
-          <br>          
 </body>
 
 </html>

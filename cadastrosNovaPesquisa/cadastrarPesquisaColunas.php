@@ -5,7 +5,7 @@ $db = new BancoDados();
 $conexao = $db->instancia();
 
 if (isset($_POST['coluna'])) {
-    
+
     $coluna = $_POST['coluna'];
     $stmt = $conexao->prepare('INSERT INTO pesquisa_colunas (coluna, pesquisaId) VALUES (?,?)');
     $stmt->bindValue(1, $coluna);
@@ -53,12 +53,8 @@ $colunas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%;" class="breadcrumb navbar-botton__fixed">
-        <div class="col-md-10 offset-1 row">
-            <div class="col-2">
-                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
-                    <a href="novaPesquisa.php"><i class="fas fa-step-backward">Voltar</i></a>
-                </button>
-            </div>
+        <div style="margin: 20px;" class="col-md-10 offset-1 row">
+            
         </div>
     </div>
 
@@ -69,11 +65,39 @@ $colunas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a class="btn btn-success" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId']?>">Ir para perguntas</a>
-        <?php 
+        <a class="btn btn-success" href="./cadastrarPerguntas.php?pesquisaId=<?php echo $_GET['pesquisaId'] ?>">Ir para perguntas</a>
+        <?php
         print_r($colunas);
         ?>
     </form>
+    <div style="font-family: verdana; color: #005FA4;" class="col-8 container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <?php
+                    foreach ($colunas as $coluna) {
+                        ?>
+                        <th scope="col"><?php echo $coluna['coluna'] ?></th>
+                    <?php
+                    }
+                    ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < count($colunas); $i++) {
+                    ?>
+                    <tr>
+                        <th scope="row"><?php echo $i + 1 ?></th>
+                        <th scope="col">#</th>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

@@ -1,3 +1,32 @@
+<?php
+require "../backend/classes/bancoDados.php";
+
+$db = new BancoDados();
+$conexao = $db->instancia();
+
+if (!empty($_GET["delete"])) {
+    $id = $_GET["delete"];
+    try {
+        $stmt = $conexao->prepare('DELETE FROM pesquisa WHERE id = ?');
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+    } catch (Exception $e) {
+        header('location: index.php?erro=1');
+        exit;
+    }
+}
+if (isset($_GET['periodo'])) {
+    $periodo = $_GET['periodo'];
+    $stmt = $conexao->query('SELECT * from pesquisa WHERE periodo = ' . $periodo);
+} else {
+    $stmt = $conexao->query('SELECT * FROM pesquisa');
+}
+$pesquisa = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $conexao->query('SELECT distinct periodo FROM pesquisa ORDER BY periodo ASC ');
+$periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <html>
 
 <head>
@@ -11,7 +40,7 @@
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="../assets/css/script.js"></script>
-   
+
 </head>
 
 <body>
@@ -42,7 +71,7 @@
         </div>
     </div>
     <div class=" col-7 container">
-    <div class="col-7 row" style="margin: 40px;">
+        <div class="col-7 row" style="margin: 40px;">
             <div class="col-3">
                 <a class="btn btn-primary" style=" font-family: verdana" href="../cadastrosNovaPesquisa/cadastroNovaPesquisa.php">Cadastrar
                 </a>
@@ -50,15 +79,15 @@
             <div class="col-3">
                 <div class=" dropdown">
                     <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ano
+                        Período
                     </a>
                     <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
                         <?php
-                        for ($i = 0; $i < count($ano); $i++) {
+                        for ($i = 0; $i < count($periodo); $i++) {
                             ?>
-                        <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
-                            <?php echo $ano[$i]['ano'] ?>
-                        </a>
+                            <a class="dropdown-item topicos" href="index.php?ano=<?php echo $periodo[$i]['periodo'] ?>">
+                                <?php echo $periodo[$i]['periodo'] ?>
+                            </a>
                         <?php
                         }
                         ?>
@@ -72,7 +101,7 @@
                     #
                 </th>
                 <th>
-                   Nome Pesquisa
+                    Nome Pesquisa
                 </th>
                 <th>
                     Período
@@ -81,44 +110,43 @@
                     #
                 </th>
             </thead>
-            <!--
-                <tbody>
-                <tr>
-                    <td>
-                        <?php echo $i + 1;
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['nome'];
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['ano'];
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['indice_confianca'];
-                            ?>
-                    </td>
-                     -->
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Selecione
-                            </a>
-                            <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
-                                <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
-                                <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
-                                <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+
+            <tbody>
+                <?php
+                for ($i = 0; $i < count($pesquisa); $i++) {
+                    ?>
+                    <tr>
+                        <td>
+                            <?php echo $i + 1; ?>
+                        </td>
+                        <td>
+                            <option><?php echo $pesquisa[$i]['titulo']; ?></option>
+                        </td>
+                        <td>
+                            <option><?php echo $periodo[$i]['periodo']; ?></option>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Selecione
+                                </a>
+                                <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
+                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="../sexo/index.php?pesquisa=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
+                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?novaPesquisa=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
+                                    <a class="dropdown-item topicos" href="../renda/index.php?novaPesquisa=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tbody>
-            </table>
-          <br>
-          <br>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+        <br>
+        <br>
     </div>
 </body>
 
