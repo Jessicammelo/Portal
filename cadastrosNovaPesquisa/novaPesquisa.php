@@ -1,8 +1,10 @@
 <?php
 require "../backend/classes/bancoDados.php";
-
+$titulo = isset($_POST['titulo']) ? $_POST['titulo'] : null;
+$periodo = isset($_POST['periodo']) ? $_POST['periodo'] : null;
 $db = new BancoDados();
 $conexao = $db->instancia();
+
 
 if (!empty($_GET["delete"])) {
     $id = $_GET["delete"];
@@ -11,18 +13,18 @@ if (!empty($_GET["delete"])) {
         $stmt->bindValue(1, $id);
         $stmt->execute();
     } catch (Exception $e) {
-        header('location: index.php?erro=1');
+        header('location: novaPesquisa.php?erro=1');
         exit;
     }
 }
 if (isset($_GET['periodo'])) {
     $periodo = $_GET['periodo'];
-    $stmt = $conexao->query('SELECT * from pesquisa WHERE periodo = ' . $periodo);
+    $stmt = $conexao->query('SELECT * from pesquisa WHERE periodo = "' . urldecode($periodo).'"');
 } else {
-    $stmt = $conexao->query('SELECT * FROM pesquisa');
+    $stmt = $conexao->query('SELECT * FROM pesquisa order by periodo desc');
 }
 $pesquisa = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT distinct periodo FROM pesquisa ORDER BY periodo ASC ');
+$stmt = $conexao->query('SELECT distinct periodo FROM pesquisa ORDER BY periodo desc');
 $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -71,7 +73,7 @@ $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class=" col-7 container">
-        <div class="col-7 row" style="margin: 40px;">
+        <div class="col-8 row" style="margin: 40px;">
             <div class="col-3">
                 <a class="btn btn-primary" style=" font-family: verdana" href="../cadastrosNovaPesquisa/cadastroNovaPesquisa.php">Cadastrar
                 </a>
@@ -85,7 +87,7 @@ $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         for ($i = 0; $i < count($periodo); $i++) {
                             ?>
-                            <a class="dropdown-item topicos" href="index.php?ano=<?php echo $periodo[$i]['periodo'] ?>">
+                            <a class="dropdown-item topicos" href="novaPesquisa.php?periodo=<?php echo urlencode($periodo[$i]['periodo']) ?>">
                                 <?php echo $periodo[$i]['periodo'] ?>
                             </a>
                         <?php
@@ -94,7 +96,12 @@ $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
+            <div class="col-3">
+                <a class="btn btn-primary" style=" font-family: verdana" href="../cadastrosNovaPesquisa/novaPesquisa.php">Limpar
+                </a>
+            </div>
         </div>
+
         <table class="table" style="text-align:center; font-family: verdana; color: #005FA4">
             <thead>
                 <th>
@@ -123,7 +130,7 @@ $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <option><?php echo $pesquisa[$i]['titulo']; ?></option>
                         </td>
                         <td>
-                            <option><?php echo $periodo[$i]['periodo']; ?></option>
+                            <option><?php echo $pesquisa[$i]['periodo']; ?></option>
                         </td>
                         <td>
                             <div class="dropdown">
@@ -131,11 +138,11 @@ $periodo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     Selecione
                                 </a>
                                 <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
-                                    <a class="dropdown-item topicos" href="../sexo/index.php?pesquisa=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
-                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?novaPesquisa=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
-                                    <a class="dropdown-item topicos" href="../renda/index.php?novaPesquisa=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+                                    <a class="dropdown-item topicos" href="novaPesquisa.php?delete=<?php echo $pesquisa[$i]['id'] ?>">Apagar</a>
+                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $pesquisa[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="../sexo/index.php?pesquisa=<?php echo $pesquisa[$i]['id'] ?>">Sexo</a>
+                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?novaPesquisa=<?php echo $pesquisa[$i]['id'] ?>">Faixa Etária</a>
+                                    <a class="dropdown-item topicos" href="../renda/index.php?novaPesquisa=<?php echo $pesquisa[$i]['id'] ?>">Renda Familiar</a>
                                 </div>
                             </div>
                         </td>

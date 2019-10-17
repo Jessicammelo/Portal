@@ -13,7 +13,7 @@ if (!empty($instituicao)) {
 } else {
     $instituicaoSelecionada = $data[0];
     $instituicao = $data[0]['id'];
-}
+} 
 if (!empty($instituicao)) {
     $stmt = $conexao->query('SELECT * FROM sexo WHERE instituicao = ' . $instituicao);
     $sexo =  $stmt->fetch(PDO::FETCH_ASSOC);

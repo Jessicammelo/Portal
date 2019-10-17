@@ -1,10 +1,11 @@
 <?php
 require "../backend/classes/bancoDados.php";
 
-if (isset($_POST['titulo'])) {
+if (isset($_POST['titulo']) && isset($_POST['periodo'])) {
     $db = new BancoDados();
     $conexao = $db->instancia();
     $titulo = $_POST['titulo'];
+    $periodo = $_POST['periodo'];
     $stmt = $conexao->prepare('INSERT INTO pesquisa (titulo, periodo) VALUES (?, ?)');
     $stmt->bindValue(1, $titulo);
     $stmt->bindValue(2, $periodo);
@@ -12,7 +13,6 @@ if (isset($_POST['titulo'])) {
     header('location: cadastrarPesquisaColunas.php?pesquisaId=' . $conexao->lastInsertId());
     exit;
 }
-
 ?>
 
 <html>

@@ -22,10 +22,10 @@ if (isset($_GET['ano'])) {
     $ano = $_GET['ano'];
     $stmt = $conexao->query('SELECT * from instituicao WHERE ano = ' . $ano);
 } else {
-    $stmt = $conexao->query('SELECT * FROM instituicao');
+    $stmt = $conexao->query('SELECT * FROM instituicao ORDER BY ano desc');
 }
 $instituicao = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$stmt = $conexao->query('SELECT distinct ano FROM instituicao ORDER BY ano ASC ');
+$stmt = $conexao->query('SELECT distinct ano FROM instituicao ORDER BY ano desc');
 $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -64,23 +64,22 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="tipoazul bordasuperior"></div>
     <div class="breadcrumb navbar-botton__fixed">
         <div class="col-md-12 offset-1 row">
-            <div class="col-2">
+            <div class="col-6">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../metodologia/index.php?">Metodologia</a>
                 </button>
-            </div>
-            <div class="col-3">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../instituicao/index.php?"> Instituições Brasileiras</a>
                 </button>
-            </div>
-            <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
                     <a href="../grupoSocial/index.php?">Grupo Social</a>
                 </button>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
+                    <a href="../../cadastrosNovaPesquisa/novaPesquisa.php#">Focus na mídia <i class="fas fa-video"></i></i></a>
+                </button>
+                <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha ">
                     <a href="../../cadastrosNovaPesquisa/novaPesquisa.php#">Nova Pesquisa <i class="fas fa-arrow-right"></i></a>
                 </button>
             </div>
@@ -90,9 +89,9 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php
         if (isset($_GET['erro'])) {
             ?>
-        <div class="alert alert-danger" role="alert">
-            Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
-        </div>
+            <div class="alert alert-danger" role="alert">
+                Não foi possível apagar devido aos dados de sexo, faixa etária ou renda, vínculados.
+            </div>
         <?php } ?>
         <div class="col-7 row" style="margin: 40px;">
             <div class="col-3">
@@ -108,9 +107,9 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         for ($i = 0; $i < count($ano); $i++) {
                             ?>
-                        <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
-                            <?php echo $ano[$i]['ano'] ?>
-                        </a>
+                            <a class="dropdown-item topicos" href="index.php?ano=<?php echo $ano[$i]['ano'] ?>">
+                                <?php echo $ano[$i]['ano'] ?>
+                            </a>
                         <?php
                         }
                         ?>
@@ -143,41 +142,41 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 for ($i = 0; $i < count($instituicao); $i++) {
                     ?>
-                <tr>
-                    <td>
-                        <?php echo $i + 1;
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['nome'];
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['ano'];
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['indice_confianca'];
-                            ?>
-                    </td>
-                    <td>
-                        <?php echo $instituicao[$i]['indice_confianca_ibope'];
-                            ?>
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Selecione
-                            </a>
-                            <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
-                                <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
-                                <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
-                                <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
-                                <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+                    <tr>
+                        <td>
+                            <?php echo $i + 1;
+                                ?>
+                        </td>
+                        <td>
+                            <?php echo $instituicao[$i]['nome'];
+                                ?>
+                        </td>
+                        <td>
+                            <?php echo $instituicao[$i]['ano'];
+                                ?>
+                        </td>
+                        <td>
+                            <?php echo $instituicao[$i]['indice_confianca'];
+                                ?>
+                        </td>
+                        <td>
+                            <?php echo $instituicao[$i]['indice_confianca_ibope'];
+                                ?>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" style="font-family: verdana" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Selecione
+                                </a>
+                                <div class="dropdown-menu " style="font-size: 17px; font-family: verdana" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item topicos" href="index.php?delete=<?php echo $instituicao[$i]['id'] ?>">Apagar</a>
+                                    <a class="dropdown-item topicos" href="cadastro.php?editar=<?php echo $instituicao[$i]['id'] ?>">Editar</a>
+                                    <a class="dropdown-item topicos" href="../sexo/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Sexo</a>
+                                    <a class="dropdown-item topicos" href="../faixaEtaria/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Faixa Etária</a>
+                                    <a class="dropdown-item topicos" href="../renda/index.php?instituicao=<?php echo $instituicao[$i]['id'] ?>">Renda Familiar</a>
+                                </div>
                             </div>
-                        </div>
-                    </td>
+                        </td>
                     <?php
                     }
                     ?>

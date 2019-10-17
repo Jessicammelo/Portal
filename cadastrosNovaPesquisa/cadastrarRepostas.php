@@ -141,13 +141,13 @@ $resposta = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </thead>
             <tbody>
                 <?php
-                for ($i = 0; $i < count($perguntas); $i++) {
+                for ($i = 0; $i < count($colunas); $i++) {
                     ?>
                     <tr>
                         <th scope="row"><?php echo $i + 1; ?></th>
                         <td><?php echo $pergunta['pergunta']; ?></td>
-                        <td><?php echo $resposta['indice']; ?></td>
-                        <td><?php echo $pergunta['resposta']; ?></td>
+                        <td><?php echo $_POST['indice']; ?></td>
+                        <td><?php echo $_POST['resposta']; ?></td>
                     </tr>
                 <?php
                 }

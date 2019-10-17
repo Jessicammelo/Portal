@@ -2,7 +2,7 @@
 require "backend/classes/bancoDados.php";
 $db = new BancoDados();
 $conexao = $db->instancia();
-$stmt = $conexao->query('SELECT distinct ano FROM instituicao ORDER BY ano ASC ');
+$stmt = $conexao->query('SELECT distinct ano FROM instituicao ORDER BY ano desc ');
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <html>
