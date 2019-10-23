@@ -11,7 +11,6 @@
 }
 
 .tipoazul {
-    
     background: #005FA4;
 }
 
@@ -38,7 +37,6 @@
 
 .font-sizeBotao {
     color: #005FA4;
-   
     text-decoration: none;
 }
 
@@ -49,7 +47,6 @@
 
 .botaoSegundaPagina {
     background: #e1e1e1;
-    
 }
 
 .topicos {
@@ -65,8 +62,8 @@
 }
 
 .backgroudImagem {
-    background: url("../image/fundo.jpg");
-    background-size: 100% 115%;
+    background: url("../image/saiba-como-fazer-uma-pesquisa-de-mercado-no-ambiente-internacional.jpeg");
+    width: 100%, 115%;
     height: 100%;
 }
 
@@ -100,7 +97,7 @@
 }
 
 .textoIndex {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     padding: 20px;
     font-size: 20px;

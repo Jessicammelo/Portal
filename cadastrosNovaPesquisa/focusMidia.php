@@ -1,20 +1,33 @@
 <?php
 require "../backend/classes/bancoDados.php";
 
-if (isset($_POST['titulo']) && isset($_POST['periodo'])) {
-    $db = new BancoDados();
-    $conexao = $db->instancia();
-    $titulo = $_POST['titulo'];
-    $periodo = $_POST['periodo'];
-    $stmt = $conexao->prepare('INSERT INTO pesquisa (titulo, periodo) VALUES (?, ?)');
-    $stmt->bindValue(1, $titulo);
-    $stmt->bindValue(2, $periodo);
-    $stmt->execute();
-    header('location: cadastrarPesquisaColunas.php?pesquisaId=' . $conexao->lastInsertId());
-    exit;
-}
-?>
+$db = new BancoDados();
+$conexao = $db->instancia();
 
+if (!empty($_GET["delete"])) {
+    $id = $_GET["delete"];
+    try {
+        $stmt = $conexao->prepare('DELETE FROM midia WHERE id = ?');
+        $stmt->bindValue(1, $titulo);
+        $stmt->execute();
+    } catch (Exception $e) {
+        header('location: focusMidia.php?erro=1');
+        exit;
+    }
+}
+if (isset($_POST['titulo'])) {
+    $titulo = $_POST['titulo'];
+    $stmt = $conexao->prepare('INSERT INTO midia (titulo, link) VALUES (?,?)');
+    $stmt->bindValue(1, $titulo);
+    $stmt->bindValue(2, $_GET['link']);
+    $stmt->execute();
+}
+
+$stmt = $conexao->prepare('SELECT * FROM midia');
+$stmt->execute();
+$titulos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <html>
 
 <head>
@@ -52,25 +65,52 @@ if (isset($_POST['titulo']) && isset($_POST['periodo'])) {
         <div class="col-md-10 offset-1 row">
             <div class="col-2">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
-                    <a href="novaPesquisa.php"><i class="fas fa-step-backward">Voltar</i></a>
+                    <a href="../cadastros/instituicao/index.php"><i class="fas fa-step-backward">Voltar</i></a>
                 </button>
             </div>
         </div>
     </div>
-
     <form class="col-7 container" style="font-family: verdana; color: #005FA4;" method="POST" action="">
         <div class="form-group">
-            <label>Digite o títilo da pesquisa</label>
+            <label>Digite o títilo</label>
             <input required name="titulo" value="" class="form-control" placeholder="Digite o título">
         </div>
         <div class="form-group">
-            <label>Digite o período da pesquisa</label>
-            <input required name="periodo" value="" class="form-control" placeholder="Digite o período">
+            <label>Insira o link</label>
+            <input required name="link" value="" class="form-control" placeholder="Insira o link">
+        </div>
+        <div class="form-group">
+            <label>Imagem</label>
+            <input type="file" required name="imagem" class="form-control" placeholder="imagem">
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <br>
-        <br>
     </form>
+    <div style="font-family: verdana; color: #005FA4;" class="col-8 container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                for ($i = 0; $i < count($titulos); $i++) {
+                    ?>
+                    <tr>
+                        <th scope="row"><?php echo $i + 1 ?></th>
+                        <td><?php echo $_POST['titulo']; ?></td>
+                        <td><?php echo $_POST['link']; ?></td>
+                        <td><a class="btn btn-danger" href=".../focusMidia.php?titulo=<?php $titulo['id'] ?>">Apagar</a>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

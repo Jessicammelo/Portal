@@ -77,7 +77,7 @@ $ano = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col-4">
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha">
-                    <a href="../../cadastrosNovaPesquisa/novaPesquisa.php#">Focus na mídia <i class="fas fa-video"></i></i></a>
+                    <a href="../../cadastrosNovaPesquisa/focusMidia.php#">Focus na mídia <i class="fas fa-video"></i></i></a>
                 </button>
                 <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone removerLinha ">
                     <a href="../../cadastrosNovaPesquisa/novaPesquisa.php#">Nova Pesquisa <i class="fas fa-arrow-right"></i></a>

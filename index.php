@@ -17,25 +17,25 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
-<body class="backgroudImagem">
+<body>
     <div class="submenu">
         <div class="container">
             <div class="row">
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px;  color:  white" src="assets/image/icones/Focus@6x-8.png">
+                        <img style="width: 150px;  color:white" src="assets/image/icones/Focus@6x-8.png">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="col-12">
-                        <img style="width: 150px; float:right; color: white" src="assets/image/icones/FURB@6x-8.png">
+                        <img style="width: 150px; float:right; color:white" src="assets/image/icones/FURB@6x-8.png">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="row" style="margin-left: 45px; margin-right: 25px">
+    <div class="col-8 row" style="margin-left: 45px; margin-right: 25px">
         <div class="col-md-6 col-xs-12 textoIndex">
             <br>
             <h3>SOBRE O PROJETO</h3>
@@ -51,39 +51,36 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
             <br>
         </div>
-
-
-        <div class="col-md-6 col-xs-12 ">
-            <div style="margin-left: 200px" class="col-6">
-                <h3>
-                    Pesquisas realizadas
-                </h3>
-            </div>
-            <?php
-            for ($i = 0; $i < count($data); $i++) {
-                ?>
-                <div class="col-md-8 offset-md-2 col-xs-12">
-                    <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
-                        <?php echo $data[$i]['ano'] ?></a>
-                </div>
-            <?php
-            }
-            ?>
+        <div style="margin-left: 200px" class="col-6">
+            <h3>
+                Pesquisas realizadas
+            </h3>
         </div>
+        <div class="col-6 col-xs-12 offset-2">
+            <iframe src="indexButon.php" name="content" width="500" marginwidth="0" height="280" marginheight="0" frameborder="0" hspace="0" vspace="0" allowtransparency="true" application="true"></iframe>
 
+        </div>
     </div>
-    <div style="margin-left: 45px; margin-right: 25px" class="col-md-6 col-xs-12  textoIndex"> 
-        <h3> Focus na mídia
+    <div style="margin-left: 45px; margin-right: 25px;" class="col-md-6 col-xs-12">
+        <h3> HOLOFOTE
         </h3>
-        <div> 
-            <a href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria Santa 2018/1</a>
-        </div>
-        <div>
-            <a href="https://drive.google.com/file/d/1oIVu9A1SclmVttCCZJ2mpOFBSvjAv_ie/view">FON</a>
-        </div>
+        <br>
+        <?php
+        for ($i = 0; $i < count($data); $i++) {
+            ?>
+            <table>
+                <tr>
+                    <td><img width="160" height="150" src="assets/image/icones/2019-10-22.png" /></td>
 
+                    <td> <a style=" font-size: 20px;text-decoration: none; color:black" href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria do Santa sobre a pesquisa de Confiança das Instituiçoes financeiras
+                            2018/1</a></td>
+                </tr>
+            </table>
+            <br>
+        <?php
+        }
+        ?>
     </div>
- 
 </body>
 
 </html>
