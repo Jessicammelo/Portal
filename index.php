@@ -17,7 +17,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="background" >
     <div class="submenu">
         <div class="container">
             <div class="row">
@@ -35,8 +35,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="col-8 row" style="margin-left: 45px; margin-right: 25px">
-        <div class="col-md-6 col-xs-12 textoIndex">
+    <div style="margin-left: 45px; margin-right: 25px">
+        <div  style="color: black" class="col-md-6 col-xs-12 ">
             <br>
             <h3>SOBRE O PROJETO</h3>
             Tem o objetivo de aprofundar a relação dialógica,
@@ -51,19 +51,12 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
             <br>
         </div>
-        <div style="margin-left: 200px" class="col-6">
-            <h3>
-                Pesquisas realizadas
-            </h3>
-        </div>
-        <div class="col-6 col-xs-12 offset-2">
-            <iframe src="indexButon.php" name="content" width="500" marginwidth="0" height="280" marginheight="0" frameborder="0" hspace="0" vspace="0" allowtransparency="true" application="true"></iframe>
-
-        </div>
     </div>
-    <div style="margin-left: 45px; margin-right: 25px;" class="col-md-6 col-xs-12">
-        <h3> HOLOFOTE
-        </h3>
+    <div style="margin-left:150px;" class="row">
+        <div  class="col-md-6 col-xs-12">
+        <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
+             Holofote
+        </h4>
         <br>
         <?php
         for ($i = 0; $i < count($data); $i++) {
@@ -72,7 +65,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><img width="160" height="150" src="assets/image/icones/2019-10-22.png" /></td>
 
-                    <td> <a style=" font-size: 20px;text-decoration: none; color:black" href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria do Santa sobre a pesquisa de Confiança das Instituiçoes financeiras
+                    <td> <a style=" font-size:17px;text-decoration: none; color:#005FA4;font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700" href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria do Santa sobre a pesquisa de Confiança das Instituiçoes financeiras
                             2018/1</a></td>
                 </tr>
             </table>
@@ -80,7 +73,34 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php
         }
         ?>
+        </div>
+        <div style="overflow: auto; width:500px; height: 350px; border:solid 0px" class="col-md-5 col-xs-12">
+            <div>
+                <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
+                    Pesquisas realizadas
+                </h4>
+            </div>
+            <?php
+            for ($i = 0; $i < count($data); $i++) {
+            ?>
+            <table>
+                <tr>
+                    <td>
+                         <div  style="width: 700px;" class="col-md-8 col-xs-12">
+                            <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
+                            <?php echo $data[$i]['ano'] ?></a>
+                        </div>
+                    </td>                    
+                </tr>
+            </table>
+            <br>
+            <?php
+             }
+            ?>
+
+        </div>
     </div>
+
 </body>
 
 </html>

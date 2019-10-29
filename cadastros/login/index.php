@@ -36,7 +36,7 @@ if (!empty($_POST["email"]) && (!empty($_POST["senha"]))) {
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-<body class="backgroudImagem" style="min-height: 100vh">
+<body style="min-height: 100vh">
     <div class="submenu">
         <div class="container">
             <div class="row">

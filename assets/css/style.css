@@ -2,6 +2,15 @@
     background: #005FA4;
 }
 
+.breadcrumb {
+    margin-bottom: 0!important;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0px;
+}
+
 .menu_fixo {
     position: fixed;
     width: 100%;
@@ -61,12 +70,6 @@
     color: white;
 }
 
-.backgroudImagem {
-    background: url("../image/saiba-como-fazer-uma-pesquisa-de-mercado-no-ambiente-internacional.jpeg");
-    width: 100%, 115%;
-    height: 100%;
-}
-
 .botaoInicial {
     background: #005fa4;
     color: white;
@@ -107,7 +110,7 @@
     font-size: 18px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     word-spacing: 2px;
-    background: rgba(110, 146, 165, 0.8);
+    background: rgba(0, 0, 0, 0.4);
     width: 600px;
     padding: 30px;
     border-radius: 10px;
@@ -153,6 +156,7 @@
     }
 }
 
+
 /* Coloca os itens da lista do Menu lado a lado, e flutua os itens para a esquerda */
 
 ul.topnav li {
@@ -166,6 +170,7 @@ ul.topnav.li.selecionado {
     background: #4682B4!important;
 }
 
+
 /* Estilo dos links dentro da lista */
 
 ul.topnav li a {
@@ -176,11 +181,13 @@ ul.topnav li a {
     outline: 0;
 }
 
+
 /* Esconde os itens da lista quando a resolução da tela for pequena */
 
 ul.topnav li.icon {
     display: none;
 }
+
 
 /* Quando a tela é menor do que 680 pixels de largura, ocultar todos os itens da lista. Mostra o item da lista que contém o link para abrir e fechar a nav superior (li.icon) */
 
@@ -194,6 +201,7 @@ ul.topnav li.icon {
         display: inline-block;
     }
 }
+
 
 /*A classe responsiva é adicionada à ul superior com o JavaScript quando o usuário clica no ícone. Esta classe faz com que os itens principais do menu fiquem ok em telas menores */
 

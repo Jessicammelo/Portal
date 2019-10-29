@@ -18,7 +18,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
 
 </head>
 
-<body class="backgroudImagem" style="min-height: 130%; background-repeat: no-repeat; background-size: 100% 100%;">
+<body style="min-height: 130%; background-repeat: no-repeat; background-size: 100% 100%;">
     <div class="submenu">
         <div class="container">
             <div class="row">
@@ -36,7 +36,7 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
         </div>
     </div>
     <div class="tipoazul bordasuperior"></div>
-    <div class="breadcrumb navbar-botton__fixed">
+    <div  style="width: 100%;" class="breadcrumb navbar-botton__fixed">
         <div style="margin-left: 40px" class="col-md-12 row ">
             <div class="col-lg-12 col-md-10 col-12 row" style="padding: 2px; margin-left: 200px;">
                 <div class="col-3 ">
