@@ -52,58 +52,54 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
         </div>
     </div>
-    <div  class="row">
-    <div style="margin-left:150px;">
+    <div>
+        <div  class="row" style="margin-left:150px;">
             <div  class="col-md-6 col-xs-12">
-            <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
-                Holofote
-            </h4>
-            <br>
-            <?php
-            for ($i = 0; $i <  count($data); $i++) {
-                ?>
-                <table>
-                    <tr>
-                        <td><img width="160" height="150" src="assets/image/icones/2019-10-22.png" /></td>
+                <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
+                        Holofote
+                </h4>
+                    <br>
+                    <div class="col-12">
+                        <?php
+                        for ($i = 0; $i <  count($data); $i++) {
+                            ?>
+                            <table>
+                                <tr>
+                                    <td><img width="160" height="150" src="assets/image/icones/2019-10-22.png" /></td>
 
-                        <td> <a style=" font-size:17px;text-decoration: none; color:#005FA4;font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700" href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria do Santa sobre a pesquisa de Confiança das Instituiçoes financeiras
-                                2018/1</a></td>
-                    </tr>
-                </table>
-                <br>
-            <?php
-            }
-            ?>
-            <div class="row">
-                    <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
-                        Pesquisas realizadas
-                    </h4>
+                                    <td> <a style=" font-size:17px;text-decoration: none; color:#005FA4;font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700" href="https://drive.google.com/file/d/1UKeyDSUoxFuQBrL82zmfqZiX-DJcX4nj/view">Matéria do Santa sobre a pesquisa de Confiança das Instituiçoes financeiras
+                                            2018/1</a></td>
+                                </tr>
+                            </table>
+                            <br>
+                        <?php
+                        }
+                        ?>
+                    </div>
             </div>
-            </div>
-            <div style=" overflow: ; width:500px; height: 350px; border:solid 0px" class="col-md-5 col-xs-12">
-                
-                <?php
-                for ($i = 0; $i < count($data); $i++) {
-                ?>
-                <table>
-                    <tr>
-                        <td>
-                            <div  style="width: 700px;" class="col-md-8 col-xs-12">
-                                <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
-                                <?php echo $data[$i]['ano'] ?></a>
-                            </div>
-                        </td>                    
-                    </tr>
-                </table>
-                <br>
-                <?php
-                }
-                ?>
+            <div class="col-md-5 col-xs-12">
+                <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
+                            Pesquisas realizadas
+                </h4>
+                <div style=" overflow: scroll; height:80px;width:100%;overflow:auto; border:solid 0px" >
+                    <?php
+                    for ($i = 0; $i < count($data); $i++) {
+                    ?>
+                    <table style=" width:100%;" class="my-table">
+                        <tr>                             
+                            <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
+                            <?php echo $data[$i]['ano'] ?></a>                    
+                        </tr>
+                    </table>
+                    <br>
+                    <?php
+                    }
+                    ?>
 
+                </div>
             </div>
         </div>
-    </div>
-
+    </div>                
 </body>
 
 </html>
