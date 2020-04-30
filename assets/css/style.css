@@ -41,12 +41,8 @@
 
 .font-sizeBotao {
     font-size: 25px;
-    text-decoration: none;
-}
-
-.font-sizeBotao {
     color: #005FA4;
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 .botaoSegundaPagina {

@@ -212,19 +212,21 @@ if (!empty($grupo)) {
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div  class="col-md-10 offset-1 row ">
             <div style="margin-left: 150px;" class="col-lg-10 col-md-8 col-12 row">
-                <div class="col-4 row">
-                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="index.php#"><i class="fas fa-step-backward"> Página inicial </i></a>
+                <div class="col-12">
+                    <button type="button" class="btn btn-light font-sizeBotao">
+                        <a href="index.php#"><i> Página inicial </i></a>
                     </button>
-                </div>
-                <div class="col-4" >
+               
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
+                        <a href="../Portal/metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i> Metodologia </i></a>
                     </button>
-                </div>
-                <div class="col-3" style="margin-left: 35px">
+                
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../Portal/cadastros/contato.php#"><i class="fas fa-envelope"> Contato </i></a>
+                        <a href="../Portal/cadastros/contato.php#"><i> Contato </i></a>
+                    </button>
+                
+                    <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
+                        <a href="../Portal/cadastros/contato.php#"><i> Equipe Técnica </i></a>
                     </button>
                 </div>
             </div>

@@ -38,8 +38,8 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="tipoazul bordasuperior"></div>
     <div style="width: 100%" class="breadcrumb navbar-botton__fixed">
         <div  style="margin-left: 900px" class="col-md-10 offset-1">
-            <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                <a href="../Portal/grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Confira o resultado dos Índices </i></a>
+            <button type="button" class="btn btn-light font-sizeBotao">
+                <a href="../Portal/grafico.php?ano=<?php echo $_GET['ano'] ?>"><i> Confira o resultado dos Índices </i></a>
             </button>
         </div>
     </div>
@@ -53,7 +53,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/image/business-163464_1280.jpg" class="d-block w-100" alt="1000px">
+                    <img src="assets/image/imagens2.png" class="d-block w-100" alt="1000px">
                     <div style="padding-top: 10px;" class="carousel-caption d-none d-md-block">
                         <div class="tituloMetodologia ">
                             <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>
@@ -69,7 +69,7 @@ $metodologia = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     for ($i = 1; $i < count($metodologia); $i++) {
                     ?>
                 <div class="carousel-item">
-                    <img src="assets/image/business-163464_1280.jpg" class="d-block w-100" alt="1000px">
+                    <img src="assets/image/imagens2.png" class="d-block w-100" alt="1000px">
                     <div class="carousel-caption d-none d-md-block">
                         <div class=" col- 10 tituloMetodologia ">
                             <h3 class="tituloMetodologia"> <?php echo $metodologia[$i]['titulo'] ?><h3>

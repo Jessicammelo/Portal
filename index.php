@@ -81,22 +81,22 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h4 style="font-family:'Ubuntu', 'Montserrat', sans-serif;font-weight: 700;">
                             Pesquisas realizadas
                 </h4>
-                <div style=" overflow: scroll; height:80px;width:100%;overflow:auto; border:solid 0px" >
+                
                     <?php
                     for ($i = 0; $i < count($data); $i++) {
-                    ?>
+                    ?>        
                     <table style=" width:100%;" class="my-table">
                         <tr>                             
                             <a href="../Portal/metodologia.php?ano=<?php echo $data[$i]['ano'] ?>" class="btn btn-primary botaoInicial">Confiança nas Instituicões Brasileiras
                             <?php echo $data[$i]['ano'] ?></a>                    
                         </tr>
                     </table>
-                    <br>
+                    
                     <?php
                     }
                     ?>
 
-                </div>
+                
             </div>
         </div>
     </div>                

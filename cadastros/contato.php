@@ -41,17 +41,17 @@ $enviado = isset($_GET['msg']) ? $_GET['msg'] : null;
             <div class="col-lg-12 col-md-10 col-12 row" style="padding: 2px; margin-left: 200px;">
                 <div class="col-3 ">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../index.php"><i class="fas fa-step-backward"> Página inicial </i></a>
+                        <a href="../index.php"><i> Página inicial </i></a>
                     </button>
                 </div>
                 <div style="margin-right: 30px" class="col-3">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chalkboard"> Metodologia </i></a>
+                        <a href="../metodologia.php?ano=<?php echo $_GET['ano'] ?>"><i> Metodologia </i></a>
                     </button>
                 </div>
                 <div class="col-6 row">
                     <button type="button" class="btn btn-light font-sizeBotao font-sizeIcone">
-                        <a href="../grafico.php?ano=<?php echo $_GET['ano'] ?>"><i class="fas fa-chart-bar"> Índice
+                        <a href="../grafico.php?ano=<?php echo $_GET['ano'] ?>"><i> Índice
                             </i></a>
                     </button>
                 </div>

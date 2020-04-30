@@ -91,7 +91,7 @@ if (!empty($_GET['editar'])) {
         </div>
         <div class="form-group">
             <label>Mensagem</label>
-            <textarea required name="mensagem" class="form-control"><?php echo $metodologia['mensagem'] ?></textarea>
+            <textarea required name="mensagem" class="form-control"><pre><?php echo $metodologia['mensagem'] ?><pre></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
